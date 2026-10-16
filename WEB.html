@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="vi" class="h-full bg-slate-50">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ôn Thi Anh Văn Đầu Vào - VSTEP / B1 / B2 Prep Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        serif: ['Merriweather', 'serif'], // Thêm font Serif cho Reading
+                    },
+                    colors: {
+                        brand: {
+                            50: '#eef2ff',
+                            100: '#e0e7ff',
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                            700: '#4338ca',
+                            900: '#312e81',
+                        },
+                        paper: '#FAFAFA' // Màu nền giấy cho bài đọc
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; height: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+        
+        .perspective-1000 { perspective: 1000px; }
+        .transform-style-3d { transform-style: preserve-3d; }
+        .backface-hidden { backface-visibility: hidden; }
+        .rotate-y-180 { transform: rotateY(180deg); }
+        
+        /* Typography cho bài đọc */
+        .reading-text p { 
+            text-indent: 2rem; 
+            margin-bottom: 1.25rem;
+            color: #334155;
+        }
+        .reading-text strong {
+            background-color: #fef08a; /* Highlight màu vàng nhạt */
+            padding: 0 4px;
+            border-radius: 4px;
+            color: #1e293b;
+        }
+
+        /* Ẩn radio button mặc định và dùng style custom */
+        .custom-radio input[type="radio"] {
+            display: none;
+        }
+        .custom-radio .radio-mark {
+            width: 20px; height: 20px;
+            border: 2px solid #cbd5e1;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            transition: all 0.2s;
+        }
+        .custom-radio input[type="radio"]:checked + .radio-mark {
+            border-color: #10b981;
+            background-color: #10b981;
+        }
+        .custom-radio input[type="radio"]:checked + .radio-mark::after {
+            content: '';
+            width: 8px; height: 8px;
+            background: white;
+            border-radius: 50%;
+        }
+        .custom-radio input[type="radio"]:checked ~ .option-content {
+            color: #064e3b;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body class="h-full font-sans text-slate-800 antialiased flex flex-col bg-slate-50">
+
+    <!-- Header Navigation -->
+    <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo & Title -->
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 to-indigo-500 flex items-center justify-center text-white font-bold text-xl shadow-md shadow-brand-500/20">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <div>
+                        <h1 class="font-extrabold text-slate-900 text-lg leading-tight">EngPrep Hub</h1>
+                        <p class="text-xs text-brand-600 font-bold uppercase tracking-wider">VSTEP Premium</p>
+                    </div>
+                </div>
+
+                <!-- Main Module Tabs (Desktop) -->
+                <nav class="hidden md:flex space-x-1 bg-slate-100 p-1 rounded-xl">
+                    <button onclick="switchTab('speaking')" id="nav-speaking" class="px-4 py-2 rounded-lg font-semibold text-sm transition-all duration-200 flex items-center space-x-2 bg-white text-brand-600 shadow-sm">
+                        <i class="fa-solid fa-microphone"></i><span>Speaking</span>
+                    </button>
+                    <button onclick="switchTab('reading')" id="nav-reading" class="px-4 py-2 rounded-lg font-semibold text-sm text-slate-600 hover:text-slate-900 transition-all duration-200 flex items-center space-x-2">
+                        <i class="fa-solid fa-book-open"></i><span>Reading</span>
+                    </button>
+                    <button onclick="switchTab('listening')" id="nav-listening" class="px-4 py-2 rounded-lg font-semibold text-sm text-slate-600 hover:text-slate-900 transition-all duration-200 flex items-center space-x-2">
+                        <i class="fa-solid fa-headphones"></i><span>Listening</span>
+                    </button>
+                    <button onclick="switchTab('writing')" id="nav-writing" class="px-4 py-2 rounded-lg font-semibold text-sm text-slate-600 hover:text-slate-900 transition-all duration-200 flex items-center space-x-2">
+                        <i class="fa-solid fa-pen-nib"></i><span>Writing</span>
+                    </button>
+                </nav>
+
+                <!-- Quick Action Stats -->
+                <div class="flex items-center space-x-3">
+                    <button onclick="openFlashcardModal()" class="px-3.5 py-2 bg-indigo-50 text-indigo-700 hover:bg-indigo-100 border border-indigo-200 rounded-lg text-sm font-semibold flex items-center space-x-2 transition">
+                        <i class="fa-solid fa-layer-group text-brand-600"></i>
+                        <span class="hidden sm:inline">Từ vựng Flashcard</span>
+                    </button>
+                    <button onclick="toggleBookmarksFilter()" id="btn-bookmarks" class="px-3 py-2 bg-amber-50 text-amber-700 border border-amber-200 hover:bg-amber-100 rounded-lg text-sm font-semibold flex items-center space-x-1.5 transition">
+                        <i class="fa-solid fa-bookmark text-amber-500"></i>
+                        <span id="bookmark-count" class="bg-amber-200 text-amber-900 text-xs px-1.5 py-0.5 rounded-full font-bold">0</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Body -->
+    <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
+
+        <!-- ================= SPEAKING MODULE ================= -->
+        <div id="tab-speaking-content" class="space-y-6">
+            <!-- Search, Filter & Controls Toolbar -->
+            <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200 flex flex-col md:flex-row items-center justify-between gap-4">
+                <div class="relative w-full md:w-96">
+                    <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                    <input type="text" id="search-input" oninput="handleSearch()" placeholder="Tìm kiếm Topic (ví dụ: Hometown, Hobbies...)" class="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:bg-white transition">
+                </div>
+                <div class="flex items-center space-x-3 text-sm font-semibold text-slate-600">
+                    <span class="px-3 py-1.5 bg-brand-50 text-brand-700 rounded-lg" id="topic-count-display">Đang hiển thị Topics</span>
+                    <button onclick="resetFilters()" class="text-brand-600 hover:text-brand-800 flex items-center space-x-1 bg-slate-100 hover:bg-slate-200 px-3 py-1.5 rounded-lg transition">
+                        <i class="fa-solid fa-rotate-left"></i><span>Làm mới</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+                <!-- Left Column: Topic List -->
+                <div class="lg:col-span-4 bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col h-[600px] lg:h-[780px]">
+                    <div class="p-4 bg-gradient-to-r from-slate-50 to-white border-b border-slate-200 flex items-center justify-between">
+                        <span class="font-black text-slate-800 text-sm uppercase tracking-wider flex items-center space-x-2">
+                            <i class="fa-solid fa-list-check text-brand-600"></i><span>Bộ Chủ Đề Part 1</span>
+                        </span>
+                    </div>
+                    <div id="topic-list-container" class="divide-y divide-slate-100 overflow-y-auto custom-scrollbar flex-1 p-2"></div>
+                </div>
+
+                <!-- Right Column: Selected Topic Detail -->
+                <div class="lg:col-span-8 space-y-6">
+                    <div id="topic-detail-card" class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 lg:p-8 min-h-[500px]"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= READING MODULE (NÂNG CẤP GIAO DIỆN) ================= -->
+        <div id="tab-reading-content" class="hidden space-y-6">
+            <!-- Header Reading -->
+            <div class="bg-slate-900 text-white rounded-2xl p-5 sm:p-6 shadow-xl flex flex-col md:flex-row items-center justify-between gap-4 relative overflow-hidden">
+                <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-20"></div>
+                <div class="flex items-center space-x-4 relative z-10">
+                    <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-emerald-400 to-teal-600 flex items-center justify-center text-2xl shadow-lg">
+                        <i class="fa-solid fa-book-open-reader text-white"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-xl sm:text-2xl font-black">Reading Practice Test 1</h2>
+                        <p class="text-slate-300 text-sm mt-1">10 Câu hỏi trắc nghiệm • Multiple Choice</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                <!-- Left Column: Reading Passage (Paper-like Design) -->
+                <div class="lg:col-span-6 bg-paper rounded-2xl border border-slate-200 shadow-md lg:sticky lg:top-24 flex flex-col lg:max-h-[calc(100vh-8rem)] relative">
+                    <!-- Ribbon -->
+                    <div class="absolute top-0 right-6 bg-emerald-600 text-white text-[10px] font-bold px-3 py-1 rounded-b-lg shadow-sm">PASSAGE 1</div>
+                    
+                    <div class="p-5 border-b border-slate-200 bg-white/50 backdrop-blur rounded-t-2xl flex items-center space-x-3">
+                        <i class="fa-solid fa-file-alt text-slate-400 text-xl"></i>
+                        <h3 class="font-extrabold text-slate-800 text-lg">Human Handedness</h3>
+                    </div>
+                    
+                    <!-- Nội dung bài đọc dùng font Serif -->
+                    <div class="p-6 lg:p-8 overflow-y-auto custom-scrollbar flex-1 reading-text text-[15px] lg:text-[16px] leading-[1.8] font-serif text-justify" id="reading-passage-container">
+                        <!-- Passage inserted via JS -->
+                    </div>
+                </div>
+
+                <!-- Right Column: Questions (Sleek Card Design) -->
+                <div class="lg:col-span-6 bg-white rounded-2xl border border-slate-200 shadow-sm p-6 lg:p-8">
+                    <div class="flex items-center justify-between mb-6 pb-4 border-b border-slate-100">
+                        <h3 class="font-black text-slate-900 text-xl">Questions 1 - 10</h3>
+                        <span class="px-3 py-1 bg-slate-100 text-slate-600 text-xs font-bold rounded-lg"><i class="fa-solid fa-circle-info mr-1"></i>Choose the best answer</span>
+                    </div>
+
+                    <div id="reading-questions-container" class="space-y-6">
+                        <!-- Questions inserted via JS -->
+                    </div>
+
+                    <!-- Submit & Result section -->
+                    <div class="mt-10 pt-8 border-t border-slate-200 flex flex-col items-center">
+                        <div id="reading-result-box" class="hidden w-full p-6 rounded-2xl text-center mb-6 transition-all"></div>
+                        <button onclick="submitReading()" id="submit-reading-btn" class="w-full sm:w-auto px-10 py-4 bg-slate-900 hover:bg-slate-800 text-white rounded-xl font-bold shadow-xl shadow-slate-900/20 transition-all flex items-center justify-center space-x-3 text-lg">
+                            <i class="fa-solid fa-check-double"></i>
+                            <span>Nộp bài & Chấm điểm</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= LISTENING MODULE ================= -->
+        <div id="tab-listening-content" class="hidden space-y-6">
+            <div class="bg-white rounded-2xl p-12 border border-slate-200 text-center space-y-4">
+                <div class="w-20 h-20 bg-blue-50 text-blue-500 rounded-3xl flex items-center justify-center mx-auto text-3xl font-bold shadow-inner">
+                    <i class="fa-solid fa-headphones"></i>
+                </div>
+                <h3 class="text-2xl font-black text-slate-900">Module Listening - Đang phát triển</h3>
+                <p class="text-slate-500 max-w-md mx-auto">Nội dung Listening đang được đội ngũ biên soạn và sẽ ra mắt trong bản cập nhật tiếp theo.</p>
+            </div>
+        </div>
+
+        <!-- ================= WRITING MODULE ================= -->
+        <div id="tab-writing-content" class="hidden space-y-6">
+            <div class="bg-white rounded-2xl p-12 border border-slate-200 text-center space-y-4">
+                <div class="w-20 h-20 bg-purple-50 text-purple-500 rounded-3xl flex items-center justify-center mx-auto text-3xl font-bold shadow-inner">
+                    <i class="fa-solid fa-pen-nib"></i>
+                </div>
+                <h3 class="text-2xl font-black text-slate-900">Module Writing - Đang phát triển</h3>
+                <p class="text-slate-500 max-w-md mx-auto">Gồm Task 1 (Viết thư) & Task 2 (Bài luận Essay). Hệ thống chấm điểm tự động bằng AI đang được tích hợp.</p>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Flashcard Modal -->
+    <div id="flashcard-modal" class="fixed inset-0 bg-slate-900/80 backdrop-blur-md z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-white rounded-3xl shadow-2xl max-w-md w-full p-6 border border-slate-200">
+            <div class="flex items-center justify-between mb-6">
+                <h3 class="font-black text-slate-900 text-lg flex items-center"><i class="fa-solid fa-layer-group text-brand-500 mr-2"></i>Flashcard Từ Vựng</h3>
+                <button onclick="closeFlashcardModal()" class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-600 transition">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <!-- Interactive Flip Card -->
+            <div class="perspective-1000 w-full h-72 cursor-pointer" onclick="flipCard()">
+                <div id="card-inner" class="relative w-full h-full transition-transform duration-500 transform-style-3d shadow-xl rounded-2xl border border-slate-100 bg-white">
+                    <!-- Front Side (English) -->
+                    <div class="absolute inset-0 backface-hidden p-6 flex flex-col items-center justify-center text-center bg-gradient-to-br from-brand-50 to-white rounded-2xl">
+                        <span id="fc-topic" class="text-[10px] font-black text-brand-600 uppercase tracking-widest px-3 py-1.5 bg-brand-100/50 rounded-lg mb-4">Topic</span>
+                        <p id="fc-english" class="text-3xl font-black text-slate-900 mb-2">Word</p>
+                        <p class="text-sm text-slate-400 font-medium"><i class="fa-solid fa-rotate mr-1"></i>Chạm để lật thẻ</p>
+                    </div>
+                    <!-- Back Side (Vietnamese) -->
+                    <div class="absolute inset-0 backface-hidden rotate-y-180 bg-slate-900 text-white rounded-2xl p-6 flex flex-col items-center justify-center text-center">
+                        <span class="text-[10px] font-black text-emerald-400 uppercase tracking-widest mb-4">Nghĩa Tiếng Việt</span>
+                        <p id="fc-vietnamese" class="text-2xl font-bold text-white mb-4">Nghĩa</p>
+                        <button onclick="event.stopPropagation(); speakText(document.getElementById('fc-english').innerText)" class="px-4 py-2 bg-white/10 hover:bg-white/20 rounded-xl text-sm font-bold flex items-center space-x-2 transition">
+                            <i class="fa-solid fa-volume-high text-brand-400"></i><span>Nghe phát âm</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Controls -->
+            <div class="flex items-center justify-between mt-8">
+                <button onclick="prevFlashcard()" class="w-12 h-12 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-full transition flex items-center justify-center">
+                    <i class="fa-solid fa-arrow-left"></i>
+                </button>
+                <span id="fc-counter" class="text-sm font-black text-slate-400">0 / 0</span>
+                <button onclick="nextFlashcard()" class="w-12 h-12 bg-brand-600 hover:bg-brand-700 text-white rounded-full transition flex items-center justify-center shadow-lg shadow-brand-500/30">
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Logic -->
+    <script>
+        // === KHÔI PHỤC VÀ BỔ SUNG ĐẦY ĐỦ DỮ LIỆU SPEAKING ===
+        const speakingData = [
+            { 
+                id: 1, title: "Hometown", viTitle: "Quê hương", icon: "fa-house", 
+                vocab: [{ en: "hustle and bustle", vi: "sự ồn ào náo nhiệt" }, { en: "breathtaking scenery", vi: "cảnh đẹp đến ngộp thở" }, { en: "local cuisine", vi: "ẩm thực địa phương" }], 
+                questions: [
+                    { q: "Where is your hometown?", a: "I was born and raised in Hanoi, the capital of Vietnam.", r: "It's a vibrant city located in the North.", e: "It is famous for its rich history and delicious street food like Pho." },
+                    { q: "What do you like most about your hometown?", a: "I absolutely love the local cuisine.", r: "The food is diverse, affordable, and incredibly tasty.", e: "For example, I can easily grab a bowl of authentic Bun Cha on almost every corner." }
+                ] 
+            },
+            { 
+                id: 2, title: "Hobbies", viTitle: "Sở thích cá nhân", icon: "fa-gamepad", 
+                vocab: [{ en: "let my hair down", vi: "thư giãn" }, { en: "take up a hobby", vi: "bắt đầu một sở thích" }, { en: "a big fan of", vi: "người hâm mộ lớn của" }], 
+                questions: [
+                    { q: "What do you usually do in your free time?", a: "I usually read books or listen to music.", r: "These activities help me let my hair down after a long day.", e: "Sometimes, I also play badminton with my friends on weekends." },
+                    { q: "Is it important to have a hobby?", a: "Yes, definitely.", r: "Having a hobby helps maintain a work-life balance and reduces stress.", e: "It also gives us a chance to learn new skills and meet like-minded people." }
+                ] 
+            },
+            { 
+                id: 3, title: "Travel", viTitle: "Du lịch", icon: "fa-plane-departure", 
+                vocab: [{ en: "tourist attraction", vi: "điểm thu hút khách du lịch" }, { en: "broaden horizons", vi: "mở rộng tầm nhìn" }, { en: "pack my bags", vi: "chuẩn bị hành lý" }], 
+                questions: [
+                    { q: "Do you like traveling?", a: "Yes, I am a huge fan of traveling.", r: "It is the best way to broaden my horizons and experience new cultures.", e: "Last year, I took a trip to Da Lat and it was an unforgettable experience." },
+                    { q: "Do you prefer traveling alone or with others?", a: "I prefer traveling with my friends.", r: "It's much more fun to share beautiful moments with people you love.", e: "Moreover, we can share travel expenses and take photos for each other." }
+                ] 
+            },
+            { 
+                id: 4, title: "Weather", viTitle: "Thời tiết", icon: "fa-cloud-sun", 
+                vocab: [{ en: "pleasant weather", vi: "thời tiết dễ chịu" }, { en: "heavy rain", vi: "mưa lớn" }, { en: "scorching hot", vi: "nóng như thiêu đốt" }], 
+                questions: [
+                    { q: "What is your favorite kind of weather?", a: "I prefer cool and breezy weather.", r: "Because it makes me feel comfortable and energetic.", e: "I love going for a walk in the park when the weather is mild." },
+                    { q: "Does the weather affect your mood?", a: "Yes, it does to some extent.", r: "When it's sunny, I feel more upbeat and productive.", e: "Conversely, rainy days make me feel a bit lazy and I just want to stay in bed." }
+                ] 
+            },
+            { 
+                id: 5, title: "Pets", viTitle: "Thú cưng", icon: "fa-dog", 
+                vocab: [{ en: "keep a pet", vi: "nuôi thú cưng" }, { en: "animal lover", vi: "người yêu động vật" }, { en: "loyal companion", vi: "người bạn đồng hành trung thành" }], 
+                questions: [
+                    { q: "Do you have a pet?", a: "Yes, I have a cute Golden Retriever.", r: "I've always been an animal lover.", e: "He is a loyal companion and always welcomes me when I come home." }
+                ] 
+            },
+            { 
+                id: 6, title: "Food & Cooking", viTitle: "Đồ ăn & Nấu nướng", icon: "fa-utensils", 
+                vocab: [{ en: "home-cooked meals", vi: "bữa ăn nấu ở nhà" }, { en: "eating out", vi: "ăn ở ngoài" }, { en: "sweet tooth", vi: "người thích đồ ngọt" }], 
+                questions: [
+                    { q: "Do you like cooking?", a: "To be honest, I am not very good at cooking.", r: "I find it quite time-consuming and complicated.", e: "However, I can cook some basic dishes like fried eggs and instant noodles." },
+                    { q: "Do you prefer eating at home or eating out?", a: "I prefer eating home-cooked meals.", r: "It is generally healthier and much more hygienic.", e: "Plus, it is a great time for family members to bond over dinner." }
+                ] 
+            },
+            { 
+                id: 7, title: "Sports", viTitle: "Thể thao", icon: "fa-basketball", 
+                vocab: [{ en: "keep fit", vi: "giữ dáng" }, { en: "team spirit", vi: "tinh thần đồng đội" }, { en: "work out", vi: "tập thể dục" }], 
+                questions: [
+                    { q: "Do you play any sports?", a: "Yes, I play football occasionally.", r: "It is a great way to keep fit and build stamina.", e: "I usually play with my colleagues after work on Fridays." }
+                ] 
+            },
+            { 
+                id: 8, title: "Music", viTitle: "Âm nhạc", icon: "fa-music", 
+                vocab: [{ en: "catchy melody", vi: "giai điệu bắt tai" }, { en: "live concert", vi: "buổi hòa nhạc trực tiếp" }, { en: "background music", vi: "nhạc nền" }], 
+                questions: [
+                    { q: "What kind of music do you like?", a: "I am really into Pop music.", r: "It has catchy melodies and relatable lyrics.", e: "My favorite singer is Taylor Swift, and I listen to her songs every day." }
+                ] 
+            },
+            { 
+                id: 9, title: "Movies", viTitle: "Phim ảnh", icon: "fa-film", 
+                vocab: [{ en: "blockbuster", vi: "phim bom tấn" }, { en: "action-packed", vi: "hành động mãn nhãn" }, { en: "go to the cinema", vi: "đi xem phim" }], 
+                questions: [
+                    { q: "How often do you go to the cinema?", a: "I go to the cinema about once a month.", r: "I only go when there is a new blockbuster released.", e: "Watching movies on a big screen with great sound effects is fantastic." }
+                ] 
+            },
+            { 
+                id: 10, title: "Reading", viTitle: "Đọc sách", icon: "fa-book-open", 
+                vocab: [{ en: "read for pleasure", vi: "đọc để giải trí" }, { en: "page-turner", vi: "cuốn sách hấp dẫn" }, { en: "e-book", vi: "sách điện tử" }], 
+                questions: [
+                    { q: "Do you prefer physical books or e-books?", a: "I definitely prefer physical books.", r: "I love the smell of printed paper and the feeling of turning pages.", e: "Also, staring at screens for too long hurts my eyes." }
+                ] 
+            }
+        ];
+
+        // === READING DATA ===
+        const readingData = {
+            passage: `
+                <p>Archaeological records-paintings, drawings and carvings of humans engaged in activities involving the use of hands-indicate that humans have been predominantly right-handed for more than 5,000 years. In ancient Egyptian artwork, for example, the right hand is depicted as the dominant one in about 90 percent of the examples. Fracture or wear patterns on tools also indicate that a majority of ancient people were right-handed. Cro-Magnon cave paintings some 27,000 years old commonly show outlines of human hands made by placing one hand against the cave wall and applying paint with the <strong>other</strong>. Children today make similar outlines of their hands with crayons on paper. With few exceptions, left hands of Cro-Magnons are displayed on cave walls, indicating that the paintings were usually done by right-handers.</p>
+                <p>Anthropological evidence pushes the record of handedness in early human ancestors back to at least 1.4 million years ago. One important line of evidence comes from flaking patterns of stone cores used in tool making: <strong>implements</strong> flaked with a clockwise motion (indicating a right-handed toolmaker) can be distinguished from those flaked with a counter-clockwise rotation (indicating a left-handed toolmaker).</p>
+                <p>Even scratches found on fossil human teeth offer <strong>clues</strong>. Ancient humans are thought to have cut meat into strips by holding it between their teeth and slicing it with stone knives, as do the present-day Inuit. Occasionally the knives slip and leave scratches on the users' teeth. Scratches made with a left-to-right stroke direction (by right-handers) are more common than scratches in the opposite direction (made by left-handers).</p>
+                <p>Still other evidence comes from cranial morphology: scientists think that physical differences between the right and left sides of the interior of the skull indicate subtle physical differences between the two sides of the brain. The variation between the <strong>hemispheres</strong> corresponds to which side of the body is used to perform specific activities. Such studies, as well as studies of tool use, indicate that right- or left-sided dominance is not exclusive to modern Homo sapiens. Population of Neanderthals, such as Homo erectus and Homo habilis, seem to have been predominantly right-handed, as we are.</p>
+            `,
+            questions: [
+                {
+                    id: 1, text: "The word \"clues\" in paragraph 3 is closest in meaning to", correct: "D",
+                    options: [ {id:"A", t:"solutions"}, {id:"B", t:"details"}, {id:"C", t:"damage"}, {id:"D", t:"information"} ]
+                },
+                {
+                    id: 2, text: "The fact that the Inuit cut meat by holding it between their teeth is significant because", correct: "A",
+                    options: [ 
+                        {id:"A", t:"the relationship between handedness and scratches on fossil human teeth can be verified"}, 
+                        {id:"B", t:"it emphasizes the differences between contemporary humans and their ancestors"}, 
+                        {id:"C", t:"the scratch patterns produced by stone knives vary significantly from patterns produced by modern knives"}, 
+                        {id:"D", t:"it demonstrates that ancient humans were not skilled at using tools"} 
+                    ]
+                },
+                {
+                    id: 3, text: "The word \"hemispheres\" in paragraph 4 is closest in meaning to", correct: "B",
+                    options: [ {id:"A", t:"differences"}, {id:"B", t:"sides"}, {id:"C", t:"activities"}, {id:"D", t:"studies"} ]
+                },
+                {
+                    id: 4, text: "What does the author say about Cro-Magnon paintings of hands?", correct: "D",
+                    options: [ {id:"A", t:"Some are not very old."}, {id:"B", t:"It is unusual to see such paintings."}, {id:"C", t:"Many were made by children."}, {id:"D", t:"The artists were mostly right-handed."} ]
+                },
+                {
+                    id: 5, text: "The word \"implements\" in paragraph 2 is closest in meaning to", correct: "A",
+                    options: [ {id:"A", t:"tools"}, {id:"B", t:"designs"}, {id:"C", t:"examples"}, {id:"D", t:"pieces"} ]
+                },
+                {
+                    id: 6, text: "Why does the author mention Homo erectus and Homo habilis in the last paragraph?", correct: "C",
+                    options: [ {id:"A", t:"To contrast them with modern humans"}, {id:"B", t:"To explain when human ancestors began to make tools"}, {id:"C", t:"To show that early humans were also predominantly right handed"}, {id:"D", t:"To prove that the population of Neanderthals was very large"} ]
+                },
+                {
+                    id: 7, text: "All of the follows are mentioned as types of evidence concerning handedness EXCEPT", correct: "D",
+                    options: [ {id:"A", t:"ancient artwork"}, {id:"B", t:"asymmetrical skulls"}, {id:"C", t:"studies of tool use"}, {id:"D", t:"fossilized hand bones"} ]
+                },
+                {
+                    id: 8, text: "What is the main idea of the passage?", correct: "C",
+                    options: [ {id:"A", t:"Human ancestors became predominantly right-handed when they began to use tools."}, {id:"B", t:"It is difficult to interpret the significance of anthropological evidence concerning tool use."}, {id:"C", t:"Humans and their ancestors have been predominantly right-handed for over a million years."}, {id:"D", t:"Human ancestors were more skilled at using both hands than modern humans."} ]
+                },
+                {
+                    id: 9, text: "The word \"other\" in paragraph 1 refers to", correct: "B",
+                    options: [ {id:"A", t:"outline"}, {id:"B", t:"hand"}, {id:"C", t:"wall"}, {id:"D", t:"paint"} ]
+                },
+                {
+                    id: 10, text: "When compared with implements \"flaked with a counter-clockwise rotation\", it can be inferred that \"implements flaked with a clock-wise motion\" are", correct: "A",
+                    options: [ {id:"A", t:"more common"}, {id:"B", t:"larger"}, {id:"C", t:"more sophisticated"}, {id:"D", t:"older"} ]
+                }
+            ]
+        };
+
+        // === GLOBAL VARIABLES ===
+        let selectedTopicId = 1;
+        let bookmarks = JSON.parse(localStorage.getItem("engprep_bookmarks") || "[]");
+        let currentFlashcardIndex = 0;
+        let isCardFlipped = false;
+        let allFlashcardVocabList = [];
+        let filterOnlyBookmarks = false;
+
+        // === LOGIC CÁC TAB ===
+        function switchTab(tabId) {
+            ['speaking', 'listening', 'reading', 'writing'].forEach(tab => {
+                document.getElementById('tab-' + tab + '-content').classList.add('hidden');
+                const navBtn = document.getElementById('nav-' + tab);
+                if(tab === tabId) {
+                    navBtn.className = `px-4 py-2 rounded-lg font-semibold text-sm transition-all duration-200 flex items-center space-x-2 bg-white ${tab === 'reading' ? 'text-emerald-600' : 'text-brand-600'} shadow-sm`;
+                } else {
+                    navBtn.className = "px-4 py-2 rounded-lg font-semibold text-sm text-slate-600 hover:text-slate-900 transition-all duration-200 flex items-center space-x-2";
+                }
+            });
+            document.getElementById('tab-' + tabId + '-content').classList.remove('hidden');
+        }
+
+        // === LOGIC SPEAKING ===
+        function updateBookmarkCount() {
+            document.getElementById("bookmark-count").innerText = bookmarks.length;
+        }
+
+        function toggleBookmark(id, event) {
+            event.stopPropagation();
+            if (bookmarks.includes(id)) {
+                bookmarks = bookmarks.filter(b => b !== id);
+                showToast("Đã bỏ lưu Topic");
+            } else {
+                bookmarks.push(id);
+                showToast("Đã lưu Topic thành công");
+            }
+            localStorage.setItem("engprep_bookmarks", JSON.stringify(bookmarks));
+            updateBookmarkCount();
+            renderTopicList(document.getElementById("search-input").value);
+            if(selectedTopicId === id) renderTopicDetail(id);
+        }
+
+        function toggleBookmarksFilter() {
+            filterOnlyBookmarks = !filterOnlyBookmarks;
+            const btn = document.getElementById("btn-bookmarks");
+            if(filterOnlyBookmarks) {
+                btn.classList.add("bg-amber-100", "border-amber-400");
+                showToast("Đang hiển thị các Topic đã lưu");
+            } else {
+                btn.classList.remove("bg-amber-100", "border-amber-400");
+                showToast("Hiển thị tất cả Topic");
+            }
+            renderTopicList(document.getElementById("search-input").value);
+        }
+
+        function showToast(msg) {
+            let toast = document.getElementById('toast');
+            if(!toast) {
+                toast = document.createElement('div');
+                toast.id = 'toast';
+                toast.className = "fixed bottom-5 right-5 bg-slate-900 text-white px-4 py-3 rounded-lg shadow-xl z-50 text-sm transition-all duration-300 opacity-0 translate-y-4 font-medium";
+                document.body.appendChild(toast);
+            }
+            toast.innerText = msg;
+            toast.classList.remove('opacity-0', 'translate-y-4');
+            setTimeout(() => { toast.classList.add('opacity-0', 'translate-y-4'); }, 3000);
+        }
+
+        function handleSearch() {
+            renderTopicList(document.getElementById("search-input").value);
+        }
+
+        function resetFilters() {
+            document.getElementById("search-input").value = "";
+            filterOnlyBookmarks = false;
+            document.getElementById("btn-bookmarks").classList.remove("bg-amber-100", "border-amber-400");
+            renderTopicList();
+        }
+
+        function renderTopicList(filterQuery = "") {
+            const container = document.getElementById("topic-list-container");
+            const query = filterQuery.toLowerCase().trim();
+
+            let filtered = speakingData.filter(t => {
+                const matchSearch = t.title.toLowerCase().includes(query) || t.viTitle.toLowerCase().includes(query);
+                const matchBookmark = filterOnlyBookmarks ? bookmarks.includes(t.id) : true;
+                return matchSearch && matchBookmark;
+            });
+
+            document.getElementById("topic-count-display").innerText = `Đang hiển thị ${filtered.length} Topics`;
+
+            if (filtered.length === 0) {
+                container.innerHTML = `<div class="p-8 text-center text-slate-400 text-sm font-medium">Không tìm thấy Topic phù hợp</div>`;
+                return;
+            }
+
+            container.innerHTML = filtered.map(t => {
+                const isSelected = t.id === selectedTopicId;
+                const isBookmarked = bookmarks.includes(t.id);
+                return `
+                    <div onclick="selectTopic(${t.id})" class="p-4 hover:bg-slate-50 cursor-pointer transition flex items-center justify-between group rounded-xl my-1 ${isSelected ? 'bg-brand-50 border-brand-500 shadow-sm' : 'border-transparent'} border">
+                        <div class="flex items-center space-x-3.5">
+                            <div class="w-10 h-10 rounded-xl ${isSelected ? 'bg-brand-600 text-white shadow-md' : 'bg-slate-100 text-slate-500'} flex items-center justify-center text-lg transition-all"><i class="fa-solid ${t.icon}"></i></div>
+                            <div>
+                                <h4 class="font-bold text-sm ${isSelected ? 'text-brand-900' : 'text-slate-800'}">Topic ${t.id}: ${t.title}</h4>
+                                <p class="text-xs text-slate-500 mt-0.5">${t.viTitle}</p>
+                            </div>
+                        </div>
+                        <button onclick="toggleBookmark(${t.id}, event)" class="w-8 h-8 rounded-full flex items-center justify-center transition-all ${isBookmarked ? 'text-amber-500 bg-amber-50' : 'text-slate-300 hover:text-amber-500 hover:bg-amber-50'}">
+                            <i class="${isBookmarked ? 'fa-solid' : 'fa-regular'} fa-bookmark"></i>
+                        </button>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function selectTopic(id) {
+            selectedTopicId = id;
+            renderTopicList(document.getElementById("search-input").value);
+            renderTopicDetail(id);
+        }
+
+        function renderTopicDetail(id) {
+            const topic = speakingData.find(t => t.id === id);
+            if (!topic) return;
+            const detailCard = document.getElementById("topic-detail-card");
+
+            const isBookmarked = bookmarks.includes(topic.id);
+
+            detailCard.innerHTML = `
+                <div class="flex flex-col sm:flex-row sm:items-start justify-between border-b border-slate-100 pb-6 gap-4">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-brand-100 to-indigo-50 text-brand-600 flex items-center justify-center text-2xl shadow-sm"><i class="fa-solid ${topic.icon}"></i></div>
+                        <div>
+                            <div class="text-xs font-bold text-brand-600 uppercase tracking-widest mb-1">Part 1 • Topic ${topic.id}</div>
+                            <h2 class="text-2xl lg:text-3xl font-black text-slate-900">${topic.title}</h2>
+                            <p class="text-slate-500 font-medium">${topic.viTitle}</p>
+                        </div>
+                    </div>
+                    <button onclick="toggleBookmark(${topic.id}, event)" class="px-4 py-2 rounded-xl text-sm font-bold flex items-center space-x-2 transition ${isBookmarked ? 'bg-amber-100 text-amber-700' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'}">
+                        <i class="${isBookmarked ? 'fa-solid' : 'fa-regular'} fa-bookmark"></i>
+                        <span>${isBookmarked ? 'Đã lưu' : 'Lưu Topic'}</span>
+                    </button>
+                </div>
+
+                <div class="mt-8">
+                    <h3 class="font-black text-slate-900 mb-4 flex items-center text-lg"><i class="fa-solid fa-book-open-reader text-brand-500 mr-2"></i>Từ vựng ăn điểm (Vocab)</h3>
+                    <div class="flex flex-wrap gap-2">
+                        ${topic.vocab.map(v => `
+                            <div class="group relative px-4 py-2 bg-slate-50 hover:bg-brand-50 border border-slate-200 hover:border-brand-200 rounded-xl cursor-help transition">
+                                <span class="font-bold text-slate-800 group-hover:text-brand-700 text-sm">${v.en}</span>
+                                <div class="opacity-0 invisible group-hover:opacity-100 group-hover:visible absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-max px-3 py-1.5 bg-slate-900 text-white text-xs font-medium rounded-lg shadow-xl transition-all z-10">${v.vi}</div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+
+                <div class="mt-8 space-y-6">
+                    <h3 class="font-black text-slate-900 text-lg flex items-center"><i class="fa-regular fa-comments text-brand-500 mr-2"></i>Câu Hỏi & Trả Lời Mẫu</h3>
+                    ${topic.questions.map((q, idx) => `
+                        <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-5 hover:shadow-md transition">
+                            <h4 class="font-extrabold text-slate-900 text-lg flex items-start">
+                                <span class="text-brand-500 mr-2">Q${idx+1}:</span>${q.q}
+                            </h4>
+                            <div class="bg-slate-50 p-5 rounded-xl space-y-3.5 border border-slate-100">
+                                <div class="flex items-start space-x-3">
+                                    <span class="px-2 py-1 bg-brand-500 text-white text-[10px] font-black rounded uppercase w-16 text-center shrink-0">Answer</span>
+                                    <p class="text-[15px] font-medium text-slate-700 leading-relaxed">${q.a}</p>
+                                </div>
+                                <div class="flex items-start space-x-3">
+                                    <span class="px-2 py-1 bg-emerald-500 text-white text-[10px] font-black rounded uppercase w-16 text-center shrink-0">Reason</span>
+                                    <p class="text-[15px] font-medium text-slate-700 leading-relaxed">${q.r}</p>
+                                </div>
+                                <div class="flex items-start space-x-3">
+                                    <span class="px-2 py-1 bg-purple-500 text-white text-[10px] font-black rounded uppercase w-16 text-center shrink-0">Extra</span>
+                                    <p class="text-[15px] font-medium text-slate-700 leading-relaxed">${q.e}</p>
+                                </div>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+        }
+
+        // === LOGIC FLASHCARD ===
+        function generateFlashcardList() {
+            allFlashcardVocabList = [];
+            speakingData.forEach(topic => {
+                topic.vocab.forEach(v => {
+                    allFlashcardVocabList.push({ en: v.en, vi: v.vi, topicName: topic.title });
+                });
+            });
+            // Xáo trộn mảng (Shuffle)
+            allFlashcardVocabList = allFlashcardVocabList.sort(() => Math.random() - 0.5);
+        }
+
+        function openFlashcardModal() {
+            if(allFlashcardVocabList.length === 0) generateFlashcardList();
+            currentFlashcardIndex = 0;
+            updateFlashcardUI();
+            document.getElementById("flashcard-modal").classList.remove("hidden");
+        }
+
+        function closeFlashcardModal() {
+            document.getElementById("flashcard-modal").classList.add("hidden");
+            isCardFlipped = false;
+            document.getElementById("card-inner").classList.remove("rotate-y-180");
+        }
+
+        function updateFlashcardUI() {
+            if(allFlashcardVocabList.length === 0) return;
+            const currentWord = allFlashcardVocabList[currentFlashcardIndex];
+            
+            document.getElementById("fc-topic").innerText = currentWord.topicName;
+            document.getElementById("fc-english").innerText = currentWord.en;
+            document.getElementById("fc-vietnamese").innerText = currentWord.vi;
+            document.getElementById("fc-counter").innerText = `${currentFlashcardIndex + 1} / ${allFlashcardVocabList.length}`;
+            
+            isCardFlipped = false;
+            document.getElementById("card-inner").classList.remove("rotate-y-180");
+        }
+
+        function flipCard() {
+            isCardFlipped = !isCardFlipped;
+            const cardInner = document.getElementById("card-inner");
+            if(isCardFlipped) {
+                cardInner.classList.add("rotate-y-180");
+            } else {
+                cardInner.classList.remove("rotate-y-180");
+            }
+        }
+
+        function nextFlashcard() {
+            if(currentFlashcardIndex < allFlashcardVocabList.length - 1) {
+                currentFlashcardIndex++;
+                updateFlashcardUI();
+            }
+        }
+
+        function prevFlashcard() {
+            if(currentFlashcardIndex > 0) {
+                currentFlashcardIndex--;
+                updateFlashcardUI();
+            }
+        }
+
+        function speakText(text) {
+            if ('speechSynthesis' in window) {
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'en-US';
+                window.speechSynthesis.speak(utterance);
+            } else {
+                showToast("Trình duyệt không hỗ trợ phát âm");
+            }
+        }
+
+
+        // === LOGIC READING (GIAO DIỆN MỚI CỰC ĐẸP) ===
+        function initReadingModule() {
+            document.getElementById('reading-passage-container').innerHTML = readingData.passage;
+            const container = document.getElementById('reading-questions-container');
+            
+            container.innerHTML = readingData.questions.map((q, index) => `
+                <div class="bg-white p-2 rounded-xl" id="question-block-${q.id}">
+                    <p class="font-bold text-slate-800 mb-4 text-[15px] leading-relaxed">
+                        <span class="bg-slate-800 text-white w-7 h-7 inline-flex items-center justify-center rounded-full mr-2 text-sm shadow-md">${q.id}</span> 
+                        ${q.text}
+                    </p>
+                    <div class="space-y-3 pl-1">
+                        ${q.options.map(opt => `
+                            <label class="custom-radio flex items-center space-x-4 p-4 rounded-xl border border-slate-200 hover:border-emerald-300 hover:bg-emerald-50 cursor-pointer transition-all group" id="label-q${q.id}-${opt.id}">
+                                <input type="radio" name="q${q.id}" value="${opt.id}">
+                                <div class="radio-mark shrink-0"></div>
+                                <div class="flex-1 option-content text-slate-600 text-[15px] transition-colors">
+                                    <strong class="mr-2">${opt.id}.</strong>${opt.t}
+                                </div>
+                            </label>
+                        `).join('')}
+                    </div>
+                    <div id="explanation-q${q.id}" class="hidden mt-5 p-4 bg-emerald-50 text-emerald-900 text-sm rounded-xl border border-emerald-200 flex items-start space-x-3">
+                        <i class="fa-solid fa-circle-check text-emerald-600 mt-0.5 text-lg"></i>
+                        <div>
+                            <strong class="font-black block mb-1">Đáp án đúng: ${q.correct}</strong>
+                            <span class="opacity-90">Hãy đối chiếu thông tin trong bài đọc (Passage) ở cột bên trái.</span>
+                        </div>
+                    </div>
+                </div>
+            `).join('<hr class="border-slate-100 my-8 border-dashed">');
+        }
+
+        function submitReading() {
+            let score = 0;
+            const total = readingData.questions.length;
+            
+            readingData.questions.forEach(q => {
+                const selected = document.querySelector(`input[name="q${q.id}"]:checked`);
+                const explanation = document.getElementById(`explanation-q${q.id}`);
+                
+                // Disable & Xử lý màu sắc
+                q.options.forEach(opt => {
+                     const label = document.getElementById(`label-q${q.id}-${opt.id}`);
+                     const input = label.querySelector('input');
+                     input.disabled = true;
+                     label.classList.remove('hover:border-emerald-300', 'hover:bg-emerald-50', 'cursor-pointer');
+                     label.classList.add('opacity-60', 'cursor-not-allowed');
+                });
+                
+                if (selected && selected.value === q.correct) {
+                    score++;
+                    const correctLabel = document.getElementById(`label-q${q.id}-${selected.value}`);
+                    correctLabel.className = "custom-radio flex items-center space-x-4 p-4 rounded-xl border-2 border-emerald-500 bg-emerald-50 opacity-100 shadow-sm";
+                } else {
+                    if (selected) {
+                        const wrongLabel = document.getElementById(`label-q${q.id}-${selected.value}`);
+                        wrongLabel.className = "custom-radio flex items-center space-x-4 p-4 rounded-xl border-2 border-rose-400 bg-rose-50 opacity-100 shadow-sm";
+                        wrongLabel.querySelector('.radio-mark').style.borderColor = '#fb7185';
+                        wrongLabel.querySelector('.radio-mark').style.backgroundColor = '#fb7185';
+                    }
+                    // Highlight correct answer anyway
+                    const correctLabel = document.getElementById(`label-q${q.id}-${q.correct}`);
+                    correctLabel.className = "custom-radio flex items-center space-x-4 p-4 rounded-xl border-2 border-emerald-500 border-dashed bg-emerald-50/50 opacity-100";
+                }
+                
+                explanation.classList.remove('hidden');
+            });
+            
+            const resultBox = document.getElementById('reading-result-box');
+            resultBox.classList.remove('hidden');
+            
+            let isPassed = score >= 5;
+            let resultColor = isPassed ? 'bg-gradient-to-r from-emerald-500 to-teal-500 text-white shadow-emerald-500/30' : 'bg-gradient-to-r from-amber-500 to-orange-500 text-white shadow-amber-500/30';
+            let iconResult = isPassed ? '<i class="fa-solid fa-medal text-5xl mb-3"></i>' : '<i class="fa-solid fa-rotate-right text-5xl mb-3"></i>';
+            
+            resultBox.className = `w-full p-8 rounded-2xl flex flex-col items-center justify-center mb-6 transition-all shadow-lg ${resultColor}`;
+            resultBox.innerHTML = `
+                ${iconResult}
+                <div class="text-5xl font-black mb-2">${score} / ${total}</div>
+                <p class="font-bold text-lg mb-2">ĐIỂM CỦA BẠN</p>
+                <p class="text-sm opacity-90 max-w-sm">Câu đúng được viền xanh lá. Câu sai viền đỏ. Hãy xem lại giải thích ở từng câu nhé!</p>
+            `;
+            
+            const btn = document.getElementById('submit-reading-btn');
+            btn.innerHTML = `<i class="fa-solid fa-rotate-left"></i><span>Làm lại bài kiểm tra</span>`;
+            btn.className = "w-full sm:w-auto px-10 py-4 bg-white text-slate-900 border border-slate-200 hover:bg-slate-50 rounded-xl font-bold shadow-sm transition-all flex items-center justify-center space-x-3 text-lg";
+            btn.onclick = resetReading;
+            
+            resultBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+
+        function resetReading() {
+            initReadingModule();
+            const resultBox = document.getElementById('reading-result-box');
+            resultBox.classList.add('hidden');
+            
+            const btn = document.getElementById('submit-reading-btn');
+            btn.innerHTML = `<i class="fa-solid fa-check-double"></i><span>Nộp bài & Chấm điểm</span>`;
+            btn.className = "w-full sm:w-auto px-10 py-4 bg-slate-900 hover:bg-slate-800 text-white rounded-xl font-bold shadow-xl shadow-slate-900/20 transition-all flex items-center justify-center space-x-3 text-lg";
+            btn.onclick = submitReading;
+            
+            document.getElementById('reading-questions-container').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        // === KHỞI TẠO ===
+        window.onload = function() {
+            updateBookmarkCount();
+            renderTopicList();
+            renderTopicDetail(selectedTopicId);
+            initReadingModule();
+        };
+    </script>
+</body>
+</html>
+```eof
+

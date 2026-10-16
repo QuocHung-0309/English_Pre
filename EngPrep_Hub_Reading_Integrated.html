@@ -1,0 +1,2413 @@
+<!DOCTYPE html>
+<html lang="vi" class="h-full bg-slate-50">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ôn Thi Anh Văn Đầu Vào - VSTEP / B1 / B2 Prep Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#eef2ff',
+                            100: '#e0e7ff',
+                            200: '#c7d2fe',
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                            700: '#4338ca',
+                            800: '#3730a3',
+                            900: '#312e81',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+        .perspective-1000 {
+            perspective: 1000px;
+        }
+        .transform-style-3d {
+            transform-style: preserve-3d;
+        }
+        .backface-hidden {
+            backface-visibility: hidden;
+        }
+        .rotate-y-180 {
+            transform: rotateY(180deg);
+        }
+    </style>
+
+<style>
+.rd-tool-btn{border:1px solid transparent;box-shadow:0 1px 2px rgba(15,23,42,.04)}
+.rd-translate{background:#eff6ff;color:#1d4ed8;border-color:#bfdbfe}
+.rd-translate:hover{background:#dbeafe}
+.rd-highlight{background:#fffbeb;color:#92400e;border-color:#fde68a}
+.rd-highlight:hover{background:#fef3c7}
+.rd-translate[aria-pressed="true"]{background:#dbeafe;border-color:#60a5fa;box-shadow:0 0 0 2px rgba(59,130,246,.12)}
+.rd-highlight[aria-pressed="true"]{background:#fef3c7;border-color:#f59e0b;box-shadow:0 0 0 2px rgba(245,158,11,.14)}
+.rd-state-pill{font-size:10px;letter-spacing:.04em;text-transform:uppercase;padding:3px 7px;border-radius:999px;background:rgba(255,255,255,.75);border:1px solid currentColor;line-height:1}
+.rd-mark{background:#fde68a;color:#78350f;padding:1px 3px;border-radius:4px;box-decoration-break:clone;-webkit-box-decoration-break:clone;font-weight:700;box-shadow:inset 0 -1px 0 #f59e0b}
+#rd-passage-translation{animation:rdFadeIn .18s ease-out}
+@keyframes rdFadeIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+</style>
+
+</head>
+<body class="h-full font-sans text-slate-800 antialiased flex flex-col bg-slate-50">
+
+    <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo & Title -->
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 to-indigo-500 flex items-center justify-center text-white font-bold text-xl shadow-md shadow-brand-500/20">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <div>
+                        <h1 class="font-extrabold text-slate-900 text-lg leading-tight">EngPrep Hub</h1>
+                        <p class="text-xs text-slate-500 font-medium">Ôn Thi Anh Văn Đầu Vào (VSTEP / B1 / B2)</p>
+                    </div>
+                </div>
+
+                <!-- Main Module Navigation -->
+                <nav class="hidden md:flex space-x-1 bg-slate-100 p-1 rounded-xl">
+                    <button onclick="switchTab('speaking')" id="nav-speaking" class="px-4 py-2 rounded-lg font-semibold text-sm transition-all duration-200 flex items-center space-x-2 bg-white text-brand-600 shadow-sm">
+                        <i class="fa-solid fa-microphone"></i>
+                        <span>Speaking</span>
+                        <span class="ml-1 text-xs px-2 py-0.5 rounded-full bg-brand-100 text-brand-700 font-bold">P1 & P2</span>
+                    </button>
+                    <button onclick="switchTab('listening')" id="nav-listening" class="px-4 py-2 rounded-lg font-semibold text-sm text-slate-600 hover:text-slate-900 transition-all duration-200 flex items-center space-x-2">
+                        <i class="fa-solid fa-headphones"></i>
+                        <span>Listening</span>
+                    </button>
+                    <button onclick="switchTab('reading')" id="nav-reading" class="px-4 py-2 rounded-lg font-semibold text-sm text-slate-600 hover:text-slate-900 transition-all duration-200 flex items-center space-x-2">
+                        <i class="fa-solid fa-book-open"></i>
+                        <span>Reading</span>
+                    </button>
+                    <button onclick="switchTab('writing')" id="nav-writing" class="px-4 py-2 rounded-lg font-semibold text-sm text-slate-600 hover:text-slate-900 transition-all duration-200 flex items-center space-x-2">
+                        <i class="fa-solid fa-pen-nib"></i>
+                        <span>Writing</span>
+                    </button>
+                </nav>
+
+                <!-- Header Actions -->
+                <div class="flex items-center space-x-3">
+                    <button onclick="openFlashcardModal()" class="px-3.5 py-2 bg-indigo-50 text-indigo-700 hover:bg-indigo-100 border border-indigo-200 rounded-lg text-sm font-semibold flex items-center space-x-2 transition">
+                        <i class="fa-solid fa-layer-group text-brand-600"></i>
+                        <span class="hidden sm:inline">Luyện Flashcard</span>
+                    </button>
+                    <button onclick="toggleBookmarksFilter()" id="btn-bookmarks" class="px-3 py-2 bg-amber-50 text-amber-700 border border-amber-200 hover:bg-amber-100 rounded-lg text-sm font-semibold flex items-center space-x-1.5 transition">
+                        <i class="fa-solid fa-bookmark text-amber-500"></i>
+                        <span id="bookmark-count" class="bg-amber-200 text-amber-900 text-xs px-1.5 py-0.5 rounded-full font-bold">0</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="md:hidden flex border-t border-slate-200 bg-white px-2 py-1.5 overflow-x-auto justify-around text-xs font-semibold">
+            <button onclick="switchTab('speaking')" id="mobile-nav-speaking" class="px-3 py-1.5 rounded-lg text-brand-600 bg-brand-50 flex items-center space-x-1">
+                <i class="fa-solid fa-microphone"></i><span>Speaking</span>
+            </button>
+            <button onclick="switchTab('listening')" id="mobile-nav-listening" class="px-3 py-1.5 rounded-lg text-slate-600">
+                <i class="fa-solid fa-headphones"></i><span>Listening</span>
+            </button>
+            <button onclick="switchTab('reading')" id="mobile-nav-reading" class="px-3 py-1.5 rounded-lg text-slate-600">
+                <i class="fa-solid fa-book-open"></i><span>Reading</span>
+            </button>
+            <button onclick="switchTab('writing')" id="mobile-nav-writing" class="px-3 py-1.5 rounded-lg text-slate-600">
+                <i class="fa-solid fa-pen-nib"></i><span>Writing</span>
+            </button>
+        </div>
+    </header>
+
+    <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
+
+        <!-- ================= SPEAKING MODULE ================= -->
+        <div id="tab-speaking-content" class="space-y-6">
+
+            <!-- Speaking Part Selector Toggle -->
+            <div class="bg-white p-2 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between flex-wrap gap-2">
+                <div class="flex items-center space-x-2 w-full sm:w-auto">
+                    <button onclick="switchSpeakingPart('part1')" id="subnav-part1" class="flex-1 sm:flex-none px-5 py-2.5 rounded-xl text-sm font-bold transition-all duration-200 flex items-center justify-center space-x-2 bg-brand-600 text-white shadow-md shadow-brand-500/20">
+                        <i class="fa-solid fa-comments"></i>
+                        <span>Part 1: Social Interaction</span>
+                        <span class="text-xs bg-white/20 px-2 py-0.5 rounded-full font-extrabold">24 Topics</span>
+                    </button>
+                    <button onclick="switchSpeakingPart('part2')" id="subnav-part2" class="flex-1 sm:flex-none px-5 py-2.5 rounded-xl text-sm font-bold transition-all duration-200 flex items-center justify-center space-x-2 bg-slate-100 text-slate-600 hover:text-slate-900">
+                        <i class="fa-solid fa-comments-dollar"></i>
+                        <span>Part 2: Solution Discussion</span>
+                        <span class="text-xs bg-amber-100 text-amber-800 px-2 py-0.5 rounded-full font-extrabold">8 Situations</span>
+                    </button>
+                </div>
+
+                <!-- Global Search & Filter bar for Speaking -->
+                <div class="flex items-center space-x-3 w-full sm:w-auto">
+                    <div class="relative flex-1 sm:w-72">
+                        <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
+                        <input type="text" id="search-input" oninput="handleSearch()" placeholder="Tìm theo tên chủ đề, tình huống, từ vựng..." class="w-full pl-10 pr-4 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:bg-white transition">
+                    </div>
+                    <button onclick="resetFilters()" class="px-3 py-2 text-xs font-bold text-slate-500 hover:text-brand-600 bg-slate-100 hover:bg-slate-200 rounded-xl transition flex items-center space-x-1 shrink-0">
+                        <i class="fa-solid fa-rotate-left"></i><span>Đặt lại</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- ================= SPEAKING PART 1 VIEW ================= -->
+            <div id="speaking-part1-container" class="space-y-6">
+                <!-- ARE Method Banner -->
+                <div class="bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white rounded-2xl p-5 sm:p-6 shadow-xl relative overflow-hidden">
+                    <div class="absolute -right-10 -bottom-10 w-48 h-48 bg-brand-500/10 rounded-full blur-3xl pointer-events-none"></div>
+                    
+                    <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6 relative z-10">
+                        <div class="space-y-2 max-w-2xl">
+                            <div class="inline-flex items-center space-x-2 px-3 py-1 bg-brand-500/20 text-brand-300 rounded-full text-xs font-bold uppercase tracking-wider border border-brand-500/30">
+                                <i class="fa-solid fa-lightbulb"></i>
+                                <span> Speaking Part 1 Strategy</span>
+                            </div>
+                            <h2 class="text-xl sm:text-2xl font-bold tracking-tight">Công thức trả lời chuẩn "A - R - E"</h2>
+                            <p class="text-slate-300 text-sm leading-relaxed">
+                                Để đạt điểm cao trong Part 1 Social Interaction, trả lời mỗi câu từ 2 - 3 câu theo công thức:
+                            </p>
+                        </div>
+
+                        <!-- Steps breakdown -->
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 w-full lg:w-auto">
+                            <div class="bg-white/10 backdrop-blur-md p-3.5 rounded-xl border border-white/10 hover:border-brand-400/50 transition">
+                                <div class="flex items-center space-x-2 text-indigo-300 font-bold text-xs uppercase mb-1">
+                                    <span class="w-5 h-5 rounded-full bg-brand-500 text-white flex items-center justify-center text-[10px]">A</span>
+                                    <span>Answer</span>
+                                </div>
+                                <p class="text-xs text-slate-200">Trả lời trực tiếp câu hỏi (Yes/No, Preference...)</p>
+                            </div>
+                            <div class="bg-white/10 backdrop-blur-md p-3.5 rounded-xl border border-white/10 hover:border-emerald-400/50 transition">
+                                <div class="flex items-center space-x-2 text-emerald-300 font-bold text-xs uppercase mb-1">
+                                    <span class="w-5 h-5 rounded-full bg-emerald-500 text-white flex items-center justify-center text-[10px]">R</span>
+                                    <span>Reason</span>
+                                </div>
+                                <p class="text-xs text-slate-200">Giải thích nguyên nhân tại sao lại như vậy</p>
+                            </div>
+                            <div class="bg-white/10 backdrop-blur-md p-3.5 rounded-xl border border-white/10 hover:border-purple-400/50 transition">
+                                <div class="flex items-center space-x-2 text-purple-300 font-bold text-xs uppercase mb-1">
+                                    <span class="w-5 h-5 rounded-full bg-purple-500 text-white flex items-center justify-center text-[10px]">E</span>
+                                    <span>Elaboration</span>
+                                </div>
+                                <p class="text-xs text-slate-200">Đưa ra ví dụ hoặc chi tiết mở rộng trải nghiệm</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+                    <!-- Topic List (Left Column) -->
+                    <div class="lg:col-span-4 bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col max-h-[780px]">
+                        <div class="p-4 bg-slate-50/80 border-b border-slate-200 flex items-center justify-between">
+                            <span class="font-bold text-slate-800 text-sm uppercase tracking-wider flex items-center space-x-2">
+                                <i class="fa-solid fa-list-check text-brand-600"></i>
+                                <span>Danh sách Part 1 Topics</span>
+                            </span>
+                            <span class="text-xs bg-brand-100 text-brand-700 font-bold px-2 py-0.5 rounded-full" id="part1-count-display">24 Topics</span>
+                        </div>
+
+                        <div id="topic-list-container" class="divide-y divide-slate-100 overflow-y-auto custom-scrollbar flex-1">
+                            <!-- Populated dynamically via JS -->
+                        </div>
+                    </div>
+
+                    <!-- Topic Detail View (Right Column) -->
+                    <div class="lg:col-span-8 space-y-6">
+                        <div id="topic-detail-card" class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 min-h-[500px]">
+                            <!-- Dynamic content rendered here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ================= SPEAKING PART 2 VIEW ================= -->
+            <div id="speaking-part2-container" class="hidden space-y-6">
+                
+                <!-- Part 2 Strategy & 4-Step Structure Banner -->
+                <div class="bg-gradient-to-r from-slate-900 via-amber-950 to-slate-900 text-white rounded-2xl p-5 sm:p-6 shadow-xl relative overflow-hidden">
+                    <div class="absolute -right-10 -bottom-10 w-48 h-48 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
+                    
+                    <div class="space-y-4 relative z-10">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-white/10 pb-3">
+                            <div class="flex items-center space-x-2">
+                                <div class="px-3 py-1 bg-amber-500/20 text-amber-300 rounded-full text-xs font-bold uppercase tracking-wider border border-amber-500/30 flex items-center space-x-1.5">
+                                    <i class="fa-solid fa-diagram-project"></i>
+                                    <span>Part 2 Solution Discussion Strategy</span>
+                                </div>
+                                <span class="text-xs text-slate-300">Cấu trúc 4 Bước chuẩn VSTEP</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <label class="inline-flex items-center cursor-pointer text-xs font-bold text-amber-300 bg-white/10 px-3 py-1.5 rounded-xl border border-white/10 hover:bg-white/20 transition">
+                                    <input type="checkbox" id="toggle-active-recall" onchange="toggleActiveRecallMode()" class="sr-only peer">
+                                    <div class="w-8 h-4 bg-slate-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-3 after:w-3 after:transition-all peer-checked:bg-amber-500 relative mr-2"></div>
+                                    <span>Chế độ Active Recall (Ẩn bài mẫu / Hiện từ khóa)</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- 4 Step Cards breakdown -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+                            <div class="bg-white/10 backdrop-blur-md p-3.5 rounded-xl border border-white/10">
+                                <div class="text-sky-300 font-extrabold text-xs uppercase mb-1 flex items-center space-x-1">
+                                    <span class="w-5 h-5 rounded-full bg-sky-500 text-white flex items-center justify-center text-[10px]">1</span>
+                                    <span>SITUATION</span>
+                                </div>
+                                <p class="text-xs text-slate-200 font-medium">Nêu bối cảnh & 3 lựa chọn</p>
+                                <p class="text-[11px] text-amber-200/80 italic mt-1 font-mono">"There are 3 options to consider..."</p>
+                            </div>
+
+                            <div class="bg-white/10 backdrop-blur-md p-3.5 rounded-xl border border-white/10">
+                                <div class="text-indigo-300 font-extrabold text-xs uppercase mb-1 flex items-center space-x-1">
+                                    <span class="w-5 h-5 rounded-full bg-indigo-500 text-white flex items-center justify-center text-[10px]">2</span>
+                                    <span>SOLUTION</span>
+                                </div>
+                                <p class="text-xs text-slate-200 font-medium">Khẳng định lựa chọn tốt nhất</p>
+                                <p class="text-[11px] text-amber-200/80 italic mt-1 font-mono">"Personally, I would choose..."</p>
+                            </div>
+
+                            <div class="bg-white/10 backdrop-blur-md p-3.5 rounded-xl border border-white/10">
+                                <div class="text-emerald-300 font-extrabold text-xs uppercase mb-1 flex items-center space-x-1">
+                                    <span class="w-5 h-5 rounded-full bg-emerald-500 text-white flex items-center justify-center text-[10px]">3</span>
+                                    <span>DISCUSSION</span>
+                                </div>
+                                <p class="text-xs text-slate-200 font-medium">2 Lý do chọn + Lý do bác 2 phương án kia</p>
+                                <p class="text-[11px] text-amber-200/80 italic mt-1 font-mono">"First... I wouldn't choose... As for..."</p>
+                            </div>
+
+                            <div class="bg-white/10 backdrop-blur-md p-3.5 rounded-xl border border-white/10">
+                                <div class="text-purple-300 font-extrabold text-xs uppercase mb-1 flex items-center space-x-1">
+                                    <span class="w-5 h-5 rounded-full bg-purple-500 text-white flex items-center justify-center text-[10px]">4</span>
+                                    <span>CONCLUSION</span>
+                                </div>
+                                <p class="text-xs text-slate-200 font-medium">Chốt lại quyết định lần cuối</p>
+                                <p class="text-[11px] text-amber-200/80 italic mt-1 font-mono">"For these reasons, I believe..."</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+                    <!-- Situation List (Left Column) -->
+                    <div class="lg:col-span-4 bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col max-h-[780px]">
+                        <div class="p-4 bg-slate-50/80 border-b border-slate-200 flex items-center justify-between">
+                            <span class="font-bold text-slate-800 text-sm uppercase tracking-wider flex items-center space-x-2">
+                                <i class="fa-solid fa-layer-group text-amber-600"></i>
+                                <span>8 Situation Trọng Tâm</span>
+                            </span>
+                            <span class="text-xs bg-amber-100 text-amber-800 font-bold px-2.5 py-0.5 rounded-full" id="part2-count-display">8 Situations</span>
+                        </div>
+
+                        <div id="situation-list-container" class="divide-y divide-slate-100 overflow-y-auto custom-scrollbar flex-1">
+                            <!-- Populated dynamically via JS -->
+                        </div>
+                    </div>
+
+                    <!-- Situation Detail View (Right Column) -->
+                    <div class="lg:col-span-8 space-y-6">
+                        <div id="situation-detail-card" class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 min-h-[500px]">
+                            <!-- Dynamic content rendered here -->
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- LISTENING MODULE PLACEHOLDER -->
+        <div id="tab-listening-content" class="hidden space-y-6">
+            <div class="bg-white rounded-2xl p-8 border border-slate-200 text-center space-y-4">
+                <div class="w-16 h-16 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center mx-auto text-2xl font-bold">
+                    <i class="fa-solid fa-headphones"></i>
+                </div>
+                <h3 class="text-xl font-bold text-slate-900">Module Listening - Chuẩn bị tài liệu</h3>
+                <p class="text-slate-600 max-w-md mx-auto text-sm">
+                    Phần thi Listening gồm 3 Part (Thông báo ngắn, Hội thoại ngắn, Bài nói chuyện dài).
+                </p>
+                <div class="pt-4 grid grid-cols-1 md:grid-cols-3 gap-4 text-left max-w-2xl mx-auto">
+                    <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+                        <div class="font-bold text-slate-800 text-sm mb-1"><i class="fa-solid fa-bullhorn text-blue-500 mr-2"></i>Part 1: Announcements</div>
+                        <p class="text-xs text-slate-500">Nghe thông báo, hướng dẫn ngắn & chọn đáp án đúng.</p>
+                    </div>
+                    <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+                        <div class="font-bold text-slate-800 text-sm mb-1"><i class="fa-solid fa-comments text-emerald-500 mr-2"></i>Part 2: Conversations</div>
+                        <p class="text-xs text-slate-500">Hội thoại đời thường, công việc & học tập.</p>
+                    </div>
+                    <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+                        <div class="font-bold text-slate-800 text-sm mb-1"><i class="fa-solid fa-chalkboard-user text-purple-500 mr-2"></i>Part 3: Academic Talks</div>
+                        <p class="text-xs text-slate-500">Bài giảng, bài thuyết trình chuyên ngành.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- READING MODULE -->
+        <div id="tab-reading-content" class="hidden space-y-6">
+          <div class="rounded-2xl bg-gradient-to-r from-slate-900 via-emerald-950 to-slate-900 text-white p-6 shadow-lg">
+            <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+              <div><div class="text-xs uppercase tracking-[.2em] text-emerald-100 font-bold">Reading · Practice 1</div>
+                <h2 class="text-2xl font-extrabold mt-1">Luyện đọc hiểu</h2>
+                <p class="text-emerald-100 text-sm mt-1">3 bài đọc · 27 câu hỏi · Luyện tập hoặc thi thử</p>
+              </div>
+              <div class="flex flex-wrap gap-2">
+                <button onclick="readingSetMode('practice')" id="rd-mode-practice" class="px-4 py-2 rounded-xl bg-emerald-500 text-slate-950 font-bold text-sm shadow-sm"><i class="fa-solid fa-book-open mr-2"></i>Luyện tập</button>
+                <button onclick="readingSetMode('exam')" id="rd-mode-exam" class="px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20 border border-white/10 font-bold text-sm"><i class="fa-solid fa-stopwatch mr-2"></i>Thi thử 60 phút</button>
+              </div>
+            </div>
+          </div>
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+            <section class="lg:col-span-7 bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+              <div class="p-4 md:p-5 border-b border-slate-100 bg-gradient-to-r from-white to-emerald-50/70 flex flex-col gap-4">
+                <div class="flex flex-wrap items-center justify-between gap-3">
+                  <div><div class="text-[11px] uppercase tracking-[.16em] text-emerald-700 font-extrabold">Reading passage</div><h3 id="rd-passage-title" class="font-extrabold text-xl text-slate-900 mt-1">Passage 1</h3></div>
+                  <div class="flex items-center gap-1.5 rounded-xl bg-slate-100 p-1">
+                    <button onclick="readingFont(-1)" class="w-8 h-8 rounded-lg bg-white shadow-sm text-slate-700 hover:bg-emerald-50 font-bold text-xs" title="Giảm cỡ chữ">A−</button>
+                    <button onclick="readingFont(1)" class="w-8 h-8 rounded-lg bg-white shadow-sm text-slate-700 hover:bg-emerald-50 font-bold text-xs" title="Tăng cỡ chữ">A+</button>
+                  </div>
+                </div>
+                <div class="flex flex-wrap gap-2">
+                  <button onclick="readingToggleTranslation()" id="rd-translate-btn" aria-pressed="false" class="rd-tool-btn rd-translate px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-bold inline-flex items-center gap-2 transition"><i class="fa-solid fa-language text-base"></i><span>Dịch tiếng Việt</span><span class="rd-state-pill">Tắt</span></button>
+                  <button onclick="readingToggleVocab()" id="rd-vocab-btn" aria-pressed="false" class="rd-tool-btn rd-highlight px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-bold inline-flex items-center gap-2 transition"><i class="fa-solid fa-highlighter text-base"></i><span>Tô từ vựng</span><span class="rd-state-pill">Tắt</span></button>
+                </div>
+                <p class="text-xs text-slate-500"><i class="fa-regular fa-lightbulb text-amber-500 mr-1"></i>Bật dịch để xem nghĩa tiếng Việt; bật tô từ để nhận diện các từ vựng trọng tâm trong bài.</p>
+              </div>
+              <div class="px-4 pt-4 flex flex-wrap gap-2" id="rd-passage-tabs"></div>
+              <div id="rd-passage-text" class="custom-scrollbar p-5 md:p-6 overflow-y-auto max-h-[72vh] leading-8 text-slate-700 whitespace-pre-line" style="font-size:16px"></div>
+              <div id="rd-passage-translation" class="hidden mx-4 md:mx-5 mb-5 p-4 md:p-5 rounded-2xl bg-sky-50 border border-sky-200 text-sky-950 leading-7 whitespace-pre-line shadow-inner"><div class="flex items-center gap-2 text-xs font-extrabold uppercase tracking-wider text-sky-700 mb-2"><i class="fa-solid fa-language"></i>Bản dịch tiếng Việt</div><div id="rd-translation-text"></div></div>
+              <div class="mx-4 md:mx-5 mb-5 p-4 rounded-2xl bg-amber-50/70 border border-amber-100">
+                <div class="flex items-center gap-2 mb-1"><span class="w-8 h-8 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center"><i class="fa-solid fa-spell-check"></i></span><div><h4 class="font-extrabold text-slate-800 text-sm">Từ vựng trọng tâm</h4><p class="text-xs text-slate-500">Chọn từ để xem nghĩa và học nhanh</p></div><button onclick="readingOpenFlashcards()" class="ml-auto px-2.5 py-1.5 rounded-lg bg-white border border-amber-200 text-amber-800 font-bold text-xs"><i class="fa-solid fa-layer-group mr-1"></i>Flashcards</button></div>
+                <div id="rd-vocab-list" class="flex flex-wrap gap-2 mt-3"></div>
+              </div>
+            </section>
+            <section class="lg:col-span-5 bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+              <div class="p-4 border-b border-slate-100 flex flex-wrap items-center justify-between gap-3">
+                <div><div class="text-xs text-slate-500 font-semibold">CÂU HỎI</div><h3 class="font-extrabold text-lg text-slate-900">Chọn đáp án</h3></div>
+                <div id="rd-timer-wrap" class="hidden rounded-xl bg-rose-50 text-rose-700 px-3 py-2 font-extrabold text-sm"><i class="fa-regular fa-clock mr-2"></i><span id="rd-timer">60:00</span></div>
+              </div>
+              <div class="p-4 border-b border-slate-100">
+                <div class="flex justify-between text-xs text-slate-500 mb-2"><span id="rd-progress-label">Đã trả lời 0/10</span><span id="rd-progress-percent">0%</span></div>
+                <div class="h-2 bg-slate-100 rounded-full overflow-hidden"><div id="rd-progress-bar" class="h-full bg-emerald-500 rounded-full transition-all" style="width:0%"></div></div>
+                <div id="rd-question-matrix" class="grid grid-cols-5 sm:grid-cols-10 gap-2 mt-4"></div>
+              </div>
+              <div class="p-5">
+                <div class="flex items-center justify-between gap-3 mb-3"><span id="rd-question-count" class="text-xs uppercase tracking-wider font-extrabold text-emerald-700">Câu 1</span><span id="rd-question-type" class="text-xs text-slate-400">Reading comprehension</span></div>
+                <h4 id="rd-question-text" class="font-bold text-slate-900 leading-7 mb-4"></h4>
+                <div id="rd-options" class="space-y-2"></div>
+                <div id="rd-feedback" class="hidden mt-4 rounded-xl p-4 text-sm leading-6"></div>
+                <div class="flex items-center justify-between gap-2 mt-5">
+                  <button onclick="readingMove(-1)" class="px-4 py-2.5 rounded-xl border border-slate-200 hover:bg-slate-50 text-sm font-bold"><i class="fa-solid fa-arrow-left mr-2"></i>Trước</button>
+                  <button onclick="readingMove(1)" class="px-4 py-2.5 rounded-xl bg-indigo-600 hover:bg-emerald-700 text-white text-sm font-bold">Tiếp theo<i class="fa-solid fa-arrow-right ml-2"></i></button>
+                </div>
+                <button id="rd-submit-btn" onclick="readingSubmitExam()" class="hidden w-full mt-4 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold"><i class="fa-solid fa-check mr-2"></i>Nộp bài thi</button>
+                <div id="rd-result" class="hidden mt-4 rounded-xl border border-emerald-200 bg-emerald-50 p-4"></div>
+              </div>
+            </section>
+          </div>
+
+        </div>
+
+        <!-- WRITING MODULE PLACEHOLDER -->
+        <div id="tab-writing-content" class="hidden space-y-6">
+            <div class="bg-white rounded-2xl p-8 border border-slate-200 text-center space-y-4">
+                <div class="w-16 h-16 bg-purple-100 text-purple-600 rounded-2xl flex items-center justify-center mx-auto text-2xl font-bold">
+                    <i class="fa-solid fa-pen-nib"></i>
+                </div>
+                <h3 class="text-xl font-bold text-slate-900">Module Writing - Chuẩn bị tài liệu</h3>
+                <p class="text-slate-600 max-w-md mx-auto text-sm">
+                    Gồm Task 1 (Viết thư / Email) & Task 2 (Bài luận Essay theo chủ đề).
+                </p>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- FLASHCARD MODAL -->
+    <div id="flashcard-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-lg w-full p-6 space-y-6 border border-slate-100">
+            <div class="flex items-center justify-between border-b border-slate-100 pb-4">
+                <div class="flex items-center space-x-2">
+                    <i class="fa-solid fa-layer-group text-brand-600 text-xl"></i>
+                    <h3 class="font-bold text-slate-900 text-lg">Luyện Từ Vựng Flashcard</h3>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <select id="fc-module-filter" onchange="filterFlashcardModule(this.value)" class="text-xs bg-slate-100 font-bold text-slate-700 px-2.5 py-1.5 rounded-lg border border-slate-200">
+                        <option value="all">Tất cả từ vựng</option>
+                        <option value="part1">Part 1 (Social Interaction)</option>
+                        <option value="part2">Part 2 (Solution Discussion)</option>
+                    </select>
+                    <button onclick="closeFlashcardModal()" class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-500 text-sm transition">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="perspective-1000 w-full h-64 cursor-pointer" onclick="flipCard()">
+                <div id="card-inner" class="relative w-full h-full transition-transform duration-500 transform-style-3d shadow-lg rounded-2xl border border-slate-200 bg-gradient-to-br from-indigo-50 to-white p-6 flex flex-col items-center justify-center text-center">
+                    
+                    <!-- Front Side (English) -->
+                    <div class="absolute inset-0 backface-hidden p-6 flex flex-col items-center justify-center space-y-3">
+                        <span id="fc-topic" class="text-xs font-bold text-brand-600 uppercase tracking-widest px-2.5 py-1 bg-brand-50 rounded-full">Topic</span>
+                        <p id="fc-english" class="text-2xl font-black text-slate-900">Word / Phrase</p>
+                        <p class="text-xs text-slate-400 mt-2"><i class="fa-solid fa-hand-pointer mr-1"></i>Chạm để xoay mặt sau (Tiếng Việt)</p>
+                    </div>
+
+                    <!-- Back Side (Vietnamese) -->
+                    <div class="absolute inset-0 backface-hidden rotate-y-180 bg-slate-900 text-white rounded-2xl p-6 flex flex-col items-center justify-center space-y-3">
+                        <span class="text-xs font-bold text-indigo-400 uppercase tracking-widest">Nghĩa Tiếng Việt</span>
+                        <p id="fc-vietnamese" class="text-xl font-bold text-emerald-300">Nghĩa từ vựng</p>
+                        <button onclick="event.stopPropagation(); speakText(document.getElementById('fc-english').innerText)" class="px-3 py-1.5 bg-white/20 hover:bg-white/30 rounded-lg text-xs font-semibold flex items-center space-x-1 mt-2">
+                            <i class="fa-solid fa-volume-high"></i><span>Nghe phát âm</span>
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Flashcard controls -->
+            <div class="flex items-center justify-between pt-2">
+                <button onclick="prevFlashcard()" class="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-sm rounded-xl transition flex items-center space-x-2">
+                    <i class="fa-solid fa-arrow-left"></i><span>Trước</span>
+                </button>
+                <span id="fc-counter" class="text-xs font-bold text-slate-500">1 / 100</span>
+                <button onclick="nextFlashcard()" class="px-4 py-2 bg-brand-600 hover:bg-brand-700 text-white font-semibold text-sm rounded-xl transition flex items-center space-x-2 shadow-md shadow-brand-500/20">
+                    <span>Tiếp theo</span><i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const speakingData = [
+            {
+                id: 1,
+                title: "Pets",
+                viTitle: "Thú cưng",
+                icon: "fa-dog",
+                vocab: [
+                    { en: "keep a pet", vi: "nuôi thú cưng" },
+                    { en: "be fond of animals", vi: "yêu thích động vật" },
+                    { en: "a loyal companion", vi: "người bạn đồng hành trung thành" },
+                    { en: "keep someone company", vi: "bầu bạn với ai" },
+                    { en: "provide companionship", vi: "mang lại sự đồng hành" },
+                    { en: "take care of / look after", vi: "chăm sóc" },
+                    { en: "feed a pet", vi: "cho thú cưng ăn" },
+                    { en: "reduce stress", vi: "giảm căng thẳng" },
+                    { en: "form an emotional bond", vi: "hình thành sự gắn bó tình cảm" },
+                    { en: "teach responsibility", vi: "dạy tinh thần trách nhiệm" },
+                    { en: "relatively easy to look after", vi: "tương đối dễ chăm sóc" },
+                    { en: "feel less lonely", vi: "cảm thấy bớt cô đơn" },
+                    { en: "a sense of responsibility", vi: "tinh thần trách nhiệm" }
+                ],
+                questions: [
+                    {
+                        q: "What animals do people commonly keep as pets in your country?",
+                        a: "In Vietnam, dogs and cats are probably the most common pets.",
+                        r: "Many people keep dogs because they are friendly and loyal, and they can also help protect the house. Cats are popular too, especially among people who live in apartments because they are relatively easy to look after.",
+                        e: "Besides, some people keep birds or fish as pets."
+                    },
+                    {
+                        q: "Why do you think people enjoy having pets?",
+                        a: "I think people enjoy having pets because animals can make them feel less lonely.",
+                        r: "Pets provide companionship and help people relax after a stressful day.",
+                        e: "On top of that, taking care of an animal can be quite rewarding because people often develop a strong emotional bond with their pets."
+                    },
+                    {
+                        q: "Do you have a pet?",
+                        a: "Yes, I do. I have a dog, and I really enjoy spending time with it.",
+                        r: "I usually feed it and play with it in my free time.",
+                        e: "Having a pet makes me feel happier because it keeps me company after a busy day."
+                    }
+                ]
+            },
+            {
+                id: 2,
+                title: "Weather",
+                viTitle: "Thời tiết",
+                icon: "fa-cloud-sun",
+                vocab: [
+                    { en: "pleasant weather", vi: "Thời tiết dễ chịu" },
+                    { en: "hot and humid", vi: "Nóng và ẩm" },
+                    { en: "mild weather", vi: "Thời tiết ôn hòa" },
+                    { en: "heavy rain", vi: "Mưa lớn" },
+                    { en: "a sudden shower", vi: "Cơn mưa rào bất chợt" },
+                    { en: "scorching hot", vi: "Nóng như thiêu đốt" },
+                    { en: "cool and refreshing", vi: "Mát mẻ, dễ chịu" },
+                    { en: "rainy season", vi: "Mùa mưa" },
+                    { en: "dry season", vi: "Mùa khô" },
+                    { en: "check the weather forecast", vi: "Xem dự báo thời tiết" },
+                    { en: "affect my daily activities", vi: "Ảnh hưởng đến hoạt động hằng ngày" },
+                    { en: "get around the city", vi: "Di chuyển quanh thành phố" }
+                ],
+                questions: [
+                    {
+                        q: "What's the weather like in your country?",
+                        a: "Well, the weather in Vietnam is generally quite warm, especially in the southern part of the country.",
+                        r: "We have a dry season and a rainy season, and it can be quite hot and humid throughout the year.",
+                        e: "During the rainy season, we sometimes experience heavy rain and sudden showers, which can make traveling a little inconvenient."
+                    },
+                    {
+                        q: "What kind of weather do you like?",
+                        a: "I prefer cool and slightly sunny weather because I find it much more comfortable than extremely hot weather.",
+                        r: "I also enjoy going for a walk or meeting my friends when the weather is pleasant.",
+                        e: "Overall, I would say mild weather is my favorite because it puts me in a good mood and allows me to enjoy outdoor activities."
+                    },
+                    {
+                        q: "What kind of weather don't you like?",
+                        a: "I'm not a big fan of extremely hot and humid weather.",
+                        r: "When it's too hot, I tend to feel tired and uncomfortable, especially when I have to go outside.",
+                        e: "I also dislike heavy rain because it can cause traffic problems and make it difficult to get around the city."
+                    },
+                    {
+                        q: "Does the weather affect your daily activities?",
+                        a: "Yes, definitely. The weather has a significant impact on my daily activities.",
+                        r: "When the weather is nice, I usually spend more time outdoors, such as going for a walk or meeting my friends.",
+                        e: "However, if it rains heavily, I tend to stay at home or change my plans because traveling can be quite inconvenient."
+                    }
+                ]
+            },
+            {
+                id: 3,
+                title: "Books",
+                viTitle: "Sách",
+                icon: "fa-book",
+                vocab: [
+                    { en: "be an avid reader", vi: "Là người rất thích đọc sách" },
+                    { en: "develop a reading habit", vi: "Hình thành thói quen đọc sách" },
+                    { en: "read for pleasure", vi: "Đọc sách để giải trí" },
+                    { en: "broaden my knowledge", vi: "Mở rộng kiến thức" },
+                    { en: "gain new insights", vi: "Có thêm góc nhìn mới" },
+                    { en: "improve my vocabulary", vi: "Cải thiện vốn từ vựng" },
+                    { en: "stimulate my imagination", vi: "Kích thích trí tưởng tượng" },
+                    { en: "relieve stress", vi: "Giải tỏa căng thẳng" },
+                    { en: "a wide range of books", vi: "Nhiều loại sách đa dạng" },
+                    { en: "a fascinating story", vi: "Một câu chuyện hấp dẫn" },
+                    { en: "self-help books", vi: "Sách phát triển bản thân" },
+                    { en: "novels and fiction", vi: "Tiểu thuyết và truyện hư cấu" },
+                    { en: "non-fiction books", vi: "Sách phi hư cấu" },
+                    { en: "a page-turner", vi: "Cuốn sách hấp dẫn khiến người đọc muốn đọc tiếp" },
+                    { en: "find time to read", vi: "Sắp xếp thời gian để đọc" },
+                    { en: "get absorbed in a book", vi: "Mải mê, đắm chìm vào một cuốn sách" },
+                    { en: "printed books / e-books", vi: "Sách in / sách điện tử" }
+                ],
+                questions: [
+                    {
+                        q: "Do you like reading books?",
+                        a: "Yes, I do, although I don't always have much time to read.",
+                        r: "I enjoy reading because it helps me broaden my knowledge and learn new things.",
+                        e: "I usually read books or articles related to my interests whenever I have some free time. I find reading a good way to relax after a busy day."
+                    },
+                    {
+                        q: "What kind of books do you like reading?",
+                        a: "I'm particularly interested in self-help books and books about technology.",
+                        r: "I enjoy them because they provide useful information and help me develop new skills.",
+                        e: "For example, I sometimes read books about personal development to improve the way I think and work."
+                    },
+                    {
+                        q: "How often do you read books?",
+                        a: "To be honest, I don't read books every day because I have a fairly busy schedule.",
+                        r: "However, I try to read a few times a week, usually in the evening or at weekends.",
+                        e: "I normally read for about fifteen to thirty minutes at a time. I'd like to read more regularly because I know it's a good habit to develop."
+                    },
+                    {
+                        q: "Do you prefer printed books or e-books?",
+                        a: "Personally, I prefer e-books because they are more convenient.",
+                        r: "I can read them on my phone or tablet wherever I am.",
+                        e: "Besides, e-books allow me to store hundreds of books in one single device."
+                    }
+                ]
+            },
+            {
+                id: 4,
+                title: "Public Transportation",
+                viTitle: "Giao thông công cộng",
+                icon: "fa-bus",
+                vocab: [
+                    { en: "public transportation", vi: "Giao thông công cộng" },
+                    { en: "take the bus", vi: "Đi xe buýt" },
+                    { en: "catch a bus", vi: "Bắt xe buýt" },
+                    { en: "commute to work", vi: "Đi làm hằng ngày" },
+                    { en: "get around the city", vi: "Di chuyển trong thành phố" },
+                    { en: "affordable fares", vi: "Giá vé phải chăng" },
+                    { en: "traffic congestion", vi: "Tình trạng ùn tắc giao thông" },
+                    { en: "rush hour", vi: "Giờ cao điểm" },
+                    { en: "environmentally friendly", vi: "Thân thiện với môi trường" },
+                    { en: "reduce air pollution", vi: "Giảm ô nhiễm không khí" },
+                    { en: "save money", vi: "Tiết kiệm tiền" }
+                ],
+                questions: [
+                    {
+                        q: "Do you often use public transportation?",
+                        a: "Not very often, to be honest. I usually travel by motorbike because it's more convenient for getting around the city.",
+                        r: "However, I sometimes take the bus when I want to save money or avoid the stress of driving in heavy traffic.",
+                        e: "I think public transportation can be a good option for certain long journeys."
+                    },
+                    {
+                        q: "What kinds of public transportation are available in your city?",
+                        a: "In my city, people can use buses and the metro, as well as taxis and ride-hailing services.",
+                        r: "Buses are relatively affordable, so they're a practical choice for students and people who want to save money.",
+                        e: "The metro is also a useful option for traveling along its routes, especially when traffic is heavy."
+                    },
+                    {
+                        q: "What do you like or dislike about public transport?",
+                        a: "What I like most about public transport is that it's relatively affordable and environmentally friendly.",
+                        r: "It can help people save money and reduce air pollution in urban areas.",
+                        e: "However, what I dislike is that buses can be crowded during rush hour, and sometimes passengers have to wait quite a long time."
+                    }
+                ]
+            },
+            {
+                id: 5,
+                title: "Housework",
+                viTitle: "Công việc nhà",
+                icon: "fa-broom",
+                vocab: [
+                    { en: "do the dishes", vi: "Rửa chén bát" },
+                    { en: "do the laundry", vi: "Giặt quần áo" },
+                    { en: "mop the floor", vi: "Lau nhà" },
+                    { en: "sweep the floor", vi: "Quét nhà" },
+                    { en: "dust the furniture", vi: "Lau bụi đồ nội thất" },
+                    { en: "make the bed", vi: "Dọn giường" },
+                    { en: "take out the rubbish", vi: "Đổ rác" },
+                    { en: "water the plants", vi: "Tưới cây" },
+                    { en: "prepare meals", vi: "Chuẩn bị bữa ăn" }
+                ],
+                questions: [
+                    {
+                        q: "What housework do you usually do at home?",
+                        a: "I usually help with several household chores, such as washing the dishes, tidying up my room, and sweeping the floor.",
+                        r: "I often do these things in the evening or at weekends when I have some free time.",
+                        e: "I think doing housework is important because it helps keep my home clean and comfortable."
+                    },
+                    {
+                        q: "Which household task do you like or dislike most?",
+                        a: "I dislike doing the laundry the most because it can be quite time-consuming.",
+                        r: "I have to wash, dry, and fold my clothes, which takes a lot of effort.",
+                        e: "However, I still do it regularly because I want to keep my clothes clean and organized."
+                    },
+                    {
+                        q: "Do you usually spend your evenings in or out and why?",
+                        a: "I usually spend my evenings at home because I feel more relaxed there after a long day.",
+                        r: "I often have dinner with my family, watch videos, or prepare for the next day.",
+                        e: "Sometimes, I go out with my friends for a meal, but I generally prefer staying in because it's more comfortable."
+                    }
+                ]
+            },
+            {
+                id: 6,
+                title: "Celebrations",
+                viTitle: "Lễ kỷ niệm & Dịp đặc biệt",
+                icon: "fa-cake-candles",
+                vocab: [
+                    { en: "a special occasion", vi: "Một dịp đặc biệt" },
+                    { en: "a family gathering", vi: "Buổi sum họp gia đình" },
+                    { en: "traditional food", vi: "Món ăn truyền thống" },
+                    { en: "spend quality time together", vi: "Dành thời gian ý nghĩa bên nhau" },
+                    { en: "exchange gifts", vi: "Trao đổi quà tặng" },
+                    { en: "celebrate a birthday", vi: "Tổ chức mừng sinh nhật" },
+                    { en: "an intimate atmosphere", vi: "Bầu không khí thân mật" },
+                    { en: "strengthen family bonds", vi: "Thắt chặt tình cảm gia đình" }
+                ],
+                questions: [
+                    {
+                        q: "What celebrations are important in your family?",
+                        a: "The most important celebrations in my family are Tet and birthdays.",
+                        r: "Tet is a special occasion because all family members can get together, enjoy traditional food, and spend quality time with one another.",
+                        e: "We also celebrate birthdays to show our love and make each family member feel special."
+                    },
+                    {
+                        q: "How do you usually celebrate special days?",
+                        a: "I usually celebrate special days by having a meal with my family or going out with my friends.",
+                        r: "For birthdays, we sometimes prepare a cake, give each other small gifts, and take photos together.",
+                        e: "I don't think celebrations have to be expensive because spending time with people I care about is what matters most."
+                    },
+                    {
+                        q: "Do you prefer small celebrations or big parties? Why?",
+                        a: "I prefer small celebrations because they are more intimate and relaxing.",
+                        r: "I can have meaningful conversations with my family and close friends without feeling overwhelmed by a large crowd.",
+                        e: "Besides, small gatherings are usually easier to organize and less expensive."
+                    }
+                ]
+            },
+            {
+                id: 7,
+                title: "Mobile Phones",
+                viTitle: "Điện thoại di động",
+                icon: "fa-mobile-screen-button",
+                vocab: [
+                    { en: "use my phone on a daily basis", vi: "Sử dụng điện thoại hằng ngày" },
+                    { en: "keep in touch with", vi: "Giữ liên lạc với" },
+                    { en: "browse social media", vi: "Lướt mạng xã hội" },
+                    { en: "look up information", vi: "Tra cứu thông tin" },
+                    { en: "serve a variety of purposes", vi: "Phục vụ nhiều mục đích" },
+                    { en: "be distracted by", vi: "Bị xao nhãng bởi" },
+                    { en: "rely too much on", vi: "Phụ thuộc quá nhiều vào" },
+                    { en: "stay connected", vi: "Duy trì kết nối" }
+                ],
+                questions: [
+                    {
+                        q: "How often do you use your mobile phone?",
+                        a: "I use my mobile phone on a daily basis, probably several hours a day.",
+                        r: "I mainly use it for work, communication, and entertainment.",
+                        e: "I think smartphones are very useful because they allow me to stay connected with others and look up information whenever I need it."
+                    },
+                    {
+                        q: "What do you mainly use it for?",
+                        a: "I mainly use my phone to communicate with other people and search for information.",
+                        r: "I also use it to check emails, browse social media, and watch videos in my free time.",
+                        e: "It serves a variety of purposes, so it's an essential part of my daily life."
+                    },
+                    {
+                        q: "Is there any time when people should not use their phones? Why?",
+                        a: "Yes, definitely. I think people should avoid using their phones while driving because it can cause serious accidents.",
+                        r: "They should also put their phones away during important conversations or meals.",
+                        e: "Constantly checking a screen during conversations can be distracting and impolite."
+                    }
+                ]
+            },
+            {
+                id: 8,
+                title: "Neighbors",
+                viTitle: "Hàng xóm",
+                icon: "fa-people-roof",
+                vocab: [
+                    { en: "get along with", vi: "Hòa thuận với" },
+                    { en: "live next door to", vi: "Sống cạnh nhà" },
+                    { en: "have a friendly relationship", vi: "Có mối quan hệ thân thiện" },
+                    { en: "have a quick chat", vi: "Trò chuyện nhanh" },
+                    { en: "help each other out", vi: "Giúp đỡ lẫn nhau" },
+                    { en: "respect each other's privacy", vi: "Tôn trọng sự riêng tư của nhau" }
+                ],
+                questions: [
+                    {
+                        q: "Do you know your neighbors well?",
+                        a: "Yes, I know some of my neighbors quite well.",
+                        r: "We often greet each other and sometimes have a quick chat when we meet outside.",
+                        e: "Although we don't spend much time together, I think we have a friendly relationship, which makes the neighborhood more pleasant."
+                    },
+                    {
+                        q: "How often do you talk to them?",
+                        a: "I talk to my neighbors a few times a week, usually when we meet near our houses.",
+                        r: "We normally ask each other how things are going or talk about everyday matters.",
+                        e: "These small conversations help us maintain a good relationship."
+                    },
+                    {
+                        q: "What makes someone a good neighbor?",
+                        a: "I think a good neighbor should be friendly, helpful, and considerate of others.",
+                        r: "For example, they should respect other people's privacy and avoid making too much noise.",
+                        e: "It's also important to be willing to help when someone has a problem because neighbors can support each other."
+                    }
+                ]
+            },
+            {
+                id: 9,
+                title: "Food Shopping",
+                viTitle: "Mua sắm thực phẩm",
+                icon: "fa-cart-shopping",
+                vocab: [
+                    { en: "go grocery shopping", vi: "Đi mua thực phẩm" },
+                    { en: "fresh produce", vi: "Rau củ quả tươi" },
+                    { en: "a local market", vi: "Chợ địa phương" },
+                    { en: "a convenience store", vi: "Cửa hàng tiện lợi" },
+                    { en: "a supermarket", vi: "Siêu thị" },
+                    { en: "compare prices", vi: "So sánh giá cả" },
+                    { en: "reasonable prices", vi: "Giá cả hợp lý" }
+                ],
+                questions: [
+                    {
+                        q: "What types of food stores are there in your neighborhood?",
+                        a: "There are several types of food stores in my neighborhood, including local markets, supermarkets, and convenience stores.",
+                        r: "I usually go to the local market to buy fresh vegetables and meat because the prices are reasonable.",
+                        e: "For other household items, I prefer supermarkets because they offer a wider range of products."
+                    },
+                    {
+                        q: "How often do you go food shopping and when do you usually go?",
+                        a: "I usually go grocery shopping two or three times a week.",
+                        r: "I often go in the evening after work or at weekends when I have more free time.",
+                        e: "I prefer shopping in the evening because it's easier to fit it into my daily schedule."
+                    },
+                    {
+                        q: "Describe what you buy and why you make those purchases.",
+                        a: "I usually buy vegetables, fruit, meat, eggs, and other basic ingredients for my meals.",
+                        r: "I choose these items because they are essential for a balanced diet.",
+                        e: "I also try to buy fresh products at reasonable prices so that I can eat healthily without spending too much money."
+                    }
+                ]
+            },
+            {
+                id: 10,
+                title: "Sports",
+                viTitle: "Thể thao",
+                icon: "fa-football",
+                vocab: [
+                    { en: "keep fit", vi: "Giữ dáng, giữ sức khỏe" },
+                    { en: "stay physically active", vi: "Duy trì vận động" },
+                    { en: "play sports regularly", vi: "Chơi thể thao thường xuyên" },
+                    { en: "relieve stress", vi: "Giải tỏa căng thẳng" },
+                    { en: "build teamwork skills", vi: "Phát triển kỹ năng làm việc nhóm" }
+                ],
+                questions: [
+                    {
+                        q: "Do you like playing sports?",
+                        a: "Yes, I do, although I don't play sports as often as I'd like to.",
+                        r: "I think playing sports is a great way to keep fit and relieve stress after a busy day.",
+                        e: "I usually prefer activities that are easy to do with friends because they are more enjoyable and motivating."
+                    },
+                    {
+                        q: "What is your favorite sport?",
+                        a: "My favorite sport is badminton because it's fun and doesn't require too much expensive equipment.",
+                        r: "I can play it with my friends in my free time, and it helps me stay physically active.",
+                        e: "I also enjoy it because it combines exercise with social interaction."
+                    },
+                    {
+                        q: "Why is it important to play sports?",
+                        a: "I believe playing sports is important because it helps people maintain good physical and mental health.",
+                        r: "It can also teach valuable skills such as teamwork and discipline.",
+                        e: "In addition, doing exercise regularly can help people feel more energetic and reduce stress."
+                    }
+                ]
+            },
+            {
+                id: 11,
+                title: "Your Job",
+                viTitle: "Công việc",
+                icon: "fa-briefcase",
+                vocab: [
+                    { en: "have a full-time job", vi: "Có công việc toàn thời gian" },
+                    { en: "be responsible for", vi: "Chịu trách nhiệm về" },
+                    { en: "gain practical experience", vi: "Tích lũy kinh nghiệm thực tế" },
+                    { en: "develop professional skills", vi: "Phát triển kỹ năng nghề nghiệp" },
+                    { en: "meet deadlines", vi: "Hoàn thành đúng hạn" }
+                ],
+                questions: [
+                    {
+                        q: "What do you do?",
+                        a: "I'm currently working in education, where I have the opportunity to share knowledge and support students in their learning.",
+                        r: "I find my work meaningful because I can help students develop new skills and become more confident.",
+                        e: "It can be challenging at times, but I enjoy learning and improving through my experience."
+                    },
+                    {
+                        q: "What do you like most about your job?",
+                        a: "What I like most about my job is the opportunity to learn new things and work with different people.",
+                        r: "I also find it rewarding when I can help others understand something difficult.",
+                        e: "These experiences motivate me to improve my professional skills and become better at what I do."
+                    },
+                    {
+                        q: "Is your job difficult? Why or why not?",
+                        a: "Yes, sometimes it can be quite challenging because I have to manage several responsibilities and meet deadlines.",
+                        r: "However, I see these challenges as opportunities to gain practical experience and improve my problem-solving skills.",
+                        e: "I think good time management helps me handle my workload more effectively."
+                    }
+                ]
+            },
+            {
+                id: 12,
+                title: "Travelling",
+                viTitle: "Du lịch",
+                icon: "fa-plane-departure",
+                vocab: [
+                    { en: "travel to new places", vi: "Đi đến những nơi mới" },
+                    { en: "broaden my horizons", vi: "Mở rộng hiểu biết" },
+                    { en: "explore local culture", vi: "Khám phá văn hóa địa phương" },
+                    { en: "take a break from daily life", vi: "Nghỉ ngơi khỏi cuộc sống thường ngày" },
+                    { en: "breathtaking scenery", vi: "Phong cảnh ngoạn mục" }
+                ],
+                questions: [
+                    {
+                        q: "Do you like travelling?",
+                        a: "Yes, absolutely. I enjoy travelling because it allows me to explore new places and take a break from my daily routine.",
+                        r: "I also get to try different kinds of food and learn about local cultures.",
+                        e: "For me, travelling is a great way to relax and make unforgettable memories."
+                    },
+                    {
+                        q: "Do you prefer travelling alone or with other people?",
+                        a: "I prefer travelling with friends or family because I enjoy sharing experiences with people I care about.",
+                        r: "We can explore new places together, take photos, and help each other when problems arise.",
+                        e: "Although travelling alone offers more freedom, I find group trips more enjoyable."
+                    },
+                    {
+                        q: "What place would you like to visit in the future?",
+                        a: "I'd love to visit Da Lat in the future because I've heard that it has beautiful scenery and a pleasant climate.",
+                        r: "I'd like to explore the local attractions, try the food, and spend some time relaxing in nature.",
+                        e: "I think it would be a great destination for a short getaway."
+                    }
+                ]
+            },
+            {
+                id: 13,
+                title: "Local Restaurants",
+                viTitle: "Nhà hàng địa phương",
+                icon: "fa-utensils",
+                vocab: [
+                    { en: "dine out", vi: "Ăn ngoài" },
+                    { en: "local specialties", vi: "Đặc sản địa phương" },
+                    { en: "reasonable prices", vi: "Giá cả hợp lý" },
+                    { en: "a cozy atmosphere", vi: "Không gian ấm cúng" },
+                    { en: "friendly staff", vi: "Nhân viên thân thiện" }
+                ],
+                questions: [
+                    {
+                        q: "Do you often eat at local restaurants?",
+                        a: "Yes, I do, especially when I meet my friends or don't have time to cook at home.",
+                        r: "I enjoy trying different dishes, and local restaurants often offer tasty food at reasonable prices.",
+                        e: "It's also a convenient way to spend time with others without having to prepare everything myself."
+                    },
+                    {
+                        q: "What kind of restaurants do you like?",
+                        a: "I prefer casual restaurants that serve Vietnamese food because the dishes are familiar and suit my taste.",
+                        r: "I also look for places with reasonable prices, friendly staff, and a cozy atmosphere.",
+                        e: "For me, good food and comfortable surroundings are the most important things."
+                    },
+                    {
+                        q: "What makes a restaurant popular?",
+                        a: "I think a restaurant becomes popular when it serves delicious food and provides good customer service.",
+                        r: "Reasonable prices and a convenient location are also important.",
+                        e: "In addition, positive reviews from customers can attract more people and encourage them to give it a try."
+                    }
+                ]
+            },
+            {
+                id: 14,
+                title: "Weekend Activities",
+                viTitle: "Hoạt động cuối tuần",
+                icon: "fa-calendar-week",
+                vocab: [
+                    { en: "spend time with family", vi: "Dành thời gian cho gia đình" },
+                    { en: "hang out with friends", vi: "Đi chơi với bạn bè" },
+                    { en: "recharge my batteries", vi: "Nạp lại năng lượng" },
+                    { en: "catch up on work", vi: "Làm bù công việc còn tồn đọng" },
+                    { en: "pursue my hobbies", vi: "Theo đuổi sở thích" }
+                ],
+                questions: [
+                    {
+                        q: "What do you usually do at weekends?",
+                        a: "At weekends, I usually spend time relaxing after a busy week.",
+                        r: "I might meet my friends for coffee, watch a movie, or stay at home and enjoy my hobbies.",
+                        e: "I also use some of my free time to catch up on unfinished tasks and prepare for the following week."
+                    },
+                    {
+                        q: "Do you prefer staying at home or going out at weekends?",
+                        a: "I prefer going out at weekends because it gives me a chance to change my surroundings and socialize with other people.",
+                        r: "I enjoy visiting cafés or trying new places with my friends.",
+                        e: "However, if I've had a particularly tiring week, I prefer staying at home to rest and recharge my batteries."
+                    },
+                    {
+                        q: "Do you think weekends are important?",
+                        a: "Yes, definitely. Weekends give people a chance to take a break from work or study and spend time with their loved ones.",
+                        r: "They can also pursue their hobbies and prepare for the following week.",
+                        e: "I think having enough time to rest is essential for maintaining a healthy work-life balance."
+                    }
+                ]
+            },
+            {
+                id: 15,
+                title: "TV Programs",
+                viTitle: "Chương trình TV",
+                icon: "fa-tv",
+                vocab: [
+                    { en: "watch television", vi: "xem truyền hình" },
+                    { en: "game shows", vi: "chương trình trò chơi" },
+                    { en: "educational programs", vi: "chương trình giáo dục" },
+                    { en: "keep up with the news", vi: "cập nhật tin tức" },
+                    { en: "relax after a long day", vi: "thư giãn sau một ngày dài" }
+                ],
+                questions: [
+                    {
+                        q: "How many hours a day do you watch television?",
+                        a: "I usually watch television for about one hour a day, mainly in the evening.",
+                        r: "I often watch it after finishing my work because it helps me relax and reduce stress.",
+                        e: "However, I try not to spend too much time in front of the screen."
+                    },
+                    {
+                        q: "Which program do you like most?",
+                        a: "I like educational programs the most because they provide useful information about different subjects.",
+                        r: "I can learn something new and broaden my knowledge through these programs.",
+                        e: "I also enjoy watching them because they are both interesting and informative."
+                    },
+                    {
+                        q: "Do you prefer watching television alone or with other people? Why?",
+                        a: "I prefer watching television with my family because it gives us a chance to spend quality time together.",
+                        r: "We can discuss the programs and share our opinions.",
+                        e: "I think watching TV together is a simple but enjoyable way to strengthen our relationships."
+                    }
+                ]
+            },
+            {
+                id: 16,
+                title: "Fast Food",
+                viTitle: "Thức ăn nhanh",
+                icon: "fa-burger",
+                vocab: [
+                    { en: "fast food", vi: "thức ăn nhanh" },
+                    { en: "fried chicken", vi: "gà rán" },
+                    { en: "hamburgers", vi: "bánh hamburger" },
+                    { en: "save time", vi: "tiết kiệm thời gian" },
+                    { en: "a balanced diet", vi: "chế độ ăn cân bằng" }
+                ],
+                questions: [
+                    {
+                        q: "What kind of fast food do you like best?",
+                        a: "My favorite kind of fast food is fried chicken.",
+                        r: "I like it because it is crispy, tasty, and easy to find.",
+                        e: "I sometimes eat it with my friends at the weekend, but I try not to eat it too often because it may not be good for my health."
+                    },
+                    {
+                        q: "Is fast food good for your health? Why or why not?",
+                        a: "In my opinion, fast food is not very healthy if we eat it regularly.",
+                        r: "It often contains a lot of fat, salt, and calories, which may lead to health problems.",
+                        e: "However, I think it is fine to enjoy fast food occasionally as long as we maintain a balanced diet."
+                    },
+                    {
+                        q: "In your opinion, why is fast food popular?",
+                        a: "I think fast food is popular mainly because it is convenient and saves time.",
+                        r: "Many people have a busy schedule, so they prefer food that is quick to prepare and easy to buy.",
+                        e: "In addition, fast food is often affordable and comes in a variety of flavors."
+                    }
+                ]
+            },
+            {
+                id: 17,
+                title: "Vacation",
+                viTitle: "Kỳ nghỉ",
+                icon: "fa-umbrella-beach",
+                vocab: [
+                    { en: "go on vacation", vi: "đi nghỉ dưỡng" },
+                    { en: "explore new places", vi: "khám phá những địa điểm mới" },
+                    { en: "go sightseeing", vi: "đi tham quan" },
+                    { en: "try local food", vi: "thử món ăn địa phương" },
+                    { en: "recharge my batteries", vi: "nạp lại năng lượng" }
+                ],
+                questions: [
+                    {
+                        q: "Who do you usually spend your vacation with?",
+                        a: "I usually spend my vacation with my family or close friends.",
+                        r: "We enjoy traveling together because we can share memorable experiences and learn more about each other.",
+                        e: "I think a vacation is a great opportunity to strengthen our relationships."
+                    },
+                    {
+                        q: "What do you do when you go on vacation?",
+                        a: "When I go on vacation, I usually explore new places, try local food, and take photos.",
+                        r: "I also enjoy walking around and experiencing the local culture.",
+                        e: "Most importantly, I use this time to relax and recharge my batteries after working hard."
+                    },
+                    {
+                        q: "What is your favorite place to go on vacation?",
+                        a: "My favorite vacation destination is Da Lat because of its cool weather and beautiful scenery.",
+                        r: "I enjoy visiting flower gardens, drinking coffee, and walking around the city.",
+                        e: "It is a peaceful place where I can escape from the noise and stress of daily life."
+                    }
+                ]
+            },
+            {
+                id: 18,
+                title: "Transportation",
+                viTitle: "Phương tiện di chuyển nói chung",
+                icon: "fa-motorcycle",
+                vocab: [
+                    { en: "get around", vi: "di chuyển xung quanh" },
+                    { en: "travel by bus", vi: "đi bằng xe buýt" },
+                    { en: "avoid traffic jams", vi: "tránh kẹt xe" },
+                    { en: "save travel time", vi: "tiết kiệm thời gian di chuyển" },
+                    { en: "reduce air pollution", vi: "giảm ô nhiễm không khí" }
+                ],
+                questions: [
+                    {
+                        q: "How did you come here today?",
+                        a: "I came here by motorbike today because it is the most convenient way for me to travel.",
+                        r: "It allows me to leave whenever I want and get to my destination quite quickly.",
+                        e: "However, I sometimes have to deal with heavy traffic, especially during rush hour."
+                    },
+                    {
+                        q: "What kind of transportation do you take most often? Why?",
+                        a: "I use my motorbike most often because it is convenient and flexible.",
+                        r: "I can travel to work, go shopping, or meet my friends without depending on a fixed schedule.",
+                        e: "Although traffic jams can be annoying, I still find it suitable for my daily needs."
+                    },
+                    {
+                        q: "Tell me about the different types of public transportation in your city.",
+                        a: "In Ho Chi Minh City, people can use buses and the metro to get around.",
+                        r: "Buses are available on many routes, while the metro is a convenient option for traveling between certain areas.",
+                        e: "I think improving public transportation would help reduce traffic congestion and air pollution in the city."
+                    }
+                ]
+            },
+            {
+                id: 19,
+                title: "Bicycles",
+                viTitle: "Xe đạp",
+                icon: "fa-bicycle",
+                vocab: [
+                    { en: "ride a bicycle", vi: "đi xe đạp" },
+                    { en: "stay physically active", vi: "duy trì vận động thể chất" },
+                    { en: "environmentally friendly", vi: "thân thiện với môi trường" },
+                    { en: "short distances", vi: "những quãng đường ngắn" },
+                    { en: "suitable for all ages", vi: "phù hợp với mọi lứa tuổi" }
+                ],
+                questions: [
+                    {
+                        q: "How popular are bicycles in your hometown?",
+                        a: "Bicycles are quite popular in my hometown, especially among students and people who live near their schools or workplaces.",
+                        r: "They are affordable and environmentally friendly.",
+                        e: "However, many adults prefer motorbikes because they are faster and more convenient for longer journeys."
+                    },
+                    {
+                        q: "How often do you ride a bicycle?",
+                        a: "I rarely ride a bicycle nowadays because I usually use a motorbike to get around.",
+                        r: "However, I sometimes ride a bicycle for exercise or when I want to enjoy the fresh air.",
+                        e: "I think cycling is a good way to stay physically active."
+                    },
+                    {
+                        q: "Do you think that bicycles are suitable for all ages? Why or why not?",
+                        a: "Yes, I think bicycles are suitable for people of almost all ages.",
+                        r: "Children can use them for fun, while adults can ride them for exercise or short trips.",
+                        e: "However, older people should consider their physical condition and always follow traffic rules to stay safe."
+                    }
+                ]
+            },
+            {
+                id: 20,
+                title: "Your Neighborhood",
+                viTitle: "Khu phố / Nơi ở",
+                icon: "fa-house-user",
+                vocab: [
+                    { en: "a residential area", vi: "khu dân cư" },
+                    { en: "a local coffee shop", vi: "quán cà phê địa phương" },
+                    { en: "within walking distance", vi: "trong khoảng cách có thể đi bộ" },
+                    { en: "friendly and helpful neighbors", vi: "hàng xóm thân thiện và hay giúp đỡ" },
+                    { en: "a peaceful environment", vi: "môi trường yên bình" }
+                ],
+                questions: [
+                    {
+                        q: "What is a popular place to meet friends in your neighborhood?",
+                        a: "A local coffee shop is probably the most popular place to meet friends in my neighborhood.",
+                        r: "It has a comfortable atmosphere, and the drinks are reasonably priced.",
+                        e: "My friends and I can chat, share stories, and relax there after a busy day."
+                    },
+                    {
+                        q: "What do you like about your neighborhood?",
+                        a: "What I like most about my neighborhood is its convenience.",
+                        r: "There are many shops, restaurants, and coffee shops nearby, so I can easily buy what I need.",
+                        e: "I also appreciate having friendly neighbors because they make the area feel more welcoming."
+                    },
+                    {
+                        q: "Do you think your neighborhood is a good place for children? Why or why not?",
+                        a: "Yes, I think it is a good place for children because there are several parks and convenient facilities nearby.",
+                        r: "Children can play outdoors and interact with others in their free time.",
+                        e: "However, I believe the neighborhood should have more safe playgrounds and less traffic to protect them."
+                    }
+                ]
+            },
+            {
+                id: 21,
+                title: "Going to the Cinema",
+                viTitle: "Đi xem phim rạp",
+                icon: "fa-film",
+                vocab: [
+                    { en: "go to the cinema", vi: "đi xem phim ở rạp" },
+                    { en: "action movies", vi: "phim hành động" },
+                    { en: "comedy films", vi: "phim hài" },
+                    { en: "a big screen", vi: "màn hình lớn" },
+                    { en: "high-quality sound", vi: "âm thanh chất lượng cao" }
+                ],
+                questions: [
+                    {
+                        q: "How often do you go to the cinema?",
+                        a: "I go to the cinema about once or twice a month, usually at weekends.",
+                        r: "I often go with my friends when there is an interesting movie showing.",
+                        e: "It is a good way to relax and take a break from my daily routine."
+                    },
+                    {
+                        q: "What kind of movies do you like?",
+                        a: "I particularly enjoy comedy and action movies.",
+                        r: "Comedy films help me relax and laugh, while action movies keep me excited because of their fast-paced stories.",
+                        e: "I usually choose a movie based on its storyline and reviews."
+                    },
+                    {
+                        q: "Do you prefer watching movies at home or in the cinema? Why?",
+                        a: "I prefer watching movies in the cinema because the big screen and high-quality sound create a more immersive experience.",
+                        r: "I can focus on the movie without being distracted by other things at home.",
+                        e: "However, watching movies at home is more convenient and affordable."
+                    }
+                ]
+            },
+            {
+                id: 22,
+                title: "Colors",
+                viTitle: "Màu sắc",
+                icon: "fa-palette",
+                vocab: [
+                    { en: "my favorite color", vi: "màu sắc yêu thích" },
+                    { en: "match different outfits", vi: "phối với nhiều bộ trang phục" },
+                    { en: "look neat and simple", vi: "trông gọn gàng và đơn giản" },
+                    { en: "affect my mood", vi: "ảnh hưởng đến tâm trạng" },
+                    { en: "feel calm and comfortable", vi: "cảm thấy bình tĩnh và thoải mái" }
+                ],
+                questions: [
+                    {
+                        q: "What's your favorite color?",
+                        a: "My favorite color is blue, especially light blue.",
+                        r: "I like it because it reminds me of the sky and the sea.",
+                        e: "To me, blue creates a sense of peace and helps me feel calm and comfortable."
+                    },
+                    {
+                        q: "Do you care about colors when choosing clothes to wear?",
+                        a: "Yes, I do. I usually choose colors that look good on me and match different outfits.",
+                        r: "I prefer simple colors such as black, white, and blue because they are easy to combine.",
+                        e: "These colors make me look neat and professional."
+                    },
+                    {
+                        q: "Does color affect your mood or feelings?",
+                        a: "Yes, I believe colors can affect our mood.",
+                        r: "For example, blue and green make me feel relaxed, while bright colors like yellow can make me feel more energetic.",
+                        e: "That is why I sometimes choose colors based on how I feel."
+                    }
+                ]
+            },
+            {
+                id: 23,
+                title: "Friends",
+                viTitle: "Bạn bè",
+                icon: "fa-user-group",
+                vocab: [
+                    { en: "hang out with friends", vi: "đi chơi với bạn bè" },
+                    { en: "close friends", vi: "bạn thân" },
+                    { en: "keep in touch", vi: "giữ liên lạc" },
+                    { en: "have common interests", vi: "có sở thích chung" },
+                    { en: "build a strong friendship", vi: "xây dựng tình bạn bền chặt" }
+                ],
+                questions: [
+                    {
+                        q: "How often do you hang out with friends?",
+                        a: "I usually hang out with my friends once or twice a week, depending on how busy I am.",
+                        r: "We often meet at a coffee shop or have a meal together.",
+                        e: "Even when we cannot meet in person, we try to keep in touch through messages."
+                    },
+                    {
+                        q: "What do you do when you hang out with friends?",
+                        a: "When I hang out with my friends, we usually have coffee, eat out, or talk about our daily lives.",
+                        r: "Sometimes, we watch movies or explore new places together.",
+                        e: "I enjoy these activities because they help us relax and strengthen our friendship."
+                    },
+                    {
+                        q: "Is it easy for you to make friends?",
+                        a: "I think it is quite easy for me to make friends, although it depends on the situation.",
+                        r: "I usually start a conversation by asking simple questions or talking about common interests.",
+                        e: "In my opinion, being friendly and a good listener helps me build new relationships."
+                    }
+                ]
+            },
+            {
+                id: 24,
+                title: "Going to the Library",
+                viTitle: "Đến thư viện",
+                icon: "fa-book-bookmark",
+                vocab: [
+                    { en: "go to the library", vi: "đến thư viện" },
+                    { en: "borrow books", vi: "mượn sách" },
+                    { en: "study in a quiet environment", vi: "học trong môi trường yên tĩnh" },
+                    { en: "concentrate on my work", vi: "tập trung vào công việc" },
+                    { en: "develop reading habits", vi: "phát triển thói quen đọc sách" }
+                ],
+                questions: [
+                    {
+                        q: "How often do you go to the library?",
+                        a: "I do not go to the library very often nowadays, perhaps once every few months.",
+                        r: "I usually search for information online because it is faster and more convenient.",
+                        e: "However, I still think libraries are useful places for studying and reading."
+                    },
+                    {
+                        q: "What do you usually do in the library?",
+                        a: "When I go to the library, I usually read books, look for information, or study in a quiet environment.",
+                        r: "I find it easier to concentrate there because there are fewer distractions than at home.",
+                        e: "Sometimes, I also borrow books to read in my free time."
+                    },
+                    {
+                        q: "Do you think that fewer people go to the library nowadays?",
+                        a: "Yes, I think fewer people visit traditional libraries nowadays because they can easily access information and digital books online.",
+                        r: "Smartphones and the Internet have made reading more convenient.",
+                        e: "However, libraries are still important because they provide a quiet place to study and encourage people to develop reading habits."
+                    }
+                ]
+            }
+        ];
+
+        const speakingPart2Data = [
+            {
+                id: 1,
+                title: "Spending Your Evening",
+                viTitle: "Dành buổi tối: Đi chơi bạn bè, Đọc sách hay Lướt Internet?",
+                icon: "fa-moon",
+                chosenOption: "Reading books",
+                options: [
+                    { name: "Hanging out with friends", chosen: false },
+                    { name: "Reading books", chosen: true },
+                    { name: "Surfing the Internet", chosen: false }
+                ],
+                vocab: [
+                    { en: "hang out with friends", vi: "đi chơi với bạn bè" },
+                    { en: "learn new things", vi: "học điều mới" },
+                    { en: "gain useful knowledge", vi: "tiếp thu kiến thức hữu ích" },
+                    { en: "improve my vocabulary", vi: "cải thiện vốn từ" },
+                    { en: "broaden my understanding", vi: "mở rộng hiểu biết" },
+                    { en: "waste time on social media", vi: "lãng phí thời gian trên mạng xã hội" }
+                ],
+                situationText: "There are three options for spending my evening: hanging out with friends, reading books, and surfing the Internet.",
+                solutionText: "Personally, I would choose reading books as the best option for me.",
+                discussionText: {
+                    reason1: "First, reading books helps me learn new things and gain useful knowledge. It can also improve my vocabulary and broaden my understanding of the world.",
+                    reason2: "Another reason is that reading helps me relax after a busy day.",
+                    reject1: "I would not choose hanging out with friends because it can sometimes be expensive and time-consuming.",
+                    reject2: "As for surfing the Internet, although it is convenient, I might waste too much time on social media."
+                },
+                conclusionText: "For these reasons, I believe reading books is both relaxing and beneficial for my personal development.",
+                keywordsSummary: "Reading → learn new things + relax/improve vocabulary → friends: expensive/time-consuming → Internet: waste time."
+            },
+            {
+                id: 2,
+                title: "Travelling to Sa Pa",
+                viTitle: "Đi từ TP.HCM đến Sa Pa: Tàu hỏa, Xe khách hay Máy bay?",
+                icon: "fa-plane-departure",
+                chosenOption: "By plane",
+                options: [
+                    { name: "By train", chosen: false },
+                    { name: "By coach", chosen: false },
+                    { name: "By plane", chosen: true }
+                ],
+                vocab: [
+                    { en: "save a lot of time", vi: "tiết kiệm nhiều thời gian" },
+                    { en: "a long-distance trip", vi: "chuyến đi đường dài" },
+                    { en: "spend time exploring", vi: "dành thời gian khám phá" },
+                    { en: "affordable", vi: "có giá phải chăng" },
+                    { en: "a tiring journey", vi: "chuyến đi mệt mỏi" },
+                    { en: "travel by road", vi: "di chuyển bằng đường bộ" }
+                ],
+                situationText: "There are three ways to travel from Ho Chi Minh City to Sa Pa: by train, by coach, or by plane.",
+                solutionText: "Personally, I would choose to travel by plane.",
+                discussionText: {
+                    reason1: "First, flying saves a lot of time, which is important because the journey is very long.",
+                    reason2: "Second, it allows me to spend more time exploring Sa Pa instead of spending many hours travelling.",
+                    reject1: "I would not choose the train because the journey takes a long time.",
+                    reject2: "As for travelling by coach, although it may be more affordable, the trip could be tiring and uncomfortable."
+                },
+                conclusionText: "For these reasons, I believe flying is the best option for a long-distance trip. I would still need to travel by road from an airport to Sa Pa.",
+                keywordsSummary: "Plane → save time + explore more → train: long journey → coach: tiring/uncomfortable."
+            },
+            {
+                id: 3,
+                title: "Family Weekend Outing",
+                viTitle: "Gia đình đi chơi cuối tuần: Xem phim, Ăn nhà hàng hay Đi biển?",
+                icon: "fa-umbrella-beach",
+                chosenOption: "Go to the beach",
+                options: [
+                    { name: "Watching a movie", chosen: false },
+                    { name: "Eating at a restaurant", chosen: false },
+                    { name: "Going to the beach", chosen: true }
+                ],
+                vocab: [
+                    { en: "relax and enjoy the fresh air", vi: "thư giãn và tận hưởng không khí trong lành" },
+                    { en: "spend quality time together", vi: "dành thời gian ý nghĩa bên nhau" },
+                    { en: "create happy memories", vi: "tạo kỷ niệm đẹp" },
+                    { en: "outdoor activities", vi: "hoạt động ngoài trời" },
+                    { en: "sit indoors", vi: "ngồi trong nhà" },
+                    { en: "strengthen family relationships", vi: "thắt chặt tình cảm gia đình" }
+                ],
+                situationText: "There are three options for a family weekend outing: watching a movie, eating at a restaurant, or going to the beach.",
+                solutionText: "Personally, I would choose to go to the beach with my family.",
+                discussionText: {
+                    reason1: "First, going to the beach allows us to relax and enjoy the fresh air after a busy week. We can walk, swim, and take photos together.",
+                    reason2: "Second, it is a great opportunity to spend quality time together and create happy memories.",
+                    reject1: "I would not choose watching a movie because we would spend most of our time sitting indoors.",
+                    reject2: "As for eating at a restaurant, although it is convenient, it can be expensive and offers fewer outdoor activities."
+                },
+                conclusionText: "For these reasons, I believe going to the beach is relaxing and a great way to strengthen family relationships.",
+                keywordsSummary: "Beach → relax/fresh air + family time → movie: indoors → restaurant: expensive/fewer activities."
+            },
+            {
+                id: 4,
+                title: "Choosing an Elective Subject",
+                viTitle: "Chọn môn tự chọn THPT: Nhiếp ảnh, Bơi lội hay Khiêu vũ?",
+                icon: "fa-person-swimming",
+                chosenOption: "Swimming",
+                options: [
+                    { name: "Photography", chosen: false },
+                    { name: "Swimming", chosen: true },
+                    { name: "Dancing", chosen: false }
+                ],
+                vocab: [
+                    { en: "improve physical fitness", vi: "cải thiện thể lực" },
+                    { en: "stay healthy", vi: "giữ gìn sức khỏe" },
+                    { en: "an essential life skill", vi: "kỹ năng sống thiết yếu" },
+                    { en: "stay safe around water", vi: "giữ an toàn khi ở gần nước" },
+                    { en: "expensive equipment", vi: "thiết bị đắt tiền" },
+                    { en: "feel shy or uncomfortable", vi: "cảm thấy ngại hoặc không thoải mái" }
+                ],
+                situationText: "There are three options for an elective subject for high school students: photography, swimming, and dancing.",
+                solutionText: "Personally, I would choose swimming as the best option.",
+                discussionText: {
+                    reason1: "First, swimming is a great way to stay healthy and improve physical fitness.",
+                    reason2: "Second, it is an essential life skill that can help students stay safer around water.",
+                    reject1: "I would not choose photography because students may need to buy equipment, which can be expensive.",
+                    reject2: "As for dancing, although it is fun and active, some students may feel shy performing in front of others."
+                },
+                conclusionText: "For these reasons, I believe swimming is a suitable choice because it improves health and teaches an important life skill.",
+                keywordsSummary: "Swimming → health/fitness + life skill → photography: equipment costs → dancing: may feel shy."
+            },
+            {
+                id: 5,
+                title: "Getting to Work",
+                viTitle: "Phương tiện đi làm: Xe buýt, Xe máy hay Đi chung xe (Carpool)?",
+                icon: "fa-car-side",
+                chosenOption: "Carpool with colleagues",
+                options: [
+                    { name: "Taking the bus", chosen: false },
+                    { name: "Riding a motorbike", chosen: false },
+                    { name: "Carpooling with colleagues", chosen: true }
+                ],
+                vocab: [
+                    { en: "share the cost of fuel", vi: "chia sẻ chi phí nhiên liệu" },
+                    { en: "save money", vi: "tiết kiệm tiền" },
+                    { en: "reduce traffic congestion", vi: "giảm ùn tắc giao thông" },
+                    { en: "reduce air pollution", vi: "giảm ô nhiễm không khí" },
+                    { en: "rush-hour traffic", vi: "giao thông giờ cao điểm" },
+                    { en: "depend on the bus schedule", vi: "phụ thuộc lịch xe buýt" }
+                ],
+                situationText: "There are three ways to get to work: taking the bus, riding a motorbike, or carpooling with colleagues.",
+                solutionText: "Personally, I would choose to carpool with my colleagues.",
+                discussionText: {
+                    reason1: "First, we can share the cost of fuel and save money.",
+                    reason2: "Second, travelling together can help reduce the number of vehicles on the road, which may ease traffic congestion and air pollution.",
+                    reject1: "I would not choose the bus because I might have to wait and depend on its schedule.",
+                    reject2: "As for riding a motorbike, it is flexible, but it can be tiring in bad weather and less comfortable during rush hour."
+                },
+                conclusionText: "For these reasons, I believe carpooling is a practical and economical way to get to work.",
+                keywordsSummary: "Carpool → share fuel costs + fewer vehicles → bus: schedule/waiting → motorbike: weather/comfort."
+            },
+            {
+                id: 6,
+                title: "Family Activities on Saturday",
+                viTitle: "Hoạt động gia đình thứ Bảy: Thăm ông bà, Ăn ở nhà hay Đi công viên?",
+                icon: "fa-heart",
+                chosenOption: "Visit grandparents",
+                options: [
+                    { name: "Visiting grandparents", chosen: true },
+                    { name: "Eating at home", chosen: false },
+                    { name: "Going to the park", chosen: false }
+                ],
+                vocab: [
+                    { en: "keep in touch with", vi: "giữ liên lạc với" },
+                    { en: "show respect for older family members", vi: "thể hiện sự kính trọng người lớn tuổi" },
+                    { en: "strengthen family bonds", vi: "thắt chặt tình cảm gia đình" },
+                    { en: "home-cooked meal", vi: "bữa ăn tự nấu ở nhà" },
+                    { en: "get some fresh air", vi: "hít thở không khí trong lành" },
+                    { en: "spend time together", vi: "dành thời gian bên nhau" }
+                ],
+                situationText: "There are three ways for my family to spend Saturday together: visiting grandparents, eating at home, or going to the park.",
+                solutionText: "Personally, I would choose to visit my grandparents.",
+                discussionText: {
+                    reason1: "First, visiting them helps us keep in touch and show respect for older family members.",
+                    reason2: "Second, it gives us a chance to share news and strengthen family bonds.",
+                    reject1: "I would not choose eating at home because we already do that quite often during the week.",
+                    reject2: "As for going to the park, it is enjoyable, but it may not give us the same chance to connect with our grandparents."
+                },
+                conclusionText: "For these reasons, I think visiting my grandparents is the most meaningful way for my family to spend Saturday.",
+                keywordsSummary: "Visit grandparents → respect/care + family bonds → eat at home: routine → park: less connection with grandparents."
+            },
+            {
+                id: 7,
+                title: "Communicating Company News",
+                viTitle: "Kênh thông báo tin công ty: Email, Bảng thông báo hay Nhóm chat?",
+                icon: "fa-envelope font-bold",
+                chosenOption: "Email",
+                options: [
+                    { name: "Email", chosen: true },
+                    { name: "Notice board", chosen: false },
+                    { name: "Group chat", chosen: false }
+                ],
+                vocab: [
+                    { en: "share information quickly", vi: "chia sẻ thông tin nhanh chóng" },
+                    { en: "reach many employees", vi: "tiếp cận nhiều nhân viên" },
+                    { en: "keep a written record", vi: "lưu thông tin bằng văn bản" },
+                    { en: "easy to refer back to", vi: "dễ xem lại" },
+                    { en: "miss an announcement", vi: "bỏ lỡ thông báo" },
+                    { en: "a formal message", vi: "thông điệp trang trọng" }
+                ],
+                situationText: "There are three ways to communicate important company news: email, a notice board, or a group chat.",
+                solutionText: "Personally, I would choose email.",
+                discussionText: {
+                    reason1: "First, email allows the company to reach many employees quickly and professionally.",
+                    reason2: "Second, it keeps a written record, so employees can refer to the information later.",
+                    reject1: "I would not choose a notice board because employees may not pass by it regularly and could miss an announcement.",
+                    reject2: "As for a group chat, it is fast, but important messages can easily get buried under other conversations."
+                },
+                conclusionText: "For these reasons, I believe email is a reliable and professional way to share important company news.",
+                keywordsSummary: "Email → fast/professional + written record → notice board: miss it → group chat: messages get buried."
+            },
+            {
+                id: 8,
+                title: "Friday Department Lunch",
+                viTitle: "Địa điểm ăn trưa thứ Sáu: Căn tin, Nhà hàng gần đó hay Đặt đồ ăn về?",
+                icon: "fa-utensils",
+                chosenOption: "Nearby restaurant",
+                options: [
+                    { name: "Company cafeteria", chosen: false },
+                    { name: "Nearby restaurant", chosen: true },
+                    { name: "Order food to office", chosen: false }
+                ],
+                vocab: [
+                    { en: "a wide range of choices", vi: "nhiều lựa chọn" },
+                    { en: "take a break from work", vi: "nghỉ ngơi sau giờ làm" },
+                    { en: "socialize with colleagues", vi: "giao lưu với đồng nghiệp" },
+                    { en: "save time", vi: "tiết kiệm thời gian" },
+                    { en: "delivery fees", vi: "phí giao hàng" },
+                    { en: "limited menu", vi: "thực đơn hạn chế" }
+                ],
+                situationText: "There are three options for our department’s Friday lunch: eating in the company cafeteria, going to a nearby restaurant, or ordering food to the office.",
+                solutionText: "Personally, I would choose a nearby restaurant.",
+                discussionText: {
+                    reason1: "First, a nearby restaurant usually offers a wider range of food choices, so everyone may find something they like.",
+                    reason2: "Second, eating out gives colleagues a chance to take a break from work and socialize in a different environment.",
+                    reject1: "I would not choose the company cafeteria because its menu may be limited.",
+                    reject2: "As for ordering food to the office, it is convenient, but delivery fees and waiting times can be a problem."
+                },
+                conclusionText: "For these reasons, I believe a nearby restaurant is a good choice for a pleasant and enjoyable team lunch.",
+                keywordsSummary: "Nearby restaurant → more choices + socialize → cafeteria: limited menu → delivery: fees/waiting."
+            }
+        ];
+
+        let currentSpeakingPart = 'part1'; // 'part1' or 'part2'
+        let selectedPart1TopicId = 1;
+        let selectedPart2SituationId = 1;
+        let bookmarks = JSON.parse(localStorage.getItem("engprep_bookmarks") || "[]");
+        let activeRecallMode = false;
+
+        let currentFlashcardIndex = 0;
+        let isCardFlipped = false;
+        let activeFlashcardList = [];
+        let filterOnlyBookmarks = false;
+        let currentAudio = null;
+
+        function showToast(message) {
+            let toast = document.getElementById("toast-notification");
+            if (!toast) {
+                toast = document.createElement("div");
+                toast.id = "toast-notification";
+                toast.className = "fixed bottom-5 right-5 z-50 bg-slate-900 text-white px-4 py-3 rounded-xl shadow-xl text-sm flex items-center space-x-2 border border-slate-700 transition-all duration-300 opacity-0 pointer-events-none transform translate-y-2";
+                document.body.appendChild(toast);
+            }
+            toast.innerHTML = `<i class="fa-solid fa-circle-info text-brand-400"></i><span>${message}</span>`;
+            toast.classList.remove("opacity-0", "pointer-events-none", "translate-y-2");
+            setTimeout(() => {
+                toast.classList.add("opacity-0", "pointer-events-none", "translate-y-2");
+            }, 3000);
+        }
+
+        function getBestEnglishVoice() {
+            if (!('speechSynthesis' in window)) return null;
+            const allVoices = window.speechSynthesis.getVoices();
+            const englishVoices = allVoices.filter(v => 
+                v.lang && (v.lang.toLowerCase().startsWith('en') || v.lang.toLowerCase().includes('en-'))
+            );
+            if (englishVoices.length === 0) return null;
+
+            return englishVoices.find(v => 
+                v.name.includes('Google') || 
+                v.name.includes('Natural') || 
+                v.name.includes('Samantha') || 
+                v.name.includes('Daniel') ||
+                v.name.includes('Karen') ||
+                v.name.includes('Zira')
+            ) || englishVoices[0];
+        }
+
+        function speakText(text) {
+            if (!text || !text.trim()) return;
+            const cleanText = text.trim();
+
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+            }
+            if (currentAudio) {
+                currentAudio.pause();
+                currentAudio = null;
+            }
+
+            const englishVoice = getBestEnglishVoice();
+
+            if ('speechSynthesis' in window && englishVoice) {
+                const utterance = new SpeechSynthesisUtterance(cleanText);
+                utterance.voice = englishVoice;
+                utterance.lang = englishVoice.lang || 'en-US';
+                utterance.rate = 0.88;
+                utterance.pitch = 1.0;
+
+                utterance.onerror = () => {
+                    playAudioFallback(cleanText);
+                };
+
+                window.speechSynthesis.speak(utterance);
+            } else {
+                playAudioFallback(cleanText);
+            }
+        }
+
+        function speakFromElement(el) {
+            if (!el) return;
+            const rawText = el.getAttribute('data-speak');
+            if (rawText) {
+                speakText(decodeURIComponent(rawText));
+            }
+        }
+
+        function playAudioFallback(text) {
+            try {
+                const cleanStr = text.trim();
+                const encodedText = encodeURIComponent(cleanStr.length > 200 ? cleanStr.substring(0, 200) : cleanStr);
+                const ttsUrl = `https://translate.google.com/translate_tts?ie=UTF-8&q=${encodedText}&tl=en&client=tw-ob`;
+                currentAudio = new Audio(ttsUrl);
+                currentAudio.play().catch(() => {
+                    showToast("Nhấp vào màn hình để cấp quyền phát âm thanh.");
+                });
+            } catch (e) {
+                showToast("Thiết bị chưa hỗ trợ phát âm thanh trực tiếp.");
+            }
+        }
+
+        // Bookmark Key helper: 'p1_1', 'p2_3'
+        function getBookmarkKey(part, id) {
+            return `${part}_${id}`;
+        }
+
+        function toggleBookmark(part, id) {
+            const key = getBookmarkKey(part, id);
+            const index = bookmarks.indexOf(key);
+            if (index > -1) {
+                bookmarks.splice(index, 1);
+            } else {
+                bookmarks.push(key);
+            }
+            localStorage.setItem("engprep_bookmarks", JSON.stringify(bookmarks));
+            updateBookmarkUI();
+            
+            if (part === 'p1') {
+                renderTopicList();
+                if (selectedPart1TopicId === id) renderTopicDetail(id);
+            } else {
+                renderSituationList();
+                if (selectedPart2SituationId === id) renderSituationDetail(id);
+            }
+        }
+
+        function updateBookmarkUI() {
+            document.getElementById("bookmark-count").innerText = bookmarks.length;
+        }
+
+        function toggleBookmarksFilter() {
+            filterOnlyBookmarks = !filterOnlyBookmarks;
+            const btn = document.getElementById("btn-bookmarks");
+            if (filterOnlyBookmarks) {
+                btn.classList.remove("bg-amber-50", "text-amber-700");
+                btn.classList.add("bg-amber-500", "text-white");
+            } else {
+                btn.classList.add("bg-amber-50", "text-amber-700");
+                btn.classList.remove("bg-amber-500", "text-white");
+            }
+            renderTopicList();
+            renderSituationList();
+        }
+
+        function switchSpeakingPart(part) {
+            currentSpeakingPart = part;
+            const btnP1 = document.getElementById("subnav-part1");
+            const btnP2 = document.getElementById("subnav-part2");
+            const contP1 = document.getElementById("speaking-part1-container");
+            const contP2 = document.getElementById("speaking-part2-container");
+
+            if (part === 'part1') {
+                btnP1.className = "flex-1 sm:flex-none px-5 py-2.5 rounded-xl text-sm font-bold transition-all duration-200 flex items-center justify-center space-x-2 bg-brand-600 text-white shadow-md shadow-brand-500/20";
+                btnP2.className = "flex-1 sm:flex-none px-5 py-2.5 rounded-xl text-sm font-bold transition-all duration-200 flex items-center justify-center space-x-2 bg-slate-100 text-slate-600 hover:text-slate-900";
+                contP1.classList.remove("hidden");
+                contP2.classList.add("hidden");
+                renderTopicList(document.getElementById("search-input").value);
+            } else {
+                btnP2.className = "flex-1 sm:flex-none px-5 py-2.5 rounded-xl text-sm font-bold transition-all duration-200 flex items-center justify-center space-x-2 bg-amber-600 text-white shadow-md shadow-amber-500/20";
+                btnP1.className = "flex-1 sm:flex-none px-5 py-2.5 rounded-xl text-sm font-bold transition-all duration-200 flex items-center justify-center space-x-2 bg-slate-100 text-slate-600 hover:text-slate-900";
+                contP2.classList.remove("hidden");
+                contP1.classList.add("hidden");
+                renderSituationList(document.getElementById("search-input").value);
+            }
+        }
+
+        function renderTopicList(filterQuery = "") {
+            const container = document.getElementById("topic-list-container");
+            const query = filterQuery.toLowerCase().trim();
+
+            let filtered = speakingData.filter(t => {
+                const matchSearch = t.title.toLowerCase().includes(query) || 
+                                    t.viTitle.toLowerCase().includes(query) ||
+                                    t.vocab.some(v => v.en.toLowerCase().includes(query) || v.vi.toLowerCase().includes(query));
+                const matchBookmark = filterOnlyBookmarks ? bookmarks.includes(getBookmarkKey('p1', t.id)) : true;
+                return matchSearch && matchBookmark;
+            });
+
+            document.getElementById("part1-count-display").innerText = `${filtered.length} Topics`;
+
+            if (filtered.length === 0) {
+                container.innerHTML = `
+                    <div class="p-8 text-center text-slate-400 text-sm">
+                        <i class="fa-solid fa-folder-open text-3xl mb-2 text-slate-300"></i>
+                        <p>Không tìm thấy Topic phù hợp</p>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = filtered.map(t => {
+                const isSelected = t.id === selectedPart1TopicId;
+                const isBookmarked = bookmarks.includes(getBookmarkKey('p1', t.id));
+
+                return `
+                    <div onclick="selectTopic(${t.id})" class="p-3.5 hover:bg-slate-50 cursor-pointer transition flex items-center justify-between group ${isSelected ? 'bg-brand-50/80 border-l-4 border-brand-600' : ''}">
+                        <div class="flex items-center space-x-3 overflow-hidden">
+                            <div class="w-9 h-9 rounded-xl ${isSelected ? 'bg-brand-600 text-white' : 'bg-slate-100 text-slate-600 group-hover:bg-brand-100 group-hover:text-brand-600'} flex items-center justify-center text-sm font-bold shrink-0 transition">
+                                <i class="fa-solid ${t.icon}"></i>
+                            </div>
+                            <div class="truncate">
+                                <h4 class="font-bold text-sm ${isSelected ? 'text-brand-900' : 'text-slate-800'} truncate">Topic ${t.id}: ${t.title}</h4>
+                                <p class="text-xs text-slate-500 truncate">${t.viTitle}</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center space-x-1 shrink-0">
+                            <button onclick="event.stopPropagation(); toggleBookmark('p1', ${t.id})" class="p-1.5 rounded-lg text-slate-300 hover:text-amber-500 transition ${isBookmarked ? 'text-amber-500' : ''}">
+                                <i class="fa-solid fa-star text-sm"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function selectTopic(id) {
+            selectedPart1TopicId = id;
+            renderTopicList(document.getElementById("search-input").value);
+            renderTopicDetail(id);
+        }
+
+        function renderTopicDetail(id) {
+            const topic = speakingData.find(t => t.id === id);
+            if (!topic) return;
+
+            const isBookmarked = bookmarks.includes(getBookmarkKey('p1', topic.id));
+            const detailCard = document.getElementById("topic-detail-card");
+
+            detailCard.innerHTML = `
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-slate-100 pb-5 gap-4">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-12 h-12 rounded-2xl bg-brand-100 text-brand-600 flex items-center justify-center text-xl font-bold">
+                            <i class="fa-solid ${topic.icon}"></i>
+                        </div>
+                        <div>
+                            <div class="flex items-center space-x-2">
+                                <span class="text-xs font-extrabold text-brand-600 bg-brand-50 px-2 py-0.5 rounded">TOPIC ${topic.id}</span>
+                                <span class="text-xs text-slate-400 font-medium">${topic.questions.length} câu hỏi mẫu</span>
+                            </div>
+                            <h2 class="text-2xl font-black text-slate-900">${topic.title} <span class="text-lg font-semibold text-slate-500">— ${topic.viTitle}</span></h2>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center space-x-2">
+                        <button onclick="toggleBookmark('p1', ${topic.id})" class="px-3.5 py-2 rounded-xl text-sm font-semibold border transition flex items-center space-x-2 ${isBookmarked ? 'bg-amber-500 text-white border-amber-500' : 'bg-slate-50 border-slate-200 text-slate-700 hover:bg-slate-100'}">
+                            <i class="fa-solid fa-star"></i>
+                            <span>${isBookmarked ? 'Đã lưu' : 'Lưu bài'}</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="mt-6 space-y-6">
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between">
+                            <h3 class="font-bold text-slate-900 text-base flex items-center space-x-2">
+                                <i class="fa-solid fa-spell-check text-brand-600"></i>
+                                <span>Từ Vựng & Collocations Quan Trọng</span>
+                            </h3>
+                            <button onclick="openFlashcardForSpecific('p1', ${topic.id})" class="text-xs text-brand-600 font-bold hover:underline flex items-center space-x-1">
+                                <i class="fa-solid fa-play"></i><span>Luyện Flashcard chủ đề này</span>
+                            </button>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                            ${topic.vocab.map(v => `
+                                <div class="p-3 rounded-xl bg-slate-50 border border-slate-200/80 hover:border-brand-300 transition flex items-center justify-between group">
+                                    <div class="space-y-0.5">
+                                        <p class="font-bold text-slate-800 text-sm group-hover:text-brand-700 transition">${v.en}</p>
+                                        <p class="text-xs text-slate-500 font-medium">${v.vi}</p>
+                                    </div>
+                                    <button data-speak="${encodeURIComponent(v.en)}" onclick="speakFromElement(this)" class="w-8 h-8 rounded-lg bg-white border border-slate-200 text-slate-400 hover:text-brand-600 hover:border-brand-300 flex items-center justify-center transition shadow-sm shrink-0">
+                                        <i class="fa-solid fa-volume-high text-xs"></i>
+                                    </button>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+
+                    <div class="space-y-4 pt-4 border-t border-slate-100">
+                        <h3 class="font-bold text-slate-900 text-base flex items-center space-x-2">
+                            <i class="fa-solid fa-comments text-indigo-600"></i>
+                            <span>Câu Hỏi & Bài Mẫu (Có Phân Tích A-R-E)</span>
+                        </h3>
+
+                        <div class="space-y-4">
+                            ${topic.questions.map((qObj, idx) => `
+                                <div class="p-5 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-4 hover:border-indigo-200 transition">
+                                    <div class="flex items-start justify-between gap-3">
+                                        <div class="flex items-start space-x-3">
+                                            <span class="w-6 h-6 rounded-full bg-indigo-100 text-indigo-700 font-black text-xs flex items-center justify-center shrink-0 mt-0.5">Q${idx + 1}</span>
+                                            <h4 class="font-extrabold text-slate-900 text-base">${qObj.q}</h4>
+                                        </div>
+                                        <button data-speak="${encodeURIComponent(qObj.q)}" onclick="speakFromElement(this)" class="p-2 rounded-lg bg-indigo-50 text-indigo-600 hover:bg-indigo-100 text-xs font-semibold shrink-0 flex items-center space-x-1">
+                                            <i class="fa-solid fa-volume-high"></i><span class="hidden sm:inline">Nghe Q</span>
+                                        </button>
+                                    </div>
+
+                                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200/80 space-y-3">
+                                        <div class="flex items-start space-x-2.5">
+                                            <span class="px-2 py-0.5 bg-brand-500 text-white text-[10px] font-black rounded uppercase tracking-wider shrink-0 mt-0.5">Answer</span>
+                                            <p class="text-sm text-slate-800 font-medium">${qObj.a}</p>
+                                        </div>
+
+                                        <div class="flex items-start space-x-2.5">
+                                            <span class="px-2 py-0.5 bg-emerald-500 text-white text-[10px] font-black rounded uppercase tracking-wider shrink-0 mt-0.5">Reason</span>
+                                            <p class="text-sm text-slate-800 font-medium">${qObj.r}</p>
+                                        </div>
+
+                                        ${qObj.e ? `
+                                            <div class="flex items-start space-x-2.5">
+                                                <span class="px-2 py-0.5 bg-purple-500 text-white text-[10px] font-black rounded uppercase tracking-wider shrink-0 mt-0.5">Example</span>
+                                                <p class="text-sm text-slate-800 font-medium">${qObj.e}</p>
+                                            </div>
+                                        ` : ''}
+                                    </div>
+
+                                    <div class="flex items-center justify-between text-xs pt-1">
+                                        <button data-speak="${encodeURIComponent(qObj.a + ' ' + qObj.r + ' ' + (qObj.e || ''))}" onclick="speakFromElement(this)" class="text-brand-600 hover:text-brand-700 font-bold flex items-center space-x-1.5">
+                                            <i class="fa-solid fa-circle-play text-sm"></i>
+                                            <span>Nghe đọc toàn bộ câu trả lời mẫu</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderSituationList(filterQuery = "") {
+            const container = document.getElementById("situation-list-container");
+            const query = filterQuery.toLowerCase().trim();
+
+            let filtered = speakingPart2Data.filter(s => {
+                const matchSearch = s.title.toLowerCase().includes(query) || 
+                                    s.viTitle.toLowerCase().includes(query) ||
+                                    s.chosenOption.toLowerCase().includes(query) ||
+                                    s.vocab.some(v => v.en.toLowerCase().includes(query) || v.vi.toLowerCase().includes(query));
+                const matchBookmark = filterOnlyBookmarks ? bookmarks.includes(getBookmarkKey('p2', s.id)) : true;
+                return matchSearch && matchBookmark;
+            });
+
+            document.getElementById("part2-count-display").innerText = `${filtered.length} Situations`;
+
+            if (filtered.length === 0) {
+                container.innerHTML = `
+                    <div class="p-8 text-center text-slate-400 text-sm">
+                        <i class="fa-solid fa-folder-open text-3xl mb-2 text-slate-300"></i>
+                        <p>Không tìm thấy Situation phù hợp</p>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = filtered.map(s => {
+                const isSelected = s.id === selectedPart2SituationId;
+                const isBookmarked = bookmarks.includes(getBookmarkKey('p2', s.id));
+
+                return `
+                    <div onclick="selectSituation(${s.id})" class="p-3.5 hover:bg-slate-50 cursor-pointer transition flex items-center justify-between group ${isSelected ? 'bg-amber-50/80 border-l-4 border-amber-600' : ''}">
+                        <div class="flex items-center space-x-3 overflow-hidden">
+                            <div class="w-9 h-9 rounded-xl ${isSelected ? 'bg-amber-600 text-white' : 'bg-slate-100 text-slate-600 group-hover:bg-amber-100 group-hover:text-amber-700'} flex items-center justify-center text-sm font-bold shrink-0 transition">
+                                <i class="fa-solid ${s.icon}"></i>
+                            </div>
+                            <div class="truncate">
+                                <h4 class="font-bold text-sm ${isSelected ? 'text-amber-950' : 'text-slate-800'} truncate">Situation ${s.id}: ${s.title}</h4>
+                                <p class="text-xs text-amber-700 font-semibold truncate"><i class="fa-solid fa-circle-check text-[10px] mr-1"></i>Chọn: ${s.chosenOption}</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center space-x-1 shrink-0">
+                            <button onclick="event.stopPropagation(); toggleBookmark('p2', ${s.id})" class="p-1.5 rounded-lg text-slate-300 hover:text-amber-500 transition ${isBookmarked ? 'text-amber-500' : ''}">
+                                <i class="fa-solid fa-star text-sm"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function selectSituation(id) {
+            selectedPart2SituationId = id;
+            renderSituationList(document.getElementById("search-input").value);
+            renderSituationDetail(id);
+        }
+
+        function toggleActiveRecallMode() {
+            activeRecallMode = document.getElementById("toggle-active-recall").checked;
+            renderSituationDetail(selectedPart2SituationId);
+        }
+
+        function renderSituationDetail(id) {
+            const situation = speakingPart2Data.find(s => s.id === id);
+            if (!situation) return;
+
+            const isBookmarked = bookmarks.includes(getBookmarkKey('p2', situation.id));
+            const detailCard = document.getElementById("situation-detail-card");
+
+            const fullSpeechText = `${situation.situationText} ${situation.solutionText} ${situation.discussionText.reason1} ${situation.discussionText.reason2} ${situation.discussionText.reject1} ${situation.discussionText.reject2} ${situation.conclusionText}`;
+
+            detailCard.innerHTML = `
+                <!-- Header -->
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-slate-100 pb-5 gap-4">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-12 h-12 rounded-2xl bg-amber-100 text-amber-700 flex items-center justify-center text-xl font-bold">
+                            <i class="fa-solid ${situation.icon}"></i>
+                        </div>
+                        <div>
+                            <div class="flex items-center space-x-2">
+                                <span class="text-xs font-extrabold text-amber-800 bg-amber-50 px-2 py-0.5 rounded border border-amber-200">SITUATION ${situation.id}</span>
+                                <span class="text-xs text-emerald-700 font-bold bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200"><i class="fa-solid fa-check mr-1"></i>${situation.chosenOption}</span>
+                            </div>
+                            <h2 class="text-xl sm:text-2xl font-black text-slate-900 mt-0.5">${situation.title}</h2>
+                            <p class="text-xs text-slate-500 font-medium mt-0.5">${situation.viTitle}</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center space-x-2">
+                        <button onclick="toggleBookmark('p2', ${situation.id})" class="px-3.5 py-2 rounded-xl text-sm font-semibold border transition flex items-center space-x-2 ${isBookmarked ? 'bg-amber-500 text-white border-amber-500' : 'bg-slate-50 border-slate-200 text-slate-700 hover:bg-slate-100'}">
+                            <i class="fa-solid fa-star"></i>
+                            <span>${isBookmarked ? 'Đã lưu' : 'Lưu bài'}</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 3 Options Display -->
+                <div class="mt-4 p-4 rounded-xl bg-slate-50 border border-slate-200/80 space-y-2">
+                    <span class="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-1">Các lựa chọn trong tình huống:</span>
+                    <div class="flex flex-wrap gap-2">
+                        ${situation.options.map(opt => `
+                            <div class="px-3 py-1.5 rounded-lg text-xs font-bold flex items-center space-x-2 ${opt.chosen ? 'bg-amber-500 text-white shadow-sm' : 'bg-white text-slate-600 border border-slate-200'}">
+                                <i class="fa-solid ${opt.chosen ? 'fa-circle-check' : 'fa-circle-xmark text-slate-400'}"></i>
+                                <span>${opt.name}</span>
+                                ${opt.chosen ? '<span class="ml-1 text-[10px] bg-white/20 px-1.5 py-0.2 rounded font-mono">ĐƯỢC CHỌN</span>' : ''}
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+
+                <div class="mt-6 space-y-6">
+                    
+                    <!-- Vocab Section -->
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between">
+                            <h3 class="font-bold text-slate-900 text-base flex items-center space-x-2">
+                                <i class="fa-solid fa-key text-amber-600"></i>
+                                <span>Từ Vựng & Cụm Từ Hữu Ích</span>
+                            </h3>
+                            <button onclick="openFlashcardForSpecific('p2', ${situation.id})" class="text-xs text-amber-700 font-bold hover:underline flex items-center space-x-1">
+                                <i class="fa-solid fa-play"></i><span>Flashcard tình huống này</span>
+                            </button>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                            ${situation.vocab.map(v => `
+                                <div class="p-3 rounded-xl bg-slate-50 border border-slate-200/80 hover:border-amber-300 transition flex items-center justify-between group">
+                                    <div class="space-y-0.5">
+                                        <p class="font-bold text-slate-800 text-sm group-hover:text-amber-800 transition">${v.en}</p>
+                                        <p class="text-xs text-slate-500 font-medium">${v.vi}</p>
+                                    </div>
+                                    <button data-speak="${encodeURIComponent(v.en)}" onclick="speakFromElement(this)" class="w-8 h-8 rounded-lg bg-white border border-slate-200 text-slate-400 hover:text-amber-600 hover:border-amber-300 flex items-center justify-center transition shadow-sm shrink-0">
+                                        <i class="fa-solid fa-volume-high text-xs"></i>
+                                    </button>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+
+                    <!-- Quick Active Recall / Keywords Card -->
+                    <div class="p-4 rounded-xl bg-amber-50/70 border border-amber-200/80 space-y-2">
+                        <div class="flex items-center justify-between">
+                            <h4 class="font-bold text-amber-900 text-xs uppercase tracking-wider flex items-center space-x-1.5">
+                                <i class="fa-solid fa-brain text-amber-600"></i>
+                                <span>Từ Khóa Ghi Nhớ Nhanh (Active Recall)</span>
+                            </h4>
+                            <span class="text-[11px] text-amber-700 italic">Ghi nhớ dàn ý để nói tự nhiên</span>
+                        </div>
+                        <p class="text-xs font-semibold text-amber-950 font-mono bg-white p-3 rounded-lg border border-amber-200/60 leading-relaxed shadow-sm">
+                            ${situation.keywordsSummary}
+                        </p>
+                    </div>
+
+                    <!-- Full Script breakdown (4 Steps) -->
+                    <div class="space-y-4 pt-4 border-t border-slate-100">
+                        <div class="flex items-center justify-between flex-wrap gap-2">
+                            <h3 class="font-bold text-slate-900 text-base flex items-center space-x-2">
+                                <i class="fa-solid fa-align-left text-brand-600"></i>
+                                <span>Bài Nói Mẫu Theo Cấu Trúc 4 Phần</span>
+                            </h3>
+                            <button data-speak="${encodeURIComponent(fullSpeechText)}" onclick="speakFromElement(this)" class="px-3.5 py-1.5 bg-amber-600 hover:bg-amber-700 text-white rounded-xl text-xs font-bold transition flex items-center space-x-1.5 shadow-md shadow-amber-500/20">
+                                <i class="fa-solid fa-circle-play"></i>
+                                <span>Nghe toàn bộ bài nói mẫu</span>
+                            </button>
+                        </div>
+
+                        ${activeRecallMode ? `
+                            <div class="p-6 bg-slate-900 text-white rounded-2xl text-center space-y-3">
+                                <div class="w-12 h-12 bg-amber-500/20 text-amber-400 rounded-2xl flex items-center justify-center mx-auto text-xl">
+                                    <i class="fa-solid fa-eye-slash"></i>
+                                </div>
+                                <h4 class="font-bold text-lg">Chế độ Active Recall Đang Bật</h4>
+                                <p class="text-xs text-slate-300 max-w-md mx-auto">
+                                    Hãy nhìn sơ đồ từ khóa ở trên và tự nói thành câu đầy đủ theo cấu trúc 4 bước mà không nhìn bài mẫu!
+                                </p>
+                                <button onclick="document.getElementById('toggle-active-recall').checked = false; toggleActiveRecallMode();" class="px-4 py-2 bg-amber-500 text-slate-900 text-xs font-bold rounded-xl hover:bg-amber-400 transition">
+                                    Hiện bài mẫu để đối chiếu
+                                </button>
+                            </div>
+                        ` : `
+                            <div class="space-y-3">
+                                <!-- Step 1: Situation -->
+                                <div class="p-4 rounded-xl bg-sky-50/80 border border-sky-200 space-y-1.5">
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-xs font-extrabold text-sky-800 uppercase tracking-wider flex items-center space-x-1">
+                                            <span class="w-4 h-4 rounded-full bg-sky-600 text-white flex items-center justify-center text-[10px] mr-1">1</span>
+                                            SITUATION (Bối cảnh)
+                                        </span>
+                                        <button data-speak="${encodeURIComponent(situation.situationText)}" onclick="speakFromElement(this)" class="text-sky-700 hover:text-sky-900 text-xs">
+                                            <i class="fa-solid fa-volume-high"></i>
+                                        </button>
+                                    </div>
+                                    <p class="text-sm font-semibold text-slate-800 leading-relaxed">${situation.situationText}</p>
+                                </div>
+
+                                <!-- Step 2: Solution -->
+                                <div class="p-4 rounded-xl bg-indigo-50/80 border border-indigo-200 space-y-1.5">
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-xs font-extrabold text-indigo-800 uppercase tracking-wider flex items-center space-x-1">
+                                            <span class="w-4 h-4 rounded-full bg-indigo-600 text-white flex items-center justify-center text-[10px] mr-1">2</span>
+                                            SOLUTION (Lựa chọn)
+                                        </span>
+                                        <button data-speak="${encodeURIComponent(situation.solutionText)}" onclick="speakFromElement(this)" class="text-indigo-700 hover:text-indigo-900 text-xs">
+                                            <i class="fa-solid fa-volume-high"></i>
+                                        </button>
+                                    </div>
+                                    <p class="text-sm font-extrabold text-brand-900 leading-relaxed">${situation.solutionText}</p>
+                                </div>
+
+                                <!-- Step 3: Discussion -->
+                                <div class="p-4 rounded-xl bg-emerald-50/80 border border-emerald-200 space-y-3">
+                                    <div class="flex items-center justify-between border-b border-emerald-200/60 pb-2">
+                                        <span class="text-xs font-extrabold text-emerald-800 uppercase tracking-wider flex items-center space-x-1">
+                                            <span class="w-4 h-4 rounded-full bg-emerald-600 text-white flex items-center justify-center text-[10px] mr-1">3</span>
+                                            DISCUSSION (Lập luận & So sánh)
+                                        </span>
+                                        <button data-speak="${encodeURIComponent(situation.discussionText.reason1 + ' ' + situation.discussionText.reason2 + ' ' + situation.discussionText.reject1 + ' ' + situation.discussionText.reject2)}" onclick="speakFromElement(this)" class="text-emerald-700 hover:text-emerald-900 text-xs">
+                                            <i class="fa-solid fa-volume-high"></i>
+                                        </button>
+                                    </div>
+
+                                    <div class="space-y-2 text-sm text-slate-800 leading-relaxed">
+                                        <div class="p-2.5 rounded-lg bg-white border border-emerald-100 flex items-start space-x-2">
+                                            <span class="text-xs bg-emerald-100 text-emerald-800 font-bold px-1.5 py-0.5 rounded shrink-0">Reason 1</span>
+                                            <p>${situation.discussionText.reason1}</p>
+                                        </div>
+                                        <div class="p-2.5 rounded-lg bg-white border border-emerald-100 flex items-start space-x-2">
+                                            <span class="text-xs bg-emerald-100 text-emerald-800 font-bold px-1.5 py-0.5 rounded shrink-0">Reason 2</span>
+                                            <p>${situation.discussionText.reason2}</p>
+                                        </div>
+                                        <div class="p-2.5 rounded-lg bg-white border border-rose-100 flex items-start space-x-2">
+                                            <span class="text-xs bg-rose-100 text-rose-800 font-bold px-1.5 py-0.5 rounded shrink-0">Reject 1</span>
+                                            <p>${situation.discussionText.reject1}</p>
+                                        </div>
+                                        <div class="p-2.5 rounded-lg bg-white border border-rose-100 flex items-start space-x-2">
+                                            <span class="text-xs bg-rose-100 text-rose-800 font-bold px-1.5 py-0.5 rounded shrink-0">Reject 2</span>
+                                            <p>${situation.discussionText.reject2}</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Step 4: Conclusion -->
+                                <div class="p-4 rounded-xl bg-purple-50/80 border border-purple-200 space-y-1.5">
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-xs font-extrabold text-purple-800 uppercase tracking-wider flex items-center space-x-1">
+                                            <span class="w-4 h-4 rounded-full bg-purple-600 text-white flex items-center justify-center text-[10px] mr-1">4</span>
+                                            CONCLUSION (Kết luận)
+                                        </span>
+                                        <button data-speak="${encodeURIComponent(situation.conclusionText)}" onclick="speakFromElement(this)" class="text-purple-700 hover:text-purple-900 text-xs">
+                                            <i class="fa-solid fa-volume-high"></i>
+                                        </button>
+                                    </div>
+                                    <p class="text-sm font-semibold text-slate-800 leading-relaxed">${situation.conclusionText}</p>
+                                </div>
+                            </div>
+                        `}
+
+                    </div>
+
+                </div>
+            `;
+        }
+
+        function handleSearch() {
+            const query = document.getElementById("search-input").value;
+            if (currentSpeakingPart === 'part1') {
+                renderTopicList(query);
+            } else {
+                renderSituationList(query);
+            }
+        }
+
+        function resetFilters() {
+            document.getElementById("search-input").value = "";
+            filterOnlyBookmarks = false;
+            const btn = document.getElementById("btn-bookmarks");
+            btn.classList.add("bg-amber-50", "text-amber-700");
+            btn.classList.remove("bg-amber-500", "text-white");
+            renderTopicList();
+            renderSituationList();
+        }
+
+        function openFlashcardModal() {
+            filterFlashcardModule(document.getElementById("fc-module-filter").value);
+            document.getElementById("flashcard-modal").classList.remove("hidden");
+        }
+
+        function openFlashcardForSpecific(part, id) {
+            activeFlashcardList = [];
+            if (part === 'p1') {
+                const topic = speakingData.find(t => t.id === id);
+                if (topic) {
+                    activeFlashcardList = topic.vocab.map(v => ({ ...v, topicTitle: `Topic ${topic.id}: ${topic.title}` }));
+                }
+            } else {
+                const situation = speakingPart2Data.find(s => s.id === id);
+                if (situation) {
+                    activeFlashcardList = situation.vocab.map(v => ({ ...v, topicTitle: `Situation ${situation.id}: ${situation.title}` }));
+                }
+            }
+            currentFlashcardIndex = 0;
+            isCardFlipped = false;
+            updateFlashcardUI();
+            document.getElementById("flashcard-modal").classList.remove("hidden");
+        }
+
+        function filterFlashcardModule(mod) {
+            activeFlashcardList = [];
+            if (mod === 'all' || mod === 'part1') {
+                speakingData.forEach(t => {
+                    t.vocab.forEach(v => {
+                        activeFlashcardList.push({ ...v, topicTitle: `Part 1: ${t.title}` });
+                    });
+                });
+            }
+            if (mod === 'all' || mod === 'part2') {
+                speakingPart2Data.forEach(s => {
+                    s.vocab.forEach(v => {
+                        activeFlashcardList.push({ ...v, topicTitle: `Part 2: ${s.title}` });
+                    });
+                });
+            }
+            currentFlashcardIndex = 0;
+            isCardFlipped = false;
+            updateFlashcardUI();
+        }
+
+        function closeFlashcardModal() {
+            document.getElementById("flashcard-modal").classList.add("hidden");
+        }
+
+        function flipCard() {
+            isCardFlipped = !isCardFlipped;
+            const inner = document.getElementById("card-inner");
+            if (isCardFlipped) {
+                inner.classList.add("rotate-y-180");
+            } else {
+                inner.classList.remove("rotate-y-180");
+            }
+        }
+
+        function updateFlashcardUI() {
+            if (activeFlashcardList.length === 0) return;
+            const current = activeFlashcardList[currentFlashcardIndex];
+
+            isCardFlipped = false;
+            document.getElementById("card-inner").classList.remove("rotate-y-180");
+
+            document.getElementById("fc-topic").innerText = current.topicTitle;
+            document.getElementById("fc-english").innerText = current.en;
+            document.getElementById("fc-vietnamese").innerText = current.vi;
+            document.getElementById("fc-counter").innerText = `${currentFlashcardIndex + 1} / ${activeFlashcardList.length}`;
+        }
+
+        function nextFlashcard() {
+            if (currentFlashcardIndex < activeFlashcardList.length - 1) {
+                currentFlashcardIndex++;
+                updateFlashcardUI();
+            } else {
+                currentFlashcardIndex = 0;
+                updateFlashcardUI();
+            }
+        }
+
+        function prevFlashcard() {
+            if (currentFlashcardIndex > 0) {
+                currentFlashcardIndex--;
+                updateFlashcardUI();
+            }
+        }
+
+        function switchTab(tab) {
+            const tabs = ['speaking', 'listening', 'reading', 'writing'];
+            tabs.forEach(t => {
+                const content = document.getElementById(`tab-${t}-content`);
+                const navBtn = document.getElementById(`nav-${t}`);
+                const mobileBtn = document.getElementById(`mobile-nav-${t}`);
+
+                if (t === tab) {
+                    content.classList.remove("hidden");
+                    if (navBtn) {
+                        navBtn.classList.add("bg-white", "text-brand-600", "shadow-sm");
+                        navBtn.classList.remove("text-slate-600");
+                    }
+                    if (mobileBtn) {
+                        mobileBtn.classList.add("bg-brand-50", "text-brand-600");
+                        mobileBtn.classList.remove("text-slate-600");
+                    }
+                } else {
+                    content.classList.add("hidden");
+                    if (navBtn) {
+                        navBtn.classList.remove("bg-white", "text-brand-600", "shadow-sm");
+                        navBtn.classList.add("text-slate-600");
+                    }
+                    if (mobileBtn) {
+                        mobileBtn.classList.remove("bg-brand-50", "text-brand-600");
+                        mobileBtn.classList.add("text-slate-600");
+                    }
+                }
+            });
+        }
+
+        window.onload = function () {
+            updateBookmarkUI();
+            renderTopicList();
+            renderTopicDetail(selectedPart1TopicId);
+            renderSituationList();
+            renderSituationDetail(selectedPart2SituationId);
+        };
+    </script>
+
+<script>
+const readingPassages = [{"title": "Passage 1 · Human Handedness", "en": "Archaeological records—paintings, drawings and carvings of humans engaged in activities involving the use of hands—indicate that humans have been predominantly right-handed for more than 5,000 years. In ancient Egyptian artwork, for example, the right hand is depicted as the dominant one in about 90 percent of the examples. Fracture or wear patterns on tools also indicate that a majority of ancient people were right-handed. Cro-Magnon cave paintings some 27,000 years old commonly show outlines of human hands made by placing one hand against the cave wall and applying paint with the other. Children today make similar outlines of their hands with crayons on paper. With few exceptions, left hands of Cro-Magnons are displayed on cave walls, indicating that the paintings were usually done by right-handers.\n\nAnthropological evidence pushes the record of handedness in early human ancestors back to at least 1.4 million years ago. One important line of evidence comes from flaking patterns of stone cores used in tool making: implements flaked with a clockwise motion (indicating a right-handed toolmaker) can be distinguished from those flaked with a counter-clockwise rotation (indicating a left-handed toolmaker).\n\nEven scratches found on fossil human teeth offer clues. Ancient humans are thought to have cut meat into strips by holding it between their teeth and slicing it with stone knives, as do the present-day Inuit. Occasionally the knives slip and leave scratches on the users’ teeth. Scratches made with a left-to-right stroke direction (by right-handers) are more common than scratches in the opposite direction (made by left-handers).\n\nStill other evidence comes from cranial morphology: scientists think that physical differences between the right and left sides of the interior of the skull indicate subtle physical differences between the two sides of the brain. The variation between the hemispheres corresponds to which side of the body is used to perform specific activities. Such studies, as well as studies of tool use, indicate that right- or left-sided dominance is not exclusive to modern Homo sapiens. Populations of Neanderthals, such as Homo erectus and Homo habilis, seem to have been predominantly right-handed, as we are.", "vi": "Các tư liệu khảo cổ—tranh vẽ, hình vẽ và hình chạm khắc mô tả con người thực hiện những hoạt động sử dụng đôi tay—cho thấy con người chủ yếu thuận tay phải trong hơn 5.000 năm. Chẳng hạn, trong nghệ thuật Ai Cập cổ đại, tay phải được thể hiện là tay thuận trong khoảng 90% ví dụ. Các dấu vết nứt vỡ hoặc hao mòn trên công cụ cũng cho thấy phần lớn người cổ đại thuận tay phải. Những bức vẽ trong hang động của người Cro-Magnon có niên đại khoảng 27.000 năm thường có đường viền bàn tay được tạo bằng cách đặt một tay lên vách hang và dùng tay kia phun màu. Trẻ em ngày nay cũng tạo đường viền bàn tay tương tự bằng sáp màu trên giấy. Chỉ có một vài ngoại lệ, bàn tay trái của người Cro-Magnon xuất hiện trên vách hang, cho thấy tranh thường được tạo bởi người thuận tay phải.\n\nBằng chứng nhân học đưa dấu mốc về việc thuận tay ở tổ tiên loài người lên ít nhất 1,4 triệu năm trước. Một nguồn bằng chứng quan trọng đến từ kiểu ghè các lõi đá dùng làm công cụ: công cụ được ghè theo chiều kim đồng hồ (cho thấy người chế tác thuận tay phải) có thể phân biệt với công cụ được ghè ngược chiều kim đồng hồ (cho thấy người chế tác thuận tay trái).\n\nNgay cả những vết xước trên răng hóa thạch của người cũng cung cấp manh mối. Người cổ đại được cho là đã giữ thịt giữa hai hàm răng rồi dùng dao đá cắt thành dải, giống người Inuit ngày nay. Đôi khi dao trượt và để lại vết xước trên răng. Vết xước tạo bởi thao tác kéo từ trái sang phải (ở người thuận tay phải) phổ biến hơn vết xước theo hướng ngược lại (ở người thuận tay trái).\n\nMột bằng chứng khác đến từ hình thái hộp sọ: các nhà khoa học cho rằng sự khác biệt về thể chất giữa phía bên phải và bên trái bên trong hộp sọ phản ánh những khác biệt tinh tế giữa hai bên não. Sự khác biệt giữa hai bán cầu tương ứng với bên cơ thể được dùng để thực hiện những hoạt động cụ thể. Những nghiên cứu này, cùng với nghiên cứu về việc sử dụng công cụ, cho thấy sự thiên về bên phải hoặc bên trái không chỉ xuất hiện ở người Homo sapiens hiện đại. Các quần thể người cổ như Homo erectus và Homo habilis dường như cũng chủ yếu thuận tay phải.", "qs": [["The word “clues” in line 16 is closest in meaning to", ["solutions", "details", "damage", "information"], 3, "The passage says tooth scratches offer clues—evidence or information about handedness.", "“Vết xước trên răng ... cung cấp manh mối” nghĩa là cung cấp thông tin/bằng chứng."], ["The fact that the Inuit cut meat by holding it between their teeth is significant because", ["the relationship between handedness and scratches on fossil human teeth can be verified", "it emphasizes the differences between contemporary humans and their ancestors", "the scratch patterns produced by stone knives vary significantly from patterns produced by modern knives", "it demonstrates that ancient humans were not skilled at using tools"], 0, "The Inuit example helps explain how ancient people could get scratches on their teeth, which reveal handedness.", "Ví dụ người Inuit giúp giải thích cách người cổ đại có thể bị xước răng, từ đó suy ra tay thuận."], ["The word “hemispheres” in line 23 is closest in meaning to", ["differences", "sides", "activities", "studies"], 1, "The text refers to the two sides of the brain.", "Đoạn văn nói đến hai bên/bán cầu của não."], ["What does the author say about Cro-Magnon paintings of hands?", ["Some are not very old.", "It is unusual to see such paintings.", "Many were made by children.", "The artists were mostly right-handed."], 3, "The passage says the left hands shown on cave walls indicate the paintings were usually done by right-handers.", "Đoạn văn cho biết hình bàn tay trái xuất hiện trên vách hang, cho thấy người vẽ thường thuận tay phải."], ["The word “implements” in line 14 is closest in meaning to", ["tools", "designs", "examples", "pieces"], 0, "“Implements” refers to objects used for tool making or work; here it means tools.", "“Implements” trong ngữ cảnh này có nghĩa là công cụ."], ["Why does the author mention Homo erectus and Homo habilis in line 30?", ["To contrast them with modern humans", "To explain when human ancestors began to make tools", "To show that early humans were also predominantly right-handed", "To prove that the population of Neanderthals was very large"], 2, "They are examples of early human populations that seem to have been predominantly right-handed.", "Hai loài được nêu làm ví dụ cho các nhóm người cổ cũng chủ yếu thuận tay phải."], ["All of the following are mentioned as types of evidence concerning handedness EXCEPT", ["ancient artwork", "asymmetrical skulls", "studies of tool use", "fossilized hand bones"], 3, "The passage mentions artwork, tools and skull morphology, but not fossilized hand bones.", "Bài có nhắc đến tranh cổ, công cụ và hình thái hộp sọ, nhưng không nhắc xương bàn tay hóa thạch."], ["What is the main idea of the passage?", ["Human ancestors became predominantly right-handed when they began to use tools.", "It is difficult to interpret the significance of anthropological evidence concerning tool use.", "Humans and their ancestors have been predominantly right-handed for over a million years.", "Human ancestors were more skilled at using both hands than modern humans."], 2, "The passage brings together several kinds of evidence that right-handedness has a very long history.", "Toàn bài tổng hợp nhiều loại bằng chứng cho thấy xu hướng thuận tay phải đã tồn tại từ rất lâu."], ["The word “other” in line 8 refers to", ["outline", "hand", "wall", "paint"], 1, "“The other” means the other hand after one hand is placed against the wall.", "“The other” chỉ bàn tay còn lại sau khi một tay được đặt lên vách hang."], ["When compared with implements “flaked with a counter-clockwise rotation,” it can be inferred that implements flaked with a clockwise motion are", ["more common", "larger", "more sophisticated", "older"], 0, "The passage presents right-handedness as predominant across the evidence, so clockwise-flaked implements are inferred to be more common.", "Vì bài cho biết người thuận tay phải chiếm đa số, có thể suy ra công cụ ghè theo chiều kim đồng hồ phổ biến hơn."]]}, {"title": "Passage 2 · Sculpture", "en": "Free-standing sculpture that is molded or carved is a type familiar to almost everyone. Although certain free-standing figures or groups of figures can have only a single side intended for viewing, others are completed on all sides. As with all other forms of art, the ultimate shape of a sculpture reflects the artist’s vision of individuals or experiences represented by the work. Throughout history, people everywhere have discovered a need for sculpture as a record of events and feelings.\n\nMaterials which can be sculpted do much to contribute to the artist’s imagination. Wood, stone, metal, and various types of plastic and synthetics are all used as sculpting media. When sculptures are made of stone, wood, ivory, or even ice, the sculptor carves or chips the substance to reduce it to the necessary shape. Developing a sculptured image on all sides represents a change from the older approach when artists left the back portion of the figure unfinished and rough. In fact, sculpture in relief is completely attached to the flat background material and appears to be a part of it. Relief, which is completed only on one side intended for viewing, was the first type of sculpture created by man, when ancient sculptors removed the background material in a side of a tree or a cave to make their drawing appear more realistic.\n\nWhile creating a statue, the artist depends on the appropriate lighting to develop the figure because the quality of the final product relies on the interplay between light and shade. When the work is finished, the sculpture must be displayed in the same light as it was originally created. If a light from a source is too weak or too strong, the effect that the sculptor intended may be lost. For example, in painting, the light and shade give the image shape and solidity that cannot be altered by an external light in which it is displayed; when a sculpture is exhibited, the artist’s work is brought to life by light, and its character can be altered by the control of the light source. A fundamental difference between a painting and a sculpture is that when viewing a painting, the audience can only see the point of view that the painter had intended. A free-standing sculpture can be seen from practically any angle. The job of the sculptor is then to attain the quality and the volume of the image from any possible point of view.\n\nIn addition to carving a work, sculptures can be cast. In the process of casting, a sculpture can be reproduced in a mold when a liquefied medium is poured into a shape. After the material from which the sculpture is made hardens, the mold is removed, and the work is cleaned of the excess and polished. Casting allows the artist to produce as many replicas as needed. Most commercially sold sculptures are made in this way. Casting metals requires special care and skill. Bronze is the preferred metal because of its versatility and malleability. To make bronze sculpture, the space in a mold is filled with wax until it is melted by the heated metal.", "vi": "Tác phẩm điêu khắc độc lập được đúc hoặc chạm khắc là loại hình quen thuộc với hầu hết mọi người. Một số hình tượng hoặc nhóm hình tượng chỉ có một mặt dành cho người xem, trong khi những tác phẩm khác được hoàn thiện ở mọi phía. Giống các loại hình nghệ thuật khác, hình dáng cuối cùng của tác phẩm phản ánh tầm nhìn nghệ thuật của người sáng tạo về con người hoặc trải nghiệm được thể hiện. Trong suốt lịch sử, con người ở khắp nơi nhận thấy nhu cầu dùng điêu khắc để lưu giữ sự kiện và cảm xúc.\n\nVật liệu điêu khắc góp phần mở rộng trí tưởng tượng của nghệ sĩ. Gỗ, đá, kim loại, nhiều loại nhựa và vật liệu tổng hợp đều được sử dụng. Với tác phẩm làm từ đá, gỗ, ngà voi hoặc thậm chí băng, nghệ sĩ đục hoặc gọt vật liệu để tạo hình cần thiết. Việc tạo hình hoàn chỉnh ở mọi phía khác với cách làm cũ, khi phần sau của hình tượng thường được để thô và chưa hoàn thiện. Điêu khắc phù điêu gắn hoàn toàn vào nền phẳng và trông như một phần của nền. Phù điêu chỉ hoàn thiện ở mặt hướng về người xem và là loại điêu khắc đầu tiên, khi người xưa loại bỏ vật liệu nền trên thân cây hoặc vách hang để hình vẽ trông chân thực hơn.\n\nKhi tạo tượng, nghệ sĩ cần ánh sáng thích hợp vì chất lượng tác phẩm phụ thuộc vào sự tương tác giữa sáng và tối. Khi hoàn thành, tượng nên được trưng bày dưới điều kiện ánh sáng giống lúc sáng tác. Nếu nguồn sáng quá yếu hoặc quá mạnh, hiệu quả dự định có thể mất đi. Trong hội họa, sáng tối tạo hình khối và độ đặc chắc cho hình ảnh, không bị thay đổi bởi ánh sáng bên ngoài nơi trưng bày; còn với điêu khắc, ánh sáng làm tác phẩm sống động và có thể thay đổi đặc tính của nó. Khác biệt cơ bản là người xem tranh chỉ nhìn được góc nhìn mà họa sĩ dự định, trong khi tượng độc lập có thể được nhìn từ gần như mọi góc. Vì vậy, nhà điêu khắc cần tạo được chất lượng và thể tích hình ảnh từ mọi góc nhìn.\n\nNgoài chạm khắc, tác phẩm điêu khắc còn có thể được đúc. Trong quá trình đúc, vật liệu hóa lỏng được rót vào khuôn. Khi vật liệu cứng lại, khuôn được tháo ra và tác phẩm được làm sạch, đánh bóng. Đúc giúp nghệ sĩ tạo ra nhiều bản sao khi cần; phần lớn tượng bán thương mại được làm theo cách này. Đúc kim loại đòi hỏi sự cẩn trọng và kỹ năng. Đồng là kim loại được ưa chuộng nhờ tính linh hoạt và dễ uốn. Để tạo tượng đồng, khoảng trống trong khuôn được lấp đầy bằng sáp cho đến khi sáp tan bởi kim loại được nung nóng.", "qs": [["What is the main topic of this passage?", ["Difference between painting and sculpture", "Sculpting techniques and media", "Types of commercially produced sculptures", "Reasons for enjoying sculpture"], 1, "The passage describes materials and techniques used to create sculpture, as well as how sculptures are displayed.", "Bài đọc trình bày vật liệu, kỹ thuật tạo tác và cách trưng bày điêu khắc."], ["The word “ultimate” in paragraph 1 is closest in meaning to", ["ulterior", "final", "formal", "formidable"], 1, "“Ultimate shape” means the final shape.", "“Ultimate shape” nghĩa là hình dáng cuối cùng."], ["According to the passage, the purpose of sculpture as a form of art is to", ["display a group of figures", "reflect a human need for freedom", "express an artistic vision", "commemorate individuals and events"], 2, "The passage says a sculpture reflects the artist’s vision; it also records events and feelings.", "Bài nêu hình dáng tác phẩm phản ánh tầm nhìn nghệ thuật của người sáng tạo."], ["According to the passage, all of the following are true of sculpture EXCEPT that", ["it can be found in all parts of the world", "it has undergone change since the early times", "it can be created from many substances", "it is no longer useful for people"], 3, "The passage describes sculpture as serving people throughout history, not as something no longer useful.", "Bài nói điêu khắc có vai trò trong lịch sử, không nói rằng nó không còn hữu ích."], ["The author of the passage implies that the most important factor in showing a sculpted work is", ["the strength of the light source", "the development of the sculpted figure", "the shape of the material for sculpting", "the effect of light on the sculpted image"], 3, "The author emphasizes that the interplay of light and shade affects the final appearance of sculpture.", "Tác giả nhấn mạnh tác động của ánh sáng và bóng tối đến diện mạo tác phẩm."], ["The word “audience” in paragraph 3 is closest in meaning to", ["listeners", "viewers", "public", "artists"], 1, "In the context of viewing a painting, “audience” means viewers.", "Trong ngữ cảnh xem tranh, “audience” là người xem."], ["What does the author mention as an important difference between a painting and a sculpture?", ["A painting does not need shading to be displayed", "A painting can be viewed from only one position", "A sculpture needs to have proper light", "A sculpture does not look good from all angles"], 1, "The passage says a painting shows the viewpoint intended by the painter, while a free-standing sculpture can be seen from almost any angle.", "Tranh chỉ thể hiện góc nhìn mà họa sĩ định sẵn, còn tượng độc lập có thể nhìn từ nhiều góc."]]}, {"title": "Passage 3 · Northern North America", "en": "Around the year 1500, hunting people occupied the entire northern third of North America. They lived well from the animals with whom they shared these lands. Hunters of sea mammals had colonized the Arctic coasts of Canada and Greenland between four and five thousand years before. Land-hunting people had lived throughout much of the northern interior for at least 12,000 years.\n\nNorthern North America is part of a larger circumpolar ecological domain that continues across the narrow Bering Strait into Siberia and northern Europe. The overall circumpolar environment in the 1500s was not very different from the environment of the present. This vast landmass had a continental climate and was dominated by cold arctic air throughout a long winter and spring season. Summer temperature ranged from near freezing to the mid-20s Celsius, while winter temperatures were often as low as 40 degrees below zero Celsius.\n\nGeographers divide the overall circumpolar domain into two zones, the Arctic and, below it, the Subarctic. They refer to the landforms of these areas as tundra and taiga, respectively.\n\nTemperatures in the northern lands were below freezing for eight or nine months of the year. Subsurface soil in the Arctic’s tundra remained permanently frozen. Even when summer temperatures were above freezing and the top inches of earth became saturated with water, the soil below remained frozen into a permafrost, as hard as rock. When water flowed upon the surface of permanently frozen tundra, it made overland travel extremely difficult. Summer travel in the boggy lands, or muskeg country, of the Subarctic’s taiga was also slow and arduous. Tracking animals was more difficult than it was during the winter when the swampy ground was frozen solid and covered with snow. In both tundra and taiga, hordes of mosquitoes and biting flies bred in the standing pools of water. Clothing lost its thermal efficiency when it became damp. Northern people looked forward to the turn of the season to bring the easier traveling conditions associated with cold weather. In the Arctic, they could haul food and supplies by dogsled while in the Subarctic, people could travel quickly and efficiently by snowshoes and toboggan.", "vi": "Khoảng năm 1500, các cộng đồng săn bắt sinh sống trên toàn bộ một phần ba phía bắc của Bắc Mỹ. Họ sống dựa vào các loài động vật cùng chia sẻ vùng đất này. Những người săn thú biển đã định cư dọc bờ biển Bắc Cực của Canada và Greenland từ khoảng 4.000–5.000 năm trước. Những người săn bắt trên đất liền đã sống ở phần lớn nội địa phía bắc ít nhất 12.000 năm.\n\nBắc Mỹ phía bắc là một phần của vùng sinh thái vòng cực rộng lớn hơn, kéo dài qua eo biển Bering hẹp đến Siberia và Bắc Âu. Môi trường vòng cực vào những năm 1500 không khác nhiều so với hiện nay. Vùng đất rộng lớn này có khí hậu lục địa và chịu ảnh hưởng của không khí Bắc Cực lạnh trong mùa đông và mùa xuân kéo dài. Nhiệt độ mùa hè dao động từ gần 0°C đến khoảng giữa 20°C, trong khi mùa đông thường xuống tới âm 40°C.\n\nCác nhà địa lý chia vùng vòng cực thành hai khu vực: Bắc Cực và vùng cận Bắc Cực ở phía dưới. Địa hình của hai khu vực lần lượt được gọi là lãnh nguyên (tundra) và rừng taiga.\n\nNhiệt độ ở vùng đất phía bắc thấp hơn điểm đóng băng trong tám hoặc chín tháng mỗi năm. Lớp đất bên dưới bề mặt tại lãnh nguyên Bắc Cực bị đóng băng vĩnh viễn. Ngay cả khi mùa hè ấm hơn và lớp đất trên cùng bão hòa nước, lớp đất bên dưới vẫn đóng băng thành tầng đất đóng băng vĩnh cửu (permafrost), cứng như đá. Nước chảy trên bề mặt lãnh nguyên đóng băng khiến việc đi lại trên đất liền rất khó khăn. Mùa hè đi lại ở vùng đất lầy lội thuộc rừng taiga cận Bắc Cực cũng chậm chạp và gian nan. Theo dấu động vật khó hơn mùa đông, khi nền đất đầm lầy đóng băng cứng và phủ tuyết. Ở cả lãnh nguyên và taiga, muỗi và ruồi cắn sinh sôi trong các vũng nước tù. Quần áo mất khả năng giữ nhiệt khi bị ẩm. Người dân phương Bắc mong mùa lạnh trở lại vì việc đi lại dễ dàng hơn. Ở Bắc Cực, họ có thể vận chuyển thức ăn và vật dụng bằng xe chó kéo; ở vùng cận Bắc Cực, họ đi nhanh và hiệu quả bằng giày đi tuyết và xe trượt tuyết.", "qs": [["What does the passage mainly discuss?", ["The hunting people of North America", "The circumpolar environment of the sixteenth century", "Animals that inhabit the Arctic coast", "The geography of Canada and Greenland"], 1, "Most of the passage describes the circumpolar climate, landforms and travel conditions around the 1500s.", "Phần lớn bài nói về khí hậu, địa hình và điều kiện đi lại của vùng vòng cực vào khoảng thế kỷ XVI."], ["The word “domain” in line 6 is closest in meaning to", ["temperature", "period", "region", "process"], 2, "“Domain” refers to a geographical area or region.", "“Domain” ở đây có nghĩa là khu vực/vùng."], ["Which of the following terms is used to describe the landforms of the Arctic region?", ["Subarctic", "Taiga", "Tundra", "Muskeg"], 2, "The passage states that the landforms of the Arctic are called tundra.", "Bài nêu địa hình Bắc Cực được gọi là tundra (lãnh nguyên)."], ["For how many months of the year were temperatures below freezing in the circumpolar region?", ["4–5 months", "6 months", "8–9 months", "12 months"], 2, "The passage directly says temperatures were below freezing for eight or nine months.", "Bài nêu trực tiếp nhiệt độ dưới điểm đóng băng trong tám hoặc chín tháng."], ["The word “saturated” in line 19 is closest in meaning to", ["enriched", "dissolved", "removed", "soaked"], 3, "Here, soil saturated with water means soaked with water.", "Đất “saturated with water” nghĩa là thấm/bão hòa nước."], ["The word “arduous” in line 22 is closest in meaning to", ["humid", "difficult", "indirect", "unnecessary"], 1, "“Slow and arduous” means slow and difficult.", "“Slow and arduous” nghĩa là chậm chạp và gian nan."], ["The word “standing” in line 25 is closest in meaning to", ["not flowing", "very deep", "numerous", "contaminated"], 0, "“Standing pools of water” are pools of water that are not flowing.", "“Standing water” là nước tù, không chảy."], ["All of the following are mentioned as having made travel in the summer difficult EXCEPT", ["insects", "wet clothing", "swampy lands", "lack of supplies"], 3, "The passage mentions insects, damp clothing and boggy land, but not a lack of supplies as a difficulty.", "Bài nhắc đến côn trùng, quần áo ẩm và vùng đất lầy; không nêu thiếu vật dụng là nguyên nhân gây khó đi lại."], ["The subsurface soil in the Arctic’s tundra is most comparable to which of the following?", ["Cement", "A bog", "A pond", "Sand"], 0, "The passage says the permafrost is as hard as rock, making cement the closest option.", "Bài so sánh tầng đất đóng băng vĩnh cửu cứng như đá; trong các lựa chọn, xi măng gần nhất."], ["Where in the passage does the author mention a means by which people traveled in the northern lands?", ["Lines 2–4", "Lines 6–7", "Lines 20–21", "Lines 27–29"], 3, "The final lines mention dogsleds, snowshoes and toboggans.", "Các dòng cuối nhắc đến xe chó kéo, giày đi tuyết và xe trượt tuyết."]]}];
+const readingVocab = [
+ {en:"predominantly",vi:"chủ yếu, phần lớn",p:0},{en:"cranial morphology",vi:"hình thái hộp sọ",p:0},
+ {en:"hemispheres",vi:"hai bán cầu (não)",p:0},{en:"implements",vi:"công cụ",p:0},
+ {en:"relief",vi:"phù điêu",p:1},{en:"free-standing sculpture",vi:"tượng điêu khắc độc lập",p:1},
+ {en:"malleability",vi:"tính dễ uốn",p:1},{en:"circumpolar",vi:"thuộc vùng vòng cực",p:2},
+ {en:"permafrost",vi:"tầng đất đóng băng vĩnh cửu",p:2},{en:"arduous",vi:"gian nan, khó khăn",p:2},
+ {en:"saturated",vi:"bão hòa, thấm đẫm",p:2},{en:"standing pools",vi:"các vũng nước tù",p:2},
+ {en:"domain",vi:"khu vực, vùng",p:2}
+];
+let rdPassage=0, rdQuestion=0, rdMode='practice', rdFontSize=16, rdTranslation=false, rdVocabOn=false, rdSubmitted=false, rdAnswers={}, rdTimerSecs=3600, rdTimerHandle=null;
+const rdAllQuestions=()=>readingPassages.flatMap((p,pi)=>p.qs.map((q,qi)=>({...q,pi,qi,global:readingPassages.slice(0,pi).reduce((n,x)=>n+x.qs.length,0)+qi})));
+function rdQuestionsForPassage(){return readingPassages[rdPassage].qs.map((q,qi)=>({...q,pi:rdPassage,qi,global:readingPassages.slice(0,rdPassage).reduce((n,x)=>n+x.qs.length,0)+qi}));}
+function readingInit(){
+ const tabs=document.getElementById('rd-passage-tabs');
+ tabs.innerHTML=readingPassages.map((p,i)=>`<button onclick="readingSelectPassage(${i})" id="rd-tab-${i}" class="px-3 py-2 rounded-lg text-xs font-bold border ${i===rdPassage?'bg-indigo-600 text-white border-indigo-600':'bg-white text-slate-600 border-slate-200 hover:bg-slate-50'}">Passage ${i+1}<span class="ml-1 opacity-70">(${p.qs.length})</span></button>`).join('');
+ document.getElementById('rd-vocab-list').innerHTML=readingVocab.map((v,i)=>`<button onclick="readingShowVocab(${i})" class="px-3 py-2 rounded-xl bg-white hover:bg-amber-100 border border-amber-200 hover:border-amber-300 text-sm text-slate-700 shadow-sm transition"><span class="font-bold text-amber-900">${v.en}</span><span class="text-amber-500 mx-1.5">·</span><span>${v.vi}</span></button>`).join('');
+ readingRender();
+}
+function readingSelectPassage(i){rdPassage=i;rdQuestion=0;readingRender();}
+function readingRender(){
+ const p=readingPassages[rdPassage], qs=rdQuestionsForPassage();
+ document.getElementById('rd-passage-title').textContent=p.title;
+ document.querySelectorAll('#rd-passage-tabs button').forEach((b,i)=>{b.className='px-3 py-2 rounded-lg text-xs font-bold border '+(i===rdPassage?'bg-indigo-600 text-white border-indigo-600':'bg-white text-slate-600 border-slate-200 hover:bg-slate-50')});
+ let passageText=p.en;
+ if(rdVocabOn){readingVocab.filter(v=>v.p===rdPassage).forEach(v=>{const esc=v.en.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');passageText=passageText.replace(new RegExp('('+esc+')','gi'),'<mark class="rd-mark">$1</mark>')})}
+ document.getElementById('rd-passage-text').innerHTML=passageText.replace(/\n\n/g,'<br><br>');
+ document.getElementById('rd-passage-text').style.fontSize=rdFontSize+'px';
+ document.getElementById('rd-translation-text').textContent=p.vi;
+ document.getElementById('rd-passage-translation').classList.toggle('hidden',!rdTranslation);
+ document.getElementById('rd-translate-btn').setAttribute('aria-pressed',String(rdTranslation)); document.getElementById('rd-translate-btn').querySelector('.rd-state-pill').textContent=rdTranslation?'Bật':'Tắt';
+ document.getElementById('rd-vocab-btn').setAttribute('aria-pressed',String(rdVocabOn)); document.getElementById('rd-vocab-btn').querySelector('.rd-state-pill').textContent=rdVocabOn?'Bật':'Tắt';
+ const globalQs=rdAllQuestions(), answered=globalQs.filter(q=>rdAnswers[q.global]!==undefined).length;
+ document.getElementById('rd-progress-label').textContent=`Đã trả lời ${answered}/${globalQs.length}`;
+ document.getElementById('rd-progress-percent').textContent=Math.round(answered/globalQs.length*100)+'%';
+ document.getElementById('rd-progress-bar').style.width=(answered/globalQs.length*100)+'%';
+ document.getElementById('rd-question-matrix').innerHTML=qs.map((q,i)=>{const g=q.global,selected=rdAnswers[g]!==undefined;let cls=selected?'bg-indigo-100 border-indigo-300 text-indigo-800':'bg-white border-slate-200 text-slate-600';if(rdSubmitted)cls=rdAnswers[g]===q[2]?'bg-emerald-100 border-emerald-300 text-emerald-800':'bg-rose-100 border-rose-300 text-rose-800';return `<button onclick="readingGoQuestion(${i})" class="h-9 rounded-lg border text-sm font-extrabold ${cls} ${i===rdQuestion?'ring-2 ring-indigo-500 ring-offset-1':''}">${i+1}</button>`}).join('');
+ const q=qs[rdQuestion];document.getElementById('rd-question-count').textContent=`Câu ${rdQuestion+1} / ${qs.length}`;
+ document.getElementById('rd-question-text').textContent=q[0];
+ document.getElementById('rd-options').innerHTML=q[1].map((o,i)=>{let chosen=rdAnswers[q.global]===i, correct=rdSubmitted&&i===q[2], wrong=rdSubmitted&&chosen&&i!==q[2];let cl=correct?'border-emerald-400 bg-emerald-50':wrong?'border-rose-400 bg-rose-50':chosen?'border-indigo-400 bg-indigo-50':'border-slate-200 hover:border-indigo-300 hover:bg-slate-50';return `<button ${rdMode==='exam'&&rdSubmitted?'disabled':''} onclick="readingChoose(${q.global},${i})" class="w-full text-left flex gap-3 items-start p-3 rounded-xl border ${cl} transition ${rdMode==='exam'&&rdSubmitted?'cursor-not-allowed':''}"><span class="flex-none w-7 h-7 rounded-lg ${chosen||correct?'bg-indigo-600 text-white':'bg-slate-100 text-slate-600'} flex items-center justify-center text-xs font-extrabold">${'ABCD'[i]}</span><span class="text-sm leading-6 text-slate-700">${o}</span>${correct?'<i class="fa-solid fa-check text-emerald-600 ml-auto mt-1"></i>':''}${wrong?'<i class="fa-solid fa-xmark text-rose-600 ml-auto mt-1"></i>':''}</button>`}).join('');
+ const fb=document.getElementById('rd-feedback');
+ if(rdMode==='practice'&&rdAnswers[q.global]!==undefined){fb.classList.remove('hidden');let ok=rdAnswers[q.global]===q[2];fb.className='mt-4 rounded-xl p-4 text-sm leading-6 '+(ok?'bg-emerald-50 border border-emerald-200 text-emerald-900':'bg-rose-50 border border-rose-200 text-rose-900');fb.innerHTML=`<div class="font-extrabold mb-1">${ok?'Chính xác!':'Chưa chính xác.'} Đáp án: ${'ABCD'[q[2]]}. ${q[1][q[2]]}</div><p>${q[3]}</p><p class="mt-2 text-slate-600">${q[4]}</p>`}
+ else if(rdSubmitted){fb.classList.remove('hidden');fb.className='mt-4 rounded-xl p-4 text-sm leading-6 bg-slate-50 border border-slate-200';fb.innerHTML=`<b>Đáp án: ${'ABCD'[q[2]]}. ${q[1][q[2]]}</b><p class="mt-2">${q[3]}</p><p class="mt-2">${q[4]}</p>`}
+ else fb.classList.add('hidden');
+ document.getElementById('rd-timer-wrap').classList.toggle('hidden',rdMode!=='exam');
+ document.getElementById('rd-submit-btn').classList.toggle('hidden',rdMode!=='exam'||rdSubmitted);
+ document.getElementById('rd-result').classList.toggle('hidden',!rdSubmitted);
+ if(rdSubmitted)readingRenderResult();
+}
+function readingGoQuestion(i){rdQuestion=i;readingRender();}
+function readingChoose(g,i){if(rdSubmitted)return;rdAnswers[g]=i;readingRender();}
+function readingMove(dir){const n=readingPassages[rdPassage].qs.length;if(rdQuestion+dir<0){if(rdPassage>0){rdPassage--;rdQuestion=readingPassages[rdPassage].qs.length-1}}else if(rdQuestion+dir>=n){if(rdPassage<readingPassages.length-1){rdPassage++;rdQuestion=0}}else rdQuestion+=dir;readingRender();}
+function readingFont(d){rdFontSize=Math.max(13,Math.min(23,rdFontSize+d*2));readingRender();}
+function readingToggleTranslation(){rdTranslation=!rdTranslation;readingRender();}
+function readingToggleVocab(){rdVocabOn=!rdVocabOn;readingRender();}
+function readingSetMode(mode){
+ if(rdTimerHandle){clearInterval(rdTimerHandle);rdTimerHandle=null}
+ rdMode=mode;rdSubmitted=false;rdAnswers={};rdPassage=0;rdQuestion=0;rdTimerSecs=3600;
+ document.getElementById('rd-mode-practice').className='px-4 py-2 rounded-xl font-bold text-sm '+(mode==='practice'?'bg-white text-indigo-700':'bg-white/15 hover:bg-white/25');
+ document.getElementById('rd-mode-exam').className='px-4 py-2 rounded-xl font-bold text-sm '+(mode==='exam'?'bg-white text-indigo-700':'bg-white/15 hover:bg-white/25');
+ if(mode==='exam'){rdTimerHandle=setInterval(()=>{if(rdTimerSecs>0){rdTimerSecs--;document.getElementById('rd-timer').textContent=String(Math.floor(rdTimerSecs/60)).padStart(2,'0')+':'+String(rdTimerSecs%60).padStart(2,'0')}else{readingSubmitExam()}},1000)}
+ readingRender();
+}
+function readingSubmitExam(){if(rdSubmitted)return;rdSubmitted=true;if(rdTimerHandle){clearInterval(rdTimerHandle);rdTimerHandle=null}readingRender();}
+function readingRenderResult(){const qs=rdAllQuestions(),correct=qs.filter(q=>rdAnswers[q.global]===q[2]).length;let vstep=correct>=25?'B2 (tham khảo)':correct>=18?'B1 (tham khảo)':correct>=12?'A2 (tham khảo)':'Dưới A2 (tham khảo)';document.getElementById('rd-result').innerHTML=`<div class="text-xs font-bold text-emerald-800 uppercase tracking-wider">Kết quả thi thử</div><div class="text-3xl font-extrabold text-emerald-900 mt-1">${correct}/${qs.length} <span class="text-base font-semibold">câu đúng</span></div><div class="text-sm text-emerald-900 mt-2">Tỷ lệ đúng: ${Math.round(correct/qs.length*100)}% · Mức tham khảo: ${vstep}</div><p class="text-xs text-emerald-800 mt-2">Mức quy đổi chỉ mang tính tham khảo cho bài luyện tập này, không phải quy đổi VSTEP chính thức.</p><button onclick="readingSetMode('exam')" class="mt-3 px-4 py-2 rounded-lg bg-emerald-700 text-white font-bold text-sm">Làm lại bài thi</button>`}
+function readingShowVocab(i){const v=readingVocab[i];alert(v.en+' — '+v.vi);}
+function readingOpenFlashcards(){
+ activeFlashcardList=readingVocab.map(v=>({en:v.en,vi:v.vi,topicTitle:'Reading · '+readingPassages[v.p].title}));
+ currentFlashcardIndex=0;isCardFlipped=false;updateFlashcardUI();document.getElementById('flashcard-modal').classList.remove('hidden');
+}
+document.addEventListener('DOMContentLoaded',()=>{if(document.getElementById('tab-reading-content'))readingInit()});
+</script>
+
+</body>
+</html>
