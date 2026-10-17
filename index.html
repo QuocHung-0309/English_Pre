@@ -365,69 +365,14 @@
         </div>
 
         <!-- READING MODULE -->
-        <div id="tab-reading-content" class="hidden space-y-6">
-          <div class="rounded-2xl bg-gradient-to-r from-slate-900 via-emerald-950 to-slate-900 text-white p-6 shadow-lg">
-            <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
-              <div><div class="text-xs uppercase tracking-[.2em] text-emerald-100 font-bold">Reading · Practice 1</div>
-                <h2 class="text-2xl font-extrabold mt-1">Luyện đọc hiểu</h2>
-                <p class="text-emerald-100 text-sm mt-1">3 bài đọc · 27 câu hỏi · Luyện tập hoặc thi thử</p>
-              </div>
-              <div class="flex flex-wrap gap-2">
-                <button onclick="readingSetMode('practice')" id="rd-mode-practice" class="px-4 py-2 rounded-xl bg-emerald-500 text-slate-950 font-bold text-sm shadow-sm"><i class="fa-solid fa-book-open mr-2"></i>Luyện tập</button>
-                <button onclick="readingSetMode('exam')" id="rd-mode-exam" class="px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20 border border-white/10 font-bold text-sm"><i class="fa-solid fa-stopwatch mr-2"></i>Thi thử 60 phút</button>
-              </div>
-            </div>
-          </div>
-          <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-            <section class="lg:col-span-7 bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
-              <div class="p-4 md:p-5 border-b border-slate-100 bg-gradient-to-r from-white to-emerald-50/70 flex flex-col gap-4">
-                <div class="flex flex-wrap items-center justify-between gap-3">
-                  <div><div class="text-[11px] uppercase tracking-[.16em] text-emerald-700 font-extrabold">Reading passage</div><h3 id="rd-passage-title" class="font-extrabold text-xl text-slate-900 mt-1">Passage 1</h3></div>
-                  <div class="flex items-center gap-1.5 rounded-xl bg-slate-100 p-1">
-                    <button onclick="readingFont(-1)" class="w-8 h-8 rounded-lg bg-white shadow-sm text-slate-700 hover:bg-emerald-50 font-bold text-xs" title="Giảm cỡ chữ">A−</button>
-                    <button onclick="readingFont(1)" class="w-8 h-8 rounded-lg bg-white shadow-sm text-slate-700 hover:bg-emerald-50 font-bold text-xs" title="Tăng cỡ chữ">A+</button>
-                  </div>
+                <div id="tab-reading-content" class="hidden">
+                        <iframe
+                                src="Reading_Studio_Updated.html"
+                                title="Reading Studio"
+                                class="block h-[calc(100dvh-8rem)] min-h-[620px] w-full border-0 bg-white"
+                                loading="lazy"
+                        ></iframe>
                 </div>
-                <div class="flex flex-wrap gap-2">
-                  <button onclick="readingToggleTranslation()" id="rd-translate-btn" aria-pressed="false" class="rd-tool-btn rd-translate px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-bold inline-flex items-center gap-2 transition"><i class="fa-solid fa-language text-base"></i><span>Dịch tiếng Việt</span><span class="rd-state-pill">Tắt</span></button>
-                  <button onclick="readingToggleVocab()" id="rd-vocab-btn" aria-pressed="false" class="rd-tool-btn rd-highlight px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-bold inline-flex items-center gap-2 transition"><i class="fa-solid fa-highlighter text-base"></i><span>Tô từ vựng</span><span class="rd-state-pill">Tắt</span></button>
-                </div>
-                <p class="text-xs text-slate-500"><i class="fa-regular fa-lightbulb text-amber-500 mr-1"></i>Bật dịch để xem nghĩa tiếng Việt; bật tô từ để nhận diện các từ vựng trọng tâm trong bài.</p>
-              </div>
-              <div class="px-4 pt-4 flex flex-wrap gap-2" id="rd-passage-tabs"></div>
-              <div id="rd-passage-text" class="custom-scrollbar p-5 md:p-6 overflow-y-auto max-h-[72vh] leading-8 text-slate-700 whitespace-pre-line" style="font-size:16px"></div>
-              <div id="rd-passage-translation" class="hidden mx-4 md:mx-5 mb-5 p-4 md:p-5 rounded-2xl bg-sky-50 border border-sky-200 text-sky-950 leading-7 whitespace-pre-line shadow-inner"><div class="flex items-center gap-2 text-xs font-extrabold uppercase tracking-wider text-sky-700 mb-2"><i class="fa-solid fa-language"></i>Bản dịch tiếng Việt</div><div id="rd-translation-text"></div></div>
-              <div class="mx-4 md:mx-5 mb-5 p-4 rounded-2xl bg-amber-50/70 border border-amber-100">
-                <div class="flex items-center gap-2 mb-1"><span class="w-8 h-8 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center"><i class="fa-solid fa-spell-check"></i></span><div><h4 class="font-extrabold text-slate-800 text-sm">Từ vựng trọng tâm</h4><p class="text-xs text-slate-500">Chọn từ để xem nghĩa và học nhanh</p></div><button onclick="readingOpenFlashcards()" class="ml-auto px-2.5 py-1.5 rounded-lg bg-white border border-amber-200 text-amber-800 font-bold text-xs"><i class="fa-solid fa-layer-group mr-1"></i>Flashcards</button></div>
-                <div id="rd-vocab-list" class="flex flex-wrap gap-2 mt-3"></div>
-              </div>
-            </section>
-            <section class="lg:col-span-5 bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
-              <div class="p-4 border-b border-slate-100 flex flex-wrap items-center justify-between gap-3">
-                <div><div class="text-xs text-slate-500 font-semibold">CÂU HỎI</div><h3 class="font-extrabold text-lg text-slate-900">Chọn đáp án</h3></div>
-                <div id="rd-timer-wrap" class="hidden rounded-xl bg-rose-50 text-rose-700 px-3 py-2 font-extrabold text-sm"><i class="fa-regular fa-clock mr-2"></i><span id="rd-timer">60:00</span></div>
-              </div>
-              <div class="p-4 border-b border-slate-100">
-                <div class="flex justify-between text-xs text-slate-500 mb-2"><span id="rd-progress-label">Đã trả lời 0/10</span><span id="rd-progress-percent">0%</span></div>
-                <div class="h-2 bg-slate-100 rounded-full overflow-hidden"><div id="rd-progress-bar" class="h-full bg-emerald-500 rounded-full transition-all" style="width:0%"></div></div>
-                <div id="rd-question-matrix" class="grid grid-cols-5 sm:grid-cols-10 gap-2 mt-4"></div>
-              </div>
-              <div class="p-5">
-                <div class="flex items-center justify-between gap-3 mb-3"><span id="rd-question-count" class="text-xs uppercase tracking-wider font-extrabold text-emerald-700">Câu 1</span><span id="rd-question-type" class="text-xs text-slate-400">Reading comprehension</span></div>
-                <h4 id="rd-question-text" class="font-bold text-slate-900 leading-7 mb-4"></h4>
-                <div id="rd-options" class="space-y-2"></div>
-                <div id="rd-feedback" class="hidden mt-4 rounded-xl p-4 text-sm leading-6"></div>
-                <div class="flex items-center justify-between gap-2 mt-5">
-                  <button onclick="readingMove(-1)" class="px-4 py-2.5 rounded-xl border border-slate-200 hover:bg-slate-50 text-sm font-bold"><i class="fa-solid fa-arrow-left mr-2"></i>Trước</button>
-                  <button onclick="readingMove(1)" class="px-4 py-2.5 rounded-xl bg-indigo-600 hover:bg-emerald-700 text-white text-sm font-bold">Tiếp theo<i class="fa-solid fa-arrow-right ml-2"></i></button>
-                </div>
-                <button id="rd-submit-btn" onclick="readingSubmitExam()" class="hidden w-full mt-4 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold"><i class="fa-solid fa-check mr-2"></i>Nộp bài thi</button>
-                <div id="rd-result" class="hidden mt-4 rounded-xl border border-emerald-200 bg-emerald-50 p-4"></div>
-              </div>
-            </section>
-          </div>
-
-        </div>
 
         <!-- WRITING MODULE PLACEHOLDER -->
         <div id="tab-writing-content" class="hidden space-y-6">
@@ -2406,7 +2351,7 @@ function readingOpenFlashcards(){
  activeFlashcardList=readingVocab.map(v=>({en:v.en,vi:v.vi,topicTitle:'Reading · '+readingPassages[v.p].title}));
  currentFlashcardIndex=0;isCardFlipped=false;updateFlashcardUI();document.getElementById('flashcard-modal').classList.remove('hidden');
 }
-document.addEventListener('DOMContentLoaded',()=>{if(document.getElementById('tab-reading-content'))readingInit()});
+document.addEventListener('DOMContentLoaded',()=>{if(document.getElementById('rd-passage-tabs'))readingInit()});
 </script>
 
 </body>
