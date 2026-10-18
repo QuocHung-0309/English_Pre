@@ -72,6 +72,7 @@
 #rd-passage-translation{animation:rdFadeIn .18s ease-out}
 @keyframes rdFadeIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
 </style>
+<link rel="stylesheet" href="writing-studio.css">
 
 </head>
 <body class="h-full font-sans text-slate-800 antialiased flex flex-col bg-slate-50">
@@ -374,18 +375,49 @@
                         ></iframe>
                 </div>
 
-        <!-- WRITING MODULE PLACEHOLDER -->
-        <div id="tab-writing-content" class="hidden space-y-6">
-            <div class="bg-white rounded-2xl p-8 border border-slate-200 text-center space-y-4">
-                <div class="w-16 h-16 bg-purple-100 text-purple-600 rounded-2xl flex items-center justify-center mx-auto text-2xl font-bold">
-                    <i class="fa-solid fa-pen-nib"></i>
+        <div id="tab-writing-content" class="hidden writing-module space-y-5">
+            <section class="writing-masthead">
+                <div>
+                    <p class="writing-kicker">VSTEP · WRITING PRACTICE</p>
+                    <h2>Writing Studio</h2>
+                    <p>Task 1 · Email / Letter: Viết thư / Thư mời: 20 phút, 120 từ <span aria-hidden="true"> </span> <br> Task 2 · Essay - Viết bài luận: 40 phút, 250 từ</p>
                 </div>
-                <h3 class="text-xl font-bold text-slate-900">Module Writing - Chuẩn bị tài liệu</h3>
-                <p class="text-slate-600 max-w-md mx-auto text-sm">
-                    Gồm Task 1 (Viết thư / Email) & Task 2 (Bài luận Essay theo chủ đề).
-                </p>
-            </div>
+                <div class="writing-masthead-meta"><span class="writing-live-dot"></span><span id="writing-save-state" role="status">Bản nháp được lưu trên thiết bị này</span></div>
+            </section>
+
+            <section id="writing-library" class="writing-library">
+                <div class="writing-section-head"><div><p class="writing-kicker">CHỌN BÀI LUYỆN</p><h3>Thư viện đề</h3></div><span class="writing-source-note">4 đề email từ PDF · 4 đề essay theo yêu cầu · 2 đề essay luyện tập</span></div>
+                <div id="writing-task-list" class="writing-task-list"></div>
+                <p class="writing-footnote">Bốn đề essay được bổ sung theo nội dung bạn cung cấp; Online Learning và Free Public Transport là hai đề luyện tập biên soạn thêm.</p>
+            </section>
+
+            <section id="writing-workspace" class="hidden">
+                <div class="writing-workbar"><button type="button" id="writing-back" class="writing-button"><i class="fa-solid fa-arrow-left"></i><span>Thư viện đề</span></button><label class="writing-task-select-label" for="writing-task-select">Đề đang làm</label><select id="writing-task-select" aria-label="Chọn đề đang làm"></select><button type="button" id="writing-ai-settings" class="writing-icon-button" title="Cấu hình chấm AI" aria-label="Cấu hình chấm AI"><i class="fa-solid fa-sliders"></i></button></div>
+                <div class="writing-columns">
+                    <aside class="writing-brief">
+                        <div class="writing-panel-heading"><div><p class="writing-kicker" id="writing-part-label">TASK 1 · EMAIL</p><h3 id="writing-task-title"></h3></div><span class="writing-task-mark" id="writing-task-mark">20′</span></div>
+                        <div class="writing-meta-grid" id="writing-task-meta"></div>
+                        <section class="writing-prompt-block"><h4><i class="fa-regular fa-file-lines"></i> Đề bài tiếng Anh</h4><div id="writing-prompt" class="writing-prompt"></div></section>
+                        <section class="writing-requirements-block"><h4><i class="fa-solid fa-list-check"></i> Ý cần trả lời</h4><p class="writing-hint">Tự đánh dấu sau khi bạn đã đề cập đến ý đó trong bài.</p><div id="writing-requirements" class="writing-requirements"></div></section>
+                        <section class="writing-structure-block"><h4><i class="fa-solid fa-diagram-project"></i> Cấu trúc gợi ý</h4><div id="writing-structure" class="writing-structure"></div></section>
+                        <div class="writing-study-tools"><button type="button" data-writing-resource="vocab"><i class="fa-solid fa-spell-check"></i><span>Từ vựng</span></button><button type="button" data-writing-resource="outline"><i class="fa-solid fa-list-ol"></i><span>Dàn ý gợi ý</span></button></div>
+                        <p class="writing-ai-disclaimer"><i class="fa-solid fa-circle-info"></i> Các dấu ý do người học tự đánh dấu; không dùng AI để xác nhận đã hoàn thành.</p>
+                    </aside>
+
+                    <section class="writing-editor-panel" aria-label="Trình soạn thảo bài viết">
+                        <div class="writing-editor-head"><div><p class="writing-kicker">YOUR RESPONSE</p><h3>Bài viết</h3></div><span class="writing-draft-status" id="writing-draft-status">Đã lưu</span></div>
+                        <div class="writing-stats"><div><span>Số từ</span><strong id="writing-word-count">0</strong><small id="writing-word-target">Tối thiểu 120 từ</small></div><div><span>Đã sử dụng</span><strong id="writing-elapsed">00:00</strong><small>Thời gian thực làm bài</small></div><div><span>Còn lại</span><strong id="writing-remaining">20:00</strong><small>Thời gian mục tiêu</small></div></div>
+                        <div class="writing-timer-controls"><button type="button" id="writing-timer-start" class="writing-button writing-button-primary"><i class="fa-solid fa-play"></i><span>Bắt đầu</span></button><button type="button" id="writing-timer-pause" class="writing-button" disabled><i class="fa-solid fa-pause"></i><span>Tạm dừng</span></button><button type="button" id="writing-timer-reset" class="writing-button"><i class="fa-solid fa-rotate-left"></i><span>Đặt lại giờ</span></button><span id="writing-timer-message" role="status" class="writing-timer-message"></span></div>
+                        <label class="writing-sr-only" for="writing-answer">Bài viết tiếng Anh</label><textarea id="writing-answer" class="writing-answer" spellcheck="true" lang="en" placeholder="Start writing your response here..."></textarea>
+                        <div class="writing-editor-footer"><span id="writing-autosave-note">Tự lưu trên trình duyệt</span><div class="writing-editor-actions"><button type="button" id="writing-save" class="writing-button"><i class="fa-regular fa-floppy-disk"></i><span>Lưu bài</span></button><button type="button" id="writing-delete" class="writing-button writing-button-danger"><i class="fa-regular fa-trash-can"></i><span>Xóa bài</span></button></div></div>
+                        <div class="writing-primary-actions"><button type="button" id="writing-grade" class="writing-button writing-button-primary"><i class="fa-solid fa-wand-magic-sparkles"></i><span>Chấm điểm bài viết</span></button><button type="button" data-writing-resource="sample" class="writing-button"><i class="fa-regular fa-eye"></i><span>Xem bài mẫu</span></button><button type="button" data-writing-resource="translation" class="writing-button"><i class="fa-solid fa-language"></i><span>Xem bản dịch</span></button></div>
+                        <p class="writing-rubric-note"><strong>Rubric luyện tập:</strong> Task Fulfillment 4 + Organization 2 + Vocabulary 2 + Grammar 2 = 10 điểm. Tổng điểm là tổng trọng số; không phải điểm VSTEP chính thức.</p>
+                        <section id="writing-result" class="writing-result hidden" aria-live="polite"></section>
+                    </section>
+                </div>
+            </section>
         </div>
+        <script src="writing-studio.js"></script>
 
     </main>
 
